@@ -10,7 +10,7 @@ pipeline {
        stage('Checkout') {
           steps {
              scmSkip(deleteBuild: true, skipPattern:'.*\\[ci-skip\\].*')
-             git branch: 'master',
+             git branch: 'main',
                 credentialsId: env.GIT_CREDENTIAL_ID,
                 url: 'https://github.com/isis3710-uniandes/' + env.GIT_REPO
           }
