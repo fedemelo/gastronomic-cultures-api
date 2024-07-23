@@ -1,9 +1,9 @@
 pipeline {
     agent any
     environment {
-       GIT_REPO = 'ISIS3710_202420_S1_E1_Back'
-       GIT_CREDENTIAL_ID = '7c21addc-0cbf-4f2e-9bd8-eced479c56c6'
-       SONARQUBE_URL = 'http://172.24.100.52:8082/sonar-isis2603'
+       GIT_REPO = 'MISW4403_202414_E01'
+       GIT_CREDENTIAL_ID = '43771338-0057-4a96-ae03-93ee5419d871'
+       SONARQUBE_URL = 'http://172.24.100.52:8082/sonar-misovirtual'
        SONAR_TOKEN = credentials('sonar-login')
     }
     stages {
@@ -12,7 +12,7 @@ pipeline {
              scmSkip(deleteBuild: true, skipPattern:'.*\\[ci-skip\\].*')
              git branch: 'main',
                 credentialsId: env.GIT_CREDENTIAL_ID,
-                url: 'https://github.com/isis3710-uniandes/' + env.GIT_REPO
+                url: 'https://github.com/MISW4403-Diseno-y-construccion-de-APIs/' + env.GIT_REPO
           }
        }
        stage('Build') {
