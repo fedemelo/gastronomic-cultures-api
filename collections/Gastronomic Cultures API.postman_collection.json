@@ -4,8 +4,8 @@
 		"name": "Gastronomic Cultures API",
 		"description": "This collection provides comprehensive CRUD operations and detailed views for managing gastronomic data, including products, gastronomic cultures, countries, recipes, and restaurants.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "37773784",
-		"_collection_link": "https://dont-worry-be-api.postman.co/workspace/Team-Workspace~dd1015da-1a3c-4f84-8dff-3387d6e5c2e0/collection/37773784-13ad13b6-d743-451d-8591-6ff18660de3a?action=share&source=collection_link&creator=37773784"
+		"_exporter_id": "37773845",
+		"_collection_link": "https://dont-worry-be-api.postman.co/workspace/dd1015da-1a3c-4f84-8dff-3387d6e5c2e0/collection/37773784-13ad13b6-d743-451d-8591-6ff18660de3a?action=share&source=collection_link&creator=37773845"
 	},
 	"item": [
 		{
@@ -292,10 +292,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/products/:id",
+									"raw": "http://localhost:3000/products/:id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"products",
 										":id"
@@ -346,10 +348,12 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/products/:id",
+									"raw": "http://localhost:3000/products/:id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"products",
 										":id"
@@ -477,10 +481,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:id",
+									"raw": "http://localhost:3000/cultures/:id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":id"
@@ -527,7 +533,7 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
-							"body": "{\n  \"error\": \"Gastronomic culture not found with id 00000000-0000-0000-0000-000000000000\"\n}"
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
 						}
 					]
 				},
@@ -577,10 +583,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/cultures",
+									"raw": "http://localhost:3000/cultures",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures"
 									]
@@ -648,10 +656,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/cultures/:id",
+									"raw": "http://localhost:3000/cultures/:id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":id"
@@ -713,7 +723,7 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
-							"body": "{\n  \"error\": \"Gastronomic culture not found with id 00000000-0000-0000-0000-000000000000\"\n}"
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
 						}
 					]
 				},
@@ -746,10 +756,12 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:id",
+									"raw": "http://localhost:3000/cultures/:id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":id"
@@ -796,7 +808,7 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
-							"body": "{\n  \"error\": \"Gastronomic culturenot found with id 00000000-0000-0000-0000-000000000000\"\n}"
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
 						}
 					]
 				}
@@ -877,10 +889,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:id",
+									"raw": "http://localhost:3000/countries/:id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":id"
@@ -927,7 +941,7 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
-							"body": "{\n  \"error\": \"Country not found with id 00000000-0000-0000-0000-000000000000\"\n}"
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The country with the given id was not found\"\n}"
 						}
 					]
 				},
@@ -1106,7 +1120,7 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
-							"body": "{\n  \"error\": \"Country not found with id 00000000-0000-0000-0000-000000000000\"\n}"
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The country with the given id was not found\"\n}"
 						}
 					]
 				},
@@ -1139,10 +1153,12 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:id",
+									"raw": "http://localhost:3000/countries/:id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":id"
@@ -1189,7 +1205,7 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
-							"body": "{\n  \"error\": \"Country not found with id 00000000-0000-0000-0000-000000000000\"\n}"
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The country with the given id was not found\"\n}"
 						}
 					]
 				}
@@ -1322,7 +1338,7 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
-							"body": "{\n  \"error\": \"Recipe not found with id 00000000-0000-0000-0000-000000000000\"\n}"
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The recipe with the given id was not found\"\n}"
 						}
 					]
 				},
@@ -1512,7 +1528,7 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
-							"body": "{\n  \"error\": \"Recipe not found with id 00000000-0000-0000-0000-000000000000\"\n}"
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The recipe with the given id was not found\"\n}"
 						}
 					]
 				},
@@ -1545,10 +1561,12 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/recipes/:id",
+									"raw": "http://localhost:3000/recipes/:id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"recipes",
 										":id"
@@ -1595,7 +1613,7 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
-							"body": "{\n  \"error\": \"Recipe not found with id 00000000-0000-0000-0000-000000000000\"\n}"
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The recipe with the given id was not found\"\n}"
 						}
 					]
 				}
@@ -1728,7 +1746,7 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
-							"body": "{\n  \"error\": \"Restaurant not found with id 00000000-0000-0000-0000-000000000000\"\n}"
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The restaurant with the given id was not found\"\n}"
 						}
 					]
 				},
@@ -1907,7 +1925,7 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
-							"body": "{\n  \"error\": \"Restaurant not found with id 00000000-0000-0000-0000-000000000000\"\n}"
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The restaurant with the given id was not found\"\n}"
 						}
 					]
 				},
@@ -1940,10 +1958,12 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/restaurants/:id",
+									"raw": "http://localhost:3000/restaurants/:id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"restaurants",
 										":id"
@@ -1990,7 +2010,7 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
-							"body": "{\n  \"error\": \"Restaurant not found with id 00000000-0000-0000-0000-000000000000\"\n}"
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The restaurant with the given id was not found\"\n}"
 						}
 					]
 				}
@@ -2035,10 +2055,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/products/:product_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -2070,48 +2092,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"Olive Oil\",\n    \"description\": \"High-quality extra virgin\",\n    \"history\": \"Used since ancient times\",\n    \"category\": \"Cooking Essentials\",\n    \"cultures\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Mediterranean\",\n            \"description\": \"Rich and diverse culinary traditions.\"\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Get an invalid product of a gastronomic culture",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"products",
-								":product_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "product_id",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get an invalid product of a gastronomic culture",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/products/:product_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -2143,48 +2136,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The product with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get a product of an invalid gastronomic culture",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"products",
-								":product_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "0"
-								},
-								{
-									"key": "product_id",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get a product of an invalid gastronomic culture",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/products/:product_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -2216,48 +2180,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get a product non-associated to a gastronomic culture",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"products",
-								":product_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "product_id",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get a product non-associated to a gastronomic culture",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/products/:product_id_2",
+									"raw": "http://localhost:3000/cultures/:culture_id/products/:product_id_2",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -2322,10 +2257,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/products",
+									"raw": "http://localhost:3000/cultures/:culture_id/products",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -2352,43 +2289,19 @@
 							],
 							"cookie": [],
 							"body": "[\n    {\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\n        \"name\": \"Olive Oil\",\n        \"description\": \"High-quality extra virgin\",\n        \"history\": \"Used since ancient times\",\n        \"category\": \"Cooking Essentials\",\n        \"cultures\": [\n            {\n                \"id\": \"00000000-0000-0000-0000-000000000000\",\n                \"name\": \"Mediterranean\",\n                \"description\": \"Rich and diverse culinary traditions.\"\n            }\n        ]\n    }\n]"
-						}
-					]
-				},
-				{
-					"name": "Get all products of an invalid gastronomic culture",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"products"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get all products of an invalid gastronomic culture",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/products",
+									"raw": "http://localhost:3000/cultures/:culture_id/products",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -2453,10 +2366,12 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/products/:product_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -2488,48 +2403,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"Italian\",\n    \"description\": \"Rich and diverse culinary traditions.\",\n    \"recipes\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Pasta Carbonara\",\n            \"description\": \"A classic Italian dish.\",\n            \"photo\": \"url_to_photo\",\n            \"preparationProcess\": \"Detailed steps\",\n            \"video\": \"url_to_video\"\n        }\n    ],\n    \"products\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Balsamic Vinegar\",\n            \"description\": \"High-quality extra thick\",\n            \"history\": \"Used since ancient times\",\n            \"category\": \"Cooking Essentials\"\n        }\n    ],\n    \"restaurants\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"La Pergola\",\n            \"city\": \"Rome\",\n            \"michelinStars\": 3,\n            \"awardDate\": \"2020-05-20\"\n        }\n    ],\n    \"countries\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Italy\"\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Add an invalid product to a gastronomic culture",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"products",
-								":product_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "product_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Add an invalid product to a gastronomic culture",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/products/:product_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -2561,48 +2447,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The product with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Add a product to an invalid gastronomic culture",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"products",
-								":product_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "0"
-								},
-								{
-									"key": "product_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Add a product to an invalid gastronomic culture",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/products/:product_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -2691,10 +2548,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/products",
+									"raw": "http://localhost:3000/cultures/:culture_id/products",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -2721,42 +2580,7 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"Italian\",\n    \"description\": \"Rich and diverse culinary traditions.\",\n    \"recipes\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Pasta Carbonara\",\n            \"description\": \"A classic Italian dish.\",\n            \"photo\": \"url_to_photo\",\n            \"preparationProcess\": \"Detailed steps\",\n            \"video\": \"url_to_video\"\n        }\n    ],\n    \"products\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Balsamic Vinegar\",\n            \"description\": \"High-quality extra thick\",\n            \"history\": \"Used since ancient times\",\n            \"category\": \"Cooking Essentials\"\n        }\n    ],\n    \"restaurants\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"La Pergola\",\n            \"city\": \"Rome\",\n            \"michelinStars\": 3,\n            \"awardDate\": \"2020-05-20\"\n        }\n    ],\n    \"countries\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Italy\"\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Update invalid products of a gastronomic culture",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\r\n   {\r\n       \"id\": \"0\"\r\n   }\r\n]",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
 						},
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"products"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
-							]
-						}
-					},
-					"response": [
 						{
 							"name": "Update invalid products of a gastronomic culture",
 							"originalRequest": {
@@ -2772,10 +2596,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/products",
+									"raw": "http://localhost:3000/cultures/:culture_id/products",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -2802,42 +2628,7 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The product with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Update products of an invalid gastronomic culture",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\r\n   {\r\n       \"id\": \"{{product_id_2}}\"\r\n   }\r\n]",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
 						},
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"products"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
 						{
 							"name": "Update products of an invalid gastronomic culture",
 							"originalRequest": {
@@ -2853,10 +2644,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/products",
+									"raw": "http://localhost:3000/cultures/:culture_id/products",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -2892,7 +2685,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products/:product_id_2",
+							"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
 							"host": [
 								"{{base_url}}"
 							],
@@ -2900,7 +2693,7 @@
 								"cultures",
 								":culture_id",
 								"products",
-								":product_id_2"
+								":product_id"
 							],
 							"variable": [
 								{
@@ -2908,8 +2701,8 @@
 									"value": "00000000-0000-0000-0000-000000000000"
 								},
 								{
-									"key": "product_id_2",
-									"value": "00000000-0000-0000-0000-000000000001"
+									"key": "product_id",
+									"value": "00000000-0000-0000-0000-000000000000"
 								}
 							]
 						}
@@ -2921,15 +2714,17 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/products/:product_id_2",
+									"raw": "http://localhost:3000/cultures/:culture_id/products/:product_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
 										"products",
-										":product_id_2"
+										":product_id"
 									],
 									"variable": [
 										{
@@ -2937,8 +2732,8 @@
 											"value": "00000000-0000-0000-0000-000000000000"
 										},
 										{
-											"key": "product_id_2",
-											"value": "00000000-0000-0000-0000-000000000001"
+											"key": "product_id",
+											"value": "00000000-0000-0000-0000-000000000000"
 										}
 									]
 								}
@@ -2949,48 +2744,19 @@
 							"header": [],
 							"cookie": [],
 							"body": ""
-						}
-					]
-				},
-				{
-					"name": "Delete an invalid product of a gastronomic culture",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"products",
-								":product_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "product_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Delete an invalid product of a gastronomic culture",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/products/:product_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -3004,59 +2770,38 @@
 										},
 										{
 											"key": "product_id",
-											"value": "0"
+											"value": "00000000-0000-0000-0000-000000000000"
 										}
 									]
 								}
 							},
 							"status": "Not Found",
 							"code": 404,
-							"_postman_previewlanguage": "Text",
-							"header": [],
-							"cookie": [],
-							"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The product with the given id was not found\"\r\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete a product of an invalid gastronomic culture",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"products",
-								":product_id"
-							],
-							"variable": [
+							"_postman_previewlanguage": "json",
+							"header": [
 								{
-									"key": "culture_id",
-									"value": "0"
-								},
-								{
-									"key": "product_id",
-									"value": "00000000-0000-0000-0000-000000000000"
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
 								}
-							]
-						}
-					},
-					"response": [
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The product with the given id was not found\"\n}"
+						},
 						{
 							"name": "Delete a product of an invalid gastronomic culture",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/products/:product_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -3066,7 +2811,7 @@
 									"variable": [
 										{
 											"key": "culture_id",
-											"value": "0"
+											"value": "00000000-0000-0000-0000-000000000000"
 										},
 										{
 											"key": "product_id",
@@ -3077,57 +2822,36 @@
 							},
 							"status": "Not Found",
 							"code": 404,
-							"_postman_previewlanguage": "Text",
-							"header": [],
-							"cookie": [],
-							"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The gastronomic culture with the given id was not found\"\r\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete a product non-associated to a gastronomic culture",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products/:product_id_2",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"products",
-								":product_id_2"
-							],
-							"variable": [
+							"_postman_previewlanguage": "json",
+							"header": [
 								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "product_id_2",
-									"value": "00000000-0000-0000-0000-000000000001"
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
 								}
-							]
-						}
-					},
-					"response": [
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
+						},
 						{
 							"name": "Delete a product non-associated to a gastronomic culture",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/products/:product_id_2",
+									"raw": "http://localhost:3000/cultures/:culture_id/products/:product_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
 										"products",
-										":product_id_2"
+										":product_id"
 									],
 									"variable": [
 										{
@@ -3135,18 +2859,26 @@
 											"value": "00000000-0000-0000-0000-000000000000"
 										},
 										{
-											"key": "product_id_2",
-											"value": "00000000-0000-0000-0000-000000000001"
+											"key": "product_id",
+											"value": "00000000-0000-0000-0000-000000000000"
 										}
 									]
 								}
 							},
 							"status": "Precondition Failed",
 							"code": 412,
-							"_postman_previewlanguage": "Text",
-							"header": [],
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
 							"cookie": [],
-							"body": "{\r\n   \"statusCode\": 412,\r\n   \"message\": \"The product with the given id is not associated to The gastronomic culture\"\r\n}"
+							"body": "{\n    \"statusCode\": 412,\n    \"message\": \"The product with the given id is not associated to The gastronomic culture\"\n}"
 						}
 					]
 				}
@@ -3191,10 +2923,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/recipes/:recipe_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -3226,48 +2960,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"name\": \"Pasta Carbonara\",\n    \"description\": \"A classic Italian dish.\",\n    \"photo\": \"url_to_photo\",\n    \"preparationProcess\": \"Detailed steps\",\n    \"video\": \"url_to_video\",\n    \"culture\": {\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\n        \"name\": \"Italian\",\n        \"description\": \"Rich and diverse culinary traditions.\"\n    }\n}"
-						}
-					]
-				},
-				{
-					"name": "Get an invalid recipe of a gastronomic culture",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"recipes",
-								":recipe_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "recipe_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get an invalid recipe of a gastronomic culture",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/recipes/:recipe_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -3299,48 +3004,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The recipe with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get a recipe of an invalid gastronomic culture",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"recipes",
-								":recipe_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "0"
-								},
-								{
-									"key": "recipe_id",
-									"value": "00000000-0000-0000-0000-000000000000\n\n"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get a recipe of an invalid gastronomic culture",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/recipes/:recipe_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -3372,48 +3048,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get a recipe non-associated to a gastronomic culture",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id_2",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"recipes",
-								":recipe_id_2"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "recipe_id_2",
-									"value": "00000000-0000-0000-0000-000000000001"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get a recipe non-associated to a gastronomic culture",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id_2",
+									"raw": "http://localhost:3000/cultures/:culture_id/recipes/:recipe_id_2",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -3478,10 +3125,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes",
+									"raw": "http://localhost:3000/cultures/:culture_id/recipes",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -3508,43 +3157,19 @@
 							],
 							"cookie": [],
 							"body": "[\n    {\n        \"name\": \"Pasta Carbonara\",\n        \"description\": \"A classic Italian dish.\",\n        \"photo\": \"url_to_photo\",\n        \"preparationProcess\": \"Detailed steps\",\n        \"video\": \"url_to_video\",\n        \"culture\": {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Italian\",\n            \"description\": \"Rich and diverse culinary traditions.\"\n        }\n    }\n]"
-						}
-					]
-				},
-				{
-					"name": "Get all recipes of an invalid gastronomic culture",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/recipes",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"recipes"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get all recipes of an invalid gastronomic culture",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes",
+									"raw": "http://localhost:3000/cultures/:culture_id/recipes",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -3560,10 +3185,18 @@
 							},
 							"status": "Not Found",
 							"code": 404,
-							"_postman_previewlanguage": "Text",
-							"header": [],
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
 							"cookie": [],
-							"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The gastronomic culture with the given id was not found\"\r\n}"
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
 						}
 					]
 				},
@@ -3602,10 +3235,12 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/recipes/:recipe_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -3637,48 +3272,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"Italian\",\n    \"description\": \"Rich and diverse culinary traditions.\",\n    \"recipes\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Pasta Carbonara\",\n            \"description\": \"A classic Italian dish.\",\n            \"photo\": \"url_to_photo\",\n            \"preparationProcess\": \"Detailed steps\",\n            \"video\": \"url_to_video\"\n        }\n    ],\n    \"products\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Balsamic Vinegar\",\n            \"description\": \"High-quality extra thick\",\n            \"history\": \"Used since ancient times\",\n            \"category\": \"Cooking Essentials\"\n        }\n    ],\n    \"restaurants\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"La Pergola\",\n            \"city\": \"Rome\",\n            \"michelinStars\": 3,\n            \"awardDate\": \"2020-05-20\"\n        }\n    ],\n    \"countries\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Italy\"\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Add an invalid recipe to a gastronomic culture",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"recipes",
-								":recipe_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "recipe_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Add an invalid recipe to a gastronomic culture",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/recipes/:recipe_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -3710,48 +3316,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The recipe with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Add a recipe to an invalid gastronomic culture",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"recipes",
-								":recipe_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "0"
-								},
-								{
-									"key": "recipe_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Add a recipe to an invalid gastronomic culture",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/recipes/:recipe_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -3840,10 +3417,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes",
+									"raw": "http://localhost:3000/cultures/:culture_id/recipes",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -3870,42 +3449,7 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"Italian\",\n    \"description\": \"Rich and diverse culinary traditions.\",\n    \"recipes\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Pasta Carbonara\",\n            \"description\": \"A classic Italian dish.\",\n            \"photo\": \"url_to_photo\",\n            \"preparationProcess\": \"Detailed steps\",\n            \"video\": \"url_to_video\"\n        }\n    ],\n    \"products\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Balsamic Vinegar\",\n            \"description\": \"High-quality extra thick\",\n            \"history\": \"Used since ancient times\",\n            \"category\": \"Cooking Essentials\"\n        }\n    ],\n    \"restaurants\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"La Pergola\",\n            \"city\": \"Rome\",\n            \"michelinStars\": 3,\n            \"awardDate\": \"2020-05-20\"\n        }\n    ],\n    \"countries\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Italy\"\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Update invalid recipes of a gastronomic culture",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\r\n   {\r\n       \"id\": \"0\"\r\n   }\r\n]",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
 						},
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/recipes",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"recipes"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
-							]
-						}
-					},
-					"response": [
 						{
 							"name": "Update invalid recipes of a gastronomic culture",
 							"originalRequest": {
@@ -3921,10 +3465,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes",
+									"raw": "http://localhost:3000/cultures/:culture_id/recipes",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -3951,42 +3497,7 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The recipe with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Update recipes of an invalid gastronomic culture",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\r\n   {\r\n       \"id\": \"{{recipe_id_2}}\"\r\n   }\r\n]",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
 						},
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/recipes",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"recipes"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
 						{
 							"name": "Update recipes of an invalid gastronomic culture",
 							"originalRequest": {
@@ -4002,10 +3513,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes",
+									"raw": "http://localhost:3000/cultures/:culture_id/recipes",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -4041,7 +3554,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id_2",
+							"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
 							"host": [
 								"{{base_url}}"
 							],
@@ -4049,7 +3562,7 @@
 								"cultures",
 								":culture_id",
 								"recipes",
-								":recipe_id_2"
+								":recipe_id"
 							],
 							"variable": [
 								{
@@ -4057,8 +3570,8 @@
 									"value": "00000000-0000-0000-0000-000000000000"
 								},
 								{
-									"key": "recipe_id_2",
-									"value": "00000000-0000-0000-0000-000000000001"
+									"key": "recipe_id",
+									"value": "00000000-0000-0000-0000-000000000000"
 								}
 							]
 						}
@@ -4070,15 +3583,17 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id_2",
+									"raw": "http://localhost:3000/cultures/:culture_id/recipes/:recipe_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
 										"recipes",
-										":recipe_id_2"
+										":recipe_id"
 									],
 									"variable": [
 										{
@@ -4086,8 +3601,8 @@
 											"value": "00000000-0000-0000-0000-000000000000"
 										},
 										{
-											"key": "recipe_id_2",
-											"value": "00000000-0000-0000-0000-000000000001"
+											"key": "recipe_id",
+											"value": "00000000-0000-0000-0000-000000000000"
 										}
 									]
 								}
@@ -4098,48 +3613,19 @@
 							"header": [],
 							"cookie": [],
 							"body": ""
-						}
-					]
-				},
-				{
-					"name": "Delete an invalid recipe of a gastronomic culture",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"recipes",
-								":recipe_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "recipe_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Delete an invalid recipe of a gastronomic culture",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/recipes/:recipe_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -4153,59 +3639,37 @@
 										},
 										{
 											"key": "recipe_id",
-											"value": "0"
+											"value": "00000000-0000-0000-0000-000000000000"
 										}
 									]
 								}
 							},
 							"status": "Not Found",
 							"code": 404,
-							"_postman_previewlanguage": "Text",
-							"header": [],
-							"cookie": [],
-							"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The recipe with the given id was not found\"\r\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete a recipe of an invalid gastronomic culture",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"recipes",
-								":recipe_id"
-							],
-							"variable": [
+							"_postman_previewlanguage": "json",
+							"header": [
 								{
-									"key": "culture_id",
-									"value": "0"
-								},
-								{
-									"key": "recipe_id",
-									"value": "00000000-0000-0000-0000-000000000000"
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
 								}
-							]
-						}
-					},
-					"response": [
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The recipe with the given id was not found\"\n}"
+						},
 						{
 							"name": "Delete a recipe of an invalid gastronomic culture",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/recipes/:recipe_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -4226,57 +3690,35 @@
 							},
 							"status": "Not Found",
 							"code": 404,
-							"_postman_previewlanguage": "Text",
-							"header": [],
-							"cookie": [],
-							"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The gastronomic culture with the given id was not found\"\r\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete a recipe non-associated to a gastronomic culture",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id_2",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"recipes",
-								":recipe_id_2"
-							],
-							"variable": [
+							"_postman_previewlanguage": "json",
+							"header": [
 								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "recipe_id_2",
-									"value": "00000000-0000-0000-0000-000000000001"
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
 								}
-							]
-						}
-					},
-					"response": [
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
+						},
 						{
 							"name": "Delete a recipe non-associated to a gastronomic culture",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id_2",
+									"raw": "http://localhost:3000/cultures/:culture_id/recipes/:recipe_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
 										"recipes",
-										":recipe_id_2"
+										":recipe_id"
 									],
 									"variable": [
 										{
@@ -4284,18 +3726,25 @@
 											"value": "00000000-0000-0000-0000-000000000000"
 										},
 										{
-											"key": "recipe_id_2",
-											"value": "00000000-0000-0000-0000-000000000001"
+											"key": "recipe_id",
+											"value": "00000000-0000-0000-0000-000000000000"
 										}
 									]
 								}
 							},
 							"status": "Precondition Failed",
 							"code": 412,
-							"_postman_previewlanguage": "Text",
-							"header": [],
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
 							"cookie": [],
-							"body": "{\r\n   \"statusCode\": 412,\r\n   \"message\": \"The recipe with the given id is not associated to The gastronomic culture\"\r\n}"
+							"body": "{\n    \"statusCode\": 412,\n    \"message\": \"The recipe with the given id is not associated to The gastronomic culture\"\n}"
 						}
 					]
 				}
@@ -4340,10 +3789,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/restaurants/:restaurant_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/restaurants/:restaurant_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -4375,48 +3826,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"name\": \"La Pergola\",\n    \"city\": \"Rome\",\n    \"michelinStars\": 3,\n    \"awardDate\": \"2020-05-20\",\n    \"cultures\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Mediterranean\",\n            \"description\": \"Rich and diverse culinary traditions.\"\n        }\n    ],\n    \"country\": {\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\n        \"name\": \"Italy\"\n    }\n}"
-						}
-					]
-				},
-				{
-					"name": "Get an invalid restaurant of a gastronomic culture",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/restaurants/:restaurant_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"restaurants",
-								":restaurant_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "restaurant_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get an invalid Restaurant of a Gastronomic Culture",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/restaurants/:restaurant_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/restaurants/:restaurant_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -4430,7 +3852,7 @@
 										},
 										{
 											"key": "restaurant_id",
-											"value": "0"
+											"value": "00000000-0000-0000-0000-000000000000"
 										}
 									]
 								}
@@ -4448,48 +3870,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The restaurant with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get a restaurant of an invalid gastronomic culture",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/restaurants/:restaurant_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"restaurants",
-								":restaurant_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "0"
-								},
-								{
-									"key": "restaurant_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get an invalid Restaurant of a Gastronomic Culture",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/restaurants/:restaurant_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/restaurants/:restaurant_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -4521,48 +3914,19 @@
 							],
 							"cookie": [],
 							"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The gastronomic culture with the given id was not found\"\r\n}"
-						}
-					]
-				},
-				{
-					"name": "Get a restaurant none-associated to a gastronomic culture",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/restaurants/:restaurant_id_2",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"restaurants",
-								":restaurant_id_2"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "restaurant_id_2",
-									"value": "00000000-0000-0000-0000-000000000001"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get a Restaurant none-associated to a Gastronomic Culture",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/restaurants/:restaurant_id_2",
+									"raw": "http://localhost:3000/cultures/:culture_id/restaurants/:restaurant_id_2",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -4627,10 +3991,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/restaurants",
+									"raw": "http://localhost:3000/cultures/:culture_id/restaurants",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -4657,43 +4023,19 @@
 							],
 							"cookie": [],
 							"body": "[\r\n  {\r\n    \"name\": \"La Pergola\",\r\n    \"city\": \"Rome\",\r\n    \"michelinStars\": 3,\r\n    \"awardDate\": \"2020-05-20\",\r\n    \"cultures\": [\r\n      {\r\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"name\": \"Mediterranean\",\r\n        \"description\": \"Rich and diverse culinary traditions.\"\r\n      }\r\n\t],\r\n    \"country\": {\r\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"name\": \"Italy\"\r\n    }\r\n  }\r\n]\r\n"
-						}
-					]
-				},
-				{
-					"name": "Get all restaurant of an invalid gastronomic culture",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/restaurants",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"restaurants"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get all Restaurant of an invalid gastronomic culture",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/restaurants",
+									"raw": "http://localhost:3000/cultures/:culture_id/restaurants",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -4758,10 +4100,12 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/restaurants/:restaurant_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/restaurants/:restaurant_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -4793,48 +4137,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"Italian\",\n    \"description\": \"Rich and diverse culinary traditions.\",\n    \"recipes\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Pasta Carbonara\",\n            \"description\": \"A classic Italian dish.\",\n            \"photo\": \"url_to_photo\",\n            \"preparationProcess\": \"Detailed steps\",\n            \"video\": \"url_to_video\"\n        }\n    ],\n    \"products\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Balsamic Vinegar\",\n            \"description\": \"High-quality extra thick\",\n            \"history\": \"Used since ancient times\",\n            \"category\": \"Cooking Essentials\"\n        }\n    ],\n    \"restaurants\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"La Pergola\",\n            \"city\": \"Rome\",\n            \"michelinStars\": 3,\n            \"awardDate\": \"2020-05-20\"\n        }\n    ],\n    \"countries\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Italy\"\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Add an invalid restaurant to a gastronomic culture",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/restaurants/:restaurant_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"restaurants",
-								":restaurant_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "restaurant_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Add an invalid Restaurant to a Gastronomic Culture",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/restaurants/:restaurant_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/restaurants/:restaurant_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -4866,48 +4181,19 @@
 							],
 							"cookie": [],
 							"body": "{\n   \"statusCode\": 404,\n   \"message\": \"The restaurant with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Add a restaurant to an invalid gastronomic culture",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/restaurants/:restaurant_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"restaurants",
-								":restaurant_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "0"
-								},
-								{
-									"key": "restaurant_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Add a Restaurant to an invalid gastronomic culture",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/restaurants/:restaurant_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/restaurants/:restaurant_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -4996,10 +4282,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/restaurants",
+									"raw": "http://localhost:3000/cultures/:culture_id/restaurants",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -5026,42 +4314,7 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"Italian\",\n    \"description\": \"Rich and diverse culinary traditions.\",\n    \"recipes\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Pasta Carbonara\",\n            \"description\": \"A classic Italian dish.\",\n            \"photo\": \"url_to_photo\",\n            \"preparationProcess\": \"Detailed steps\",\n            \"video\": \"url_to_video\"\n        }\n    ],\n    \"products\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Balsamic Vinegar\",\n            \"description\": \"High-quality extra thick\",\n            \"history\": \"Used since ancient times\",\n            \"category\": \"Cooking Essentials\"\n        }\n    ],\n    \"restaurants\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"La Pergola\",\n            \"city\": \"Rome\",\n            \"michelinStars\": 3,\n            \"awardDate\": \"2020-05-20\"\n        }\n    ],\n    \"countries\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Italy\"\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Update an invalid restaurants of a gastronomic culture",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\r\n    {\r\n        \"id\": \"0\"\r\n    }\r\n]",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
 						},
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/restaurants",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"restaurants"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
-							]
-						}
-					},
-					"response": [
 						{
 							"name": "Update an invalid Restaurants of a Gastronomic Culture",
 							"originalRequest": {
@@ -5083,10 +4336,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/restaurants",
+									"raw": "http://localhost:3000/cultures/:culture_id/restaurants",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -5113,42 +4368,7 @@
 							],
 							"cookie": [],
 							"body": "{\n   \"statusCode\": 404,\n   \"message\": \"The restaurant with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Update restaurants of an invalid gastronomic culture",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\r\n    {\r\n        \"id\": \"{{product_id}}\"\r\n    }\r\n]",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
 						},
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/restaurants",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"restaurants"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
 						{
 							"name": "Update invalid Restaurants of a Gastronomic Culture",
 							"originalRequest": {
@@ -5170,10 +4390,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/restaurants",
+									"raw": "http://localhost:3000/cultures/:culture_id/restaurants",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -5238,10 +4460,12 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/restaurants/:restaurant_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/restaurants/:restaurant_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -5266,48 +4490,19 @@
 							"header": [],
 							"cookie": [],
 							"body": ""
-						}
-					]
-				},
-				{
-					"name": "Delete an invalid restaurant of a gastronomic culture",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/restaurants/:restaurant_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"restaurants",
-								":restaurant_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "restaurant_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Delete an invalid Restaurant of a Gastronomic Culture",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/restaurants/:restaurant_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/restaurants/:restaurant_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -5328,52 +4523,30 @@
 							},
 							"status": "Not Found",
 							"code": 404,
-							"_postman_previewlanguage": "Text",
-							"header": [],
-							"cookie": [],
-							"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The restaurant with the given id was not found\"\r\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete a restaurant of an invalid gastronomic culture",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/restaurants/:restaurant_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"restaurants",
-								":restaurant_id"
-							],
-							"variable": [
+							"_postman_previewlanguage": "json",
+							"header": [
 								{
-									"key": "culture_id",
-									"value": "0"
-								},
-								{
-									"key": "restaurant_id",
-									"value": "00000000-0000-0000-0000-000000000000"
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
 								}
-							]
-						}
-					},
-					"response": [
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The restaurant with the given id was not found\"\n}"
+						},
 						{
 							"name": "Delete a Restaurant of an invalid gastronomic culture",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/restaurants/:restaurant_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/restaurants/:restaurant_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -5394,57 +4567,35 @@
 							},
 							"status": "Not Found",
 							"code": 404,
-							"_postman_previewlanguage": "Text",
-							"header": [],
-							"cookie": [],
-							"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The gastronomic culture with the given id was not found\"\r\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete a restaurant non-associated to a gastronomic culture",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/restaurants/:restaurant_id_2",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"restaurants",
-								":restaurant_id_2"
-							],
-							"variable": [
+							"_postman_previewlanguage": "json",
+							"header": [
 								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "restaurant_id_2",
-									"value": "00000000-0000-0000-0000-000000000001"
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
 								}
-							]
-						}
-					},
-					"response": [
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
+						},
 						{
 							"name": "Delete a Restaurant of an invalid gastronomic culture",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/restaurants/:restaurant_id_2",
+									"raw": "http://localhost:3000/cultures/:culture_id/restaurants/:restaurant_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
 										"restaurants",
-										":restaurant_id_2"
+										":restaurant_id"
 									],
 									"variable": [
 										{
@@ -5452,18 +4603,25 @@
 											"value": "00000000-0000-0000-0000-000000000000"
 										},
 										{
-											"key": "restaurant_id_2",
-											"value": "00000000-0000-0000-0000-000000000001"
+											"key": "restaurant_id",
+											"value": "00000000-0000-0000-0000-000000000000"
 										}
 									]
 								}
 							},
 							"status": "Precondition Failed",
 							"code": 412,
-							"_postman_previewlanguage": "Text",
-							"header": [],
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
 							"cookie": [],
-							"body": "{\r\n   \"statusCode\": 412,\r\n   \"message\": \"The restaurant with the given id is not associated to The gastronomic culture\"\r\n}"
+							"body": "{\n    \"statusCode\": 412,\n    \"message\": \"The restaurant with the given id is not associated to The gastronomic culture\"\n}"
 						}
 					]
 				}
@@ -5508,10 +4666,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/restaurants/:restaurant_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/restaurants/:restaurant_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"restaurants",
 										":restaurant_id",
@@ -5541,48 +4701,19 @@
 							],
 							"cookie": [],
 							"body": "{\n\t\"id\": \"00000000-0000-0000-0000-000000000000\",\n\t\"name\": \"Italian\",\n\t\"description\": \"Rich and diverse culinary traditions.\",\n\t\"recipes\": [\n\t\t{\n\t\t\t\"id\": \"00000000-0000-0000-0000-000000000000\",\n\t\t\t\"name\": \"Pasta Carbonara\",\n\t\t\t\"description\": \"A classic Italian dish.\",\n\t\t\t\"photo\": \"url_to_photo\",\n\t\t\t\"preparationProcess\": \"Detailed steps\",\n\t\t\t\"video\": \"url_to_video\"\n\t\t}\n\t],\n\t\"products\": [\n\t\t{\n\t\t\t\"id\": \"00000000-0000-0000-0000-000000000000\",\n\t\t\t\"name\": \"Balsamic Vinegar\",\n\t\t\t\"description\": \"High-quality extra thick\",\n\t\t\t\"history\": \"Used since ancient times\",\n\t\t\t\"category\": \"Cooking Essentials\"\n\t\t}\n\t],\n\t\"restaurants\": [\n\t\t{\n\t\t\t\"id\": \"00000000-0000-0000-0000-000000000000\",\n\t\t\t\"name\": \"La Pergola\",\n\t\t\t\"city\": \"Rome\",\n\t\t\t\"michelinStars\": 3,\n\t\t\t\"awardDate\": \"2020-05-20\"\n\t\t}\n\t],\n\t\"countries\": [\n\t\t{\n\t\t\t\"id\": \"00000000-0000-0000-0000-000000000000\",\n\t\t\t\"name\": \"Italy\"\n\t\t}\n\t]\n}"
-						}
-					]
-				},
-				{
-					"name": "Get an invalid gastronomic culture of a restaurant",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/restaurants/:restaurant_id/cultures/:culture_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"restaurants",
-								":restaurant_id",
-								"cultures",
-								":culture_id"
-							],
-							"variable": [
-								{
-									"key": "restaurant_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "culture_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get an invalid gastronomic culture of a restaurant",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/restaurants/:restaurant_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/restaurants/:restaurant_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"restaurants",
 										":restaurant_id",
@@ -5614,48 +4745,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get a gastronomic culture of an invalid restaurant",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/restaurants/:restaurant_id/cultures/:culture_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"restaurants",
-								":restaurant_id",
-								"cultures",
-								":culture_id"
-							],
-							"variable": [
-								{
-									"key": "restaurant_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "culture_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get a gastronomic culture of an invalid restaurant",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/restaurants/:restaurant_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/restaurants/:restaurant_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"restaurants",
 										":restaurant_id",
@@ -5687,48 +4789,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The restaurant with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get a gastronomic culture non-associated to a restaurant",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/restaurants/:restaurant_id/cultures/:culture_id_2",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"restaurants",
-								":restaurant_id",
-								"cultures",
-								":culture_id_2"
-							],
-							"variable": [
-								{
-									"key": "restaurant_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "culture_id_2",
-									"value": "00000000-0000-0000-0000-000000000001"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get a gastronomic culture non-associated to a restaurant",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/restaurants/:restaurant_id/cultures/:culture_id_2",
+									"raw": "http://localhost:3000/restaurants/:restaurant_id/cultures/:culture_id_2",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"restaurants",
 										":restaurant_id",
@@ -5793,10 +4866,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/restaurants/:restaurant_id/cultures",
+									"raw": "http://localhost:3000/restaurants/:restaurant_id/cultures",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"restaurants",
 										":restaurant_id",
@@ -5821,43 +4896,19 @@
 							],
 							"cookie": [],
 							"body": "[\n    {\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\n        \"name\": \"Italian\",\n        \"description\": \"Rich and diverse culinary traditions.\",\n        \"recipes\": [\n            {\n                \"id\": \"00000000-0000-0000-0000-000000000000\",\n                \"name\": \"Pasta Carbonara\",\n                \"description\": \"A classic Italian dish.\",\n                \"photo\": \"url_to_photo\",\n                \"preparationProcess\": \"Detailed steps\",\n                \"video\": \"url_to_video\"\n            }\n        ],\n        \"products\": [\n            {\n                \"id\": \"00000000-0000-0000-0000-000000000000\",\n                \"name\": \"Balsamic Vinegar\",\n                \"description\": \"High-quality extra thick\",\n                \"history\": \"Used since ancient times\",\n                \"category\": \"Cooking Essentials\"\n            }\n        ],\n        \"restaurants\": [\n            {\n                \"id\": \"00000000-0000-0000-0000-000000000000\",\n                \"name\": \"La Pergola\",\n                \"city\": \"Rome\",\n                \"michelinStars\": 3,\n                \"awardDate\": \"2020-05-20\"\n            }\n        ],\n        \"countries\": [\n            {\n                \"id\": \"00000000-0000-0000-0000-000000000000\",\n                \"name\": \"Italy\"\n            }\n        ]\n    }\n]"
-						}
-					]
-				},
-				{
-					"name": "Get all gastronomic cultures of an invalid restaurant",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/restaurants/:restaurant_id/cultures",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"restaurants",
-								":restaurant_id",
-								"cultures"
-							],
-							"variable": [
-								{
-									"key": "restaurant_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get all gastronomic cultures of an invalid restaurant",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/restaurants/:restaurant_id/cultures",
+									"raw": "http://localhost:3000/restaurants/:restaurant_id/cultures",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"restaurants",
 										":restaurant_id",
@@ -5920,10 +4971,12 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/restaurants/:restaurant_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/restaurants/:restaurant_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"restaurants",
 										":restaurant_id",
@@ -5955,48 +5008,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"name\": \"La Pergola\",\n    \"city\": \"Rome\",\n    \"michelinStars\": 3,\n    \"awardDate\": \"2020-05-20\",\n    \"cultures\": [\n      {\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\n        \"name\": \"Mediterranean\",\n        \"description\": \"Rich and diverse culinary traditions.\"\n      }\n\t],\n    \"country\": {\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\n        \"name\": \"Italy\"\n    }\n}"
-						}
-					]
-				},
-				{
-					"name": "Add an invalid gastronomic culture to a restaurant",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/restaurants/:restaurant_id/cultures/:culture_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"restaurants",
-								":restaurant_id",
-								"cultures",
-								":culture_id"
-							],
-							"variable": [
-								{
-									"key": "restaurant_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "culture_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Add an invalid gastronomic culture to a restaurant",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/restaurants/:restaurant_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/restaurants/:restaurant_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"restaurants",
 										":restaurant_id",
@@ -6028,48 +5052,19 @@
 							],
 							"cookie": [],
 							"body": "{\n   \"statusCode\": 404,\n   \"message\": \"The gastronomic culture with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Add culture to an invalid restaurant",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/restaurants/:restaurant_id/cultures/:culture_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"restaurants",
-								":restaurant_id",
-								"cultures",
-								":culture_id"
-							],
-							"variable": [
-								{
-									"key": "restaurant_id",
-									"value": "0"
-								},
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Add culture to an invalid restaurant",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/restaurants/:restaurant_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/restaurants/:restaurant_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"restaurants",
 										":restaurant_id",
@@ -6152,10 +5147,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/restaurants/:restaurant_id/cultures",
+									"raw": "http://localhost:3000/restaurants/:restaurant_id/cultures",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"restaurants",
 										":restaurant_id",
@@ -6182,42 +5179,7 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"name\": \"La Pergola\",\n    \"city\": \"Rome\",\n    \"michelinStars\": 3,\n    \"awardDate\": \"2020-05-20\",\n    \"cultures\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Mediterranean\",\n            \"description\": \"Rich and diverse culinary traditions.\"\n        }\n    ],\n    \"country\": {\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\n        \"name\": \"Italy\"\n    }\n}"
-						}
-					]
-				},
-				{
-					"name": "Update invalid cultures of a restaurant",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\r\n    {\r\n        \"id\": \"0\"\r\n    }\r\n]",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
 						},
-						"url": {
-							"raw": "{{base_url}}/restaurants/:restaurant_id/cultures",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"restaurants",
-								":restaurant_id",
-								"cultures"
-							],
-							"variable": [
-								{
-									"key": "restaurant_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
-							]
-						}
-					},
-					"response": [
 						{
 							"name": "Update invalid cultures of a restaurant",
 							"originalRequest": {
@@ -6233,10 +5195,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/restaurants/:restaurant_id/cultures",
+									"raw": "http://localhost:3000/restaurants/:restaurant_id/cultures",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"restaurants",
 										":restaurant_id",
@@ -6263,42 +5227,7 @@
 							],
 							"cookie": [],
 							"body": "{\n   \"statusCode\": 404,\n   \"message\": \"The gastronomic culture with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Update cultures of an invalid restaurant",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\r\n    {\r\n        \"id\": \"{{culture_id}}\"\r\n    }\r\n]",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
 						},
-						"url": {
-							"raw": "{{base_url}}/restaurants/:restaurant_id/cultures",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"restaurants",
-								":restaurant_id",
-								"cultures"
-							],
-							"variable": [
-								{
-									"key": "restaurant_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
 						{
 							"name": "Update cultures of an invalid restaurant",
 							"originalRequest": {
@@ -6314,10 +5243,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/restaurants/:restaurant_id/cultures",
+									"raw": "http://localhost:3000/restaurants/:restaurant_id/cultures",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"restaurants",
 										":restaurant_id",
@@ -6382,10 +5313,12 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/restaurants/:restaurant_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/restaurants/:restaurant_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"restaurants",
 										":restaurant_id",
@@ -6410,48 +5343,19 @@
 							"header": [],
 							"cookie": [],
 							"body": ""
-						}
-					]
-				},
-				{
-					"name": "Delete an invalid gastronomic culture of a restaurant",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/restaurants/:restaurant_id/cultures/:culture_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"restaurants",
-								":restaurant_id",
-								"cultures",
-								":culture_id"
-							],
-							"variable": [
-								{
-									"key": "restaurant_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "culture_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Delete an invalid gastronomic culture of a restaurant",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/restaurants/:restaurant_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/restaurants/:restaurant_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"restaurants",
 										":restaurant_id",
@@ -6483,48 +5387,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete a gastronomic culture of an invalid restaurant",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/restaurants/:restaurant_id/cultures/:culture_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"restaurants",
-								":restaurant_id",
-								"cultures",
-								":culture_id"
-							],
-							"variable": [
-								{
-									"key": "restaurant_id",
-									"value": "0"
-								},
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Delete a gastronomic culture of an invalid restaurant",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/restaurants/:restaurant_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/restaurants/:restaurant_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"restaurants",
 										":restaurant_id",
@@ -6545,52 +5420,31 @@
 							},
 							"status": "Not Found",
 							"code": 404,
-							"_postman_previewlanguage": "Text",
-							"header": [],
-							"cookie": [],
-							"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The restaurant with the given id was not found\"\r\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete a gastronomic culture non-associated to a restaurant",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/restaurants/:restaurant_id/cultures/:culture_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"restaurants",
-								":restaurant_id",
-								"cultures",
-								":culture_id"
-							],
-							"variable": [
+							"_postman_previewlanguage": "json",
+							"header": [
 								{
-									"key": "restaurant_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000001"
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
 								}
-							]
-						}
-					},
-					"response": [
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The restaurant with the given id was not found\"\n}"
+						},
 						{
 							"name": "Delete a gastronomic culture non-associated to a restaurant",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/restaurants/:restaurant_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/restaurants/:restaurant_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"restaurants",
 										":restaurant_id",
@@ -6666,10 +5520,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/products/:product_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/products/:product_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"products",
 										":product_id",
@@ -6701,48 +5557,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"Italian\",\n    \"description\": \"Rich and diverse culinary traditions.\",\n    \"recipes\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Pasta Carbonara\",\n            \"description\": \"A classic Italian dish.\",\n            \"photo\": \"url_to_photo\",\n            \"preparationProcess\": \"Detailed steps\",\n            \"video\": \"url_to_video\"\n        }\n    ],\n    \"products\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Balsamic Vinegar\",\n            \"description\": \"High-quality extra thick\",\n            \"history\": \"Used since ancient times\",\n            \"category\": \"Cooking Essentials\"\n        }\n    ],\n    \"restaurants\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"La Pergola\",\n            \"city\": \"Rome\",\n            \"michelinStars\": 3,\n            \"awardDate\": \"2020-05-20\"\n        }\n    ],\n    \"countries\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Italy\"\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Get an invalid gastronomic culture of a product",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/products/:product_id/cultures/:culture_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"products",
-								":product_id",
-								"cultures",
-								":culture_id"
-							],
-							"variable": [
-								{
-									"key": "product_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "culture_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get an invalid gastronomic culture of a product",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/products/:product_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/products/:product_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"products",
 										":product_id",
@@ -6774,48 +5601,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get a gastronomic culture of an invalid product",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/products/:product_id/cultures/:culture_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"products",
-								":product_id",
-								"cultures",
-								":culture_id"
-							],
-							"variable": [
-								{
-									"key": "product_id",
-									"value": "0"
-								},
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get a gastronomic culture of an invalid product",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/products/:product_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/products/:product_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"products",
 										":product_id",
@@ -6847,48 +5645,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The product with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get a gastronomic culture non-associated to a product",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/products/:product_id/cultures/:culture_id_2",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"products",
-								":product_id",
-								"cultures",
-								":culture_id_2"
-							],
-							"variable": [
-								{
-									"key": "product_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "culture_id_2",
-									"value": "00000000-0000-0000-0000-000000000001"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get a gastronomic culture non-associated to a product",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/products/:product_id/cultures/:culture_id_2",
+									"raw": "http://localhost:3000/products/:product_id/cultures/:culture_id_2",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"products",
 										":product_id",
@@ -6953,10 +5722,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/products/:product_id/cultures",
+									"raw": "http://localhost:3000/products/:product_id/cultures",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"products",
 										":product_id",
@@ -6983,43 +5754,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"Italian\",\n    \"description\": \"Rich and diverse culinary traditions.\",\n    \"recipes\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Pasta Carbonara\",\n            \"description\": \"A classic Italian dish.\",\n            \"photo\": \"url_to_photo\",\n            \"preparationProcess\": \"Detailed steps\",\n            \"video\": \"url_to_video\"\n        }\n    ],\n    \"products\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Balsamic Vinegar\",\n            \"description\": \"High-quality extra thick\",\n            \"history\": \"Used since ancient times\",\n            \"category\": \"Cooking Essentials\"\n        }\n    ],\n    \"restaurants\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"La Pergola\",\n            \"city\": \"Rome\",\n            \"michelinStars\": 3,\n            \"awardDate\": \"2020-05-20\"\n        }\n    ],\n    \"countries\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Italy\"\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Get all gastronomic cultures of an invalid product",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/products/:product_id/cultures",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"products",
-								":product_id",
-								"cultures"
-							],
-							"variable": [
-								{
-									"key": "product_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get all gastronomic cultures of an invalid product",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/products/:product_id/cultures",
+									"raw": "http://localhost:3000/products/:product_id/cultures",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"products",
 										":product_id",
@@ -7084,10 +5831,12 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/products/:product_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/products/:product_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"products",
 										":product_id",
@@ -7117,48 +5866,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"Olive Oil\",\n    \"description\": \"High-quality extra virgin\",\n    \"history\": \"Used since ancient times\",\n    \"category\": \"Cooking Essentials\",\n    \"cultures\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Mediterranean\",\n            \"description\": \"Rich and diverse culinary traditions.\"\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Add an invalid gastronomic culture to a product",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/products/:product_id/cultures/:culture_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"products",
-								":product_id",
-								"cultures",
-								":culture_id"
-							],
-							"variable": [
-								{
-									"key": "product_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "culture_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Add an invalid gastronomic culture to a product",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/products/:product_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/products/:product_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"products",
 										":product_id",
@@ -7190,48 +5910,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Add a gastronomic culture to an invalid product",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/products/:product_id/cultures/:culture_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"products",
-								":product_id",
-								"cultures",
-								":culture_id"
-							],
-							"variable": [
-								{
-									"key": "product_id",
-									"value": "0"
-								},
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Add a gastronomic culture to an invalid product",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/products/:product_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/products/:product_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"products",
 										":product_id",
@@ -7314,10 +6005,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/products/:product_id/cultures",
+									"raw": "http://localhost:3000/products/:product_id/cultures",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"products",
 										":product_id",
@@ -7344,42 +6037,7 @@
 							],
 							"cookie": [],
 							"body": "[\n    {\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\n        \"name\": \"Olive Oil\",\n        \"description\": \"High-quality extra virgin\",\n        \"history\": \"Used since ancient times\",\n        \"category\": \"Cooking Essentials\",\n        \"cultures\": [\n            {\n                \"id\": \"00000000-0000-0000-0000-000000000001\",\n                \"name\": \"Indian\",\n                \"description\": \"Rich and diverse culinary traditions.\"\n            }\n        ]\n    }\n]"
-						}
-					]
-				},
-				{
-					"name": "Update invalid cultures of a product",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\r\n   {\r\n       \"id\": \"0\"\r\n   }\r\n]",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
 						},
-						"url": {
-							"raw": "{{base_url}}/products/:product_id/cultures",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"products",
-								":product_id",
-								"cultures"
-							],
-							"variable": [
-								{
-									"key": "product_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
-							]
-						}
-					},
-					"response": [
 						{
 							"name": "Update invalid cultures of a product",
 							"originalRequest": {
@@ -7395,10 +6053,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/products/:product_id/cultures",
+									"raw": "http://localhost:3000/products/:product_id/cultures",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"products",
 										":product_id",
@@ -7425,42 +6085,7 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Update cultures of an invalid product",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\r\n   {\r\n       \"id\": \"00000000-0000-0000-0000-000000000000\"\r\n   }\r\n]",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
 						},
-						"url": {
-							"raw": "{{base_url}}/products/:product_id/cultures",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"products",
-								":product_id",
-								"cultures"
-							],
-							"variable": [
-								{
-									"key": "product_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
 						{
 							"name": "Update cultures of an invalid product",
 							"originalRequest": {
@@ -7476,10 +6101,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/products/:product_id/cultures",
+									"raw": "http://localhost:3000/products/:product_id/cultures",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"products",
 										":product_id",
@@ -7544,15 +6171,17 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/products/:product_id/cultures/:culture_id_2",
+									"raw": "http://localhost:3000/products/:product_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"products",
 										":product_id",
 										"cultures",
-										":culture_id_2"
+										":culture_id"
 									],
 									"variable": [
 										{
@@ -7560,8 +6189,8 @@
 											"value": "00000000-0000-0000-0000-000000000000"
 										},
 										{
-											"key": "culture_id_2",
-											"value": "00000000-0000-0000-0000-000000000001"
+											"key": "culture_id",
+											"value": "00000000-0000-0000-0000-000000000000"
 										}
 									]
 								}
@@ -7572,48 +6201,19 @@
 							"header": [],
 							"cookie": [],
 							"body": ""
-						}
-					]
-				},
-				{
-					"name": "Delete an invalid gastronomic culture of a product",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/products/:product_id/cultures/:culture_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"products",
-								":product_id",
-								"cultures",
-								":culture_id"
-							],
-							"variable": [
-								{
-									"key": "product_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "culture_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Delete an invalid gastronomic culture of a product",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/products/:product_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/products/:product_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"products",
 										":product_id",
@@ -7627,59 +6227,38 @@
 										},
 										{
 											"key": "culture_id",
-											"value": "0"
+											"value": "00000000-0000-0000-0000-000000000000"
 										}
 									]
 								}
 							},
 							"status": "Not Found",
 							"code": 404,
-							"_postman_previewlanguage": "Text",
-							"header": [],
-							"cookie": [],
-							"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The gastronomic culture with the given id was not found\"\r\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete a gastronomic culture of an invalid product",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/products/:product_id/cultures/:culture_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"products",
-								":product_id",
-								"cultures",
-								":culture_id"
-							],
-							"variable": [
+							"_postman_previewlanguage": "json",
+							"header": [
 								{
-									"key": "product_id",
-									"value": "0"
-								},
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
 								}
-							]
-						}
-					},
-					"response": [
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
+						},
 						{
 							"name": "Delete a gastronomic culture of an invalid product",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/products/:product_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/products/:product_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"products",
 										":product_id",
@@ -7689,7 +6268,7 @@
 									"variable": [
 										{
 											"key": "product_id",
-											"value": "0"
+											"value": "00000000-0000-0000-0000-000000000000"
 										},
 										{
 											"key": "culture_id",
@@ -7700,57 +6279,36 @@
 							},
 							"status": "Not Found",
 							"code": 404,
-							"_postman_previewlanguage": "Text",
-							"header": [],
-							"cookie": [],
-							"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The product with the given id was not found\"\r\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete a gastronomic culture non-associated to a product",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/products/:product_id/cultures/:culture_id_2",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"products",
-								":product_id",
-								"cultures",
-								":culture_id_2"
-							],
-							"variable": [
+							"_postman_previewlanguage": "json",
+							"header": [
 								{
-									"key": "product_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "culture_id_2",
-									"value": "00000000-0000-0000-0000-000000000001"
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
 								}
-							]
-						}
-					},
-					"response": [
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The product with the given id was not found\"\n}"
+						},
 						{
 							"name": "Delete a gastronomic culture non-associated to a product",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/products/:product_id/cultures/:culture_id_2",
+									"raw": "http://localhost:3000/products/:product_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"products",
 										":product_id",
 										"cultures",
-										":culture_id_2"
+										":culture_id"
 									],
 									"variable": [
 										{
@@ -7758,18 +6316,26 @@
 											"value": "00000000-0000-0000-0000-000000000000"
 										},
 										{
-											"key": "culture_id_2",
-											"value": "00000000-0000-0000-0000-000000000001"
+											"key": "culture_id",
+											"value": "00000000-0000-0000-0000-000000000000"
 										}
 									]
 								}
 							},
 							"status": "Precondition Failed",
 							"code": 412,
-							"_postman_previewlanguage": "Text",
-							"header": [],
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
 							"cookie": [],
-							"body": "{\r\n   \"statusCode\": 412,\r\n   \"message\": \"The gastronomic culture with the given id is not associated to the product\"\r\n}"
+							"body": "{\n    \"statusCode\": 412,\n    \"message\": \"The gastronomic culture with the given id is not associated to the product\"\n}"
 						}
 					]
 				}
@@ -7814,10 +6380,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
+									"raw": "http://localhost:3000/countries/:country_id/restaurants/:restaurant_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -7849,48 +6417,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"name\": \"La Pergola\",\n    \"city\": \"Rome\",\n    \"michelinStars\": 3,\n    \"awardDate\": \"2020-05-20\",\n    \"cultures\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Mediterranean\",\n            \"description\": \"Rich and diverse culinary traditions.\"\n        }\n    ],\n    \"country\": {\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\n        \"name\": \"Italy\"\n    }\n}"
-						}
-					]
-				},
-				{
-					"name": "Get an invalid restaurant of a country",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"restaurants",
-								":restaurant_id"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "restaurant_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get an invalid restaurant of a country",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
+									"raw": "http://localhost:3000/countries/:country_id/restaurants/:restaurant_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -7922,48 +6461,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The restaurant with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get a restaurant of an invalid country",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"restaurants",
-								":restaurant_id"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "0"
-								},
-								{
-									"key": "restaurant_id",
-									"value": "00000000-0000-0000-0000-000000000000\n\n"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get a restaurant of an invalid country",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
+									"raw": "http://localhost:3000/countries/:country_id/restaurants/:restaurant_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -7995,48 +6505,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The country with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get a restaurant non-associated to a country",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id_2",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"restaurants",
-								":restaurant_id_2"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "restaurant_id_2",
-									"value": "00000000-0000-0000-0000-000000000001"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get a restaurant non-associated to a country",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id_2",
+									"raw": "http://localhost:3000/countries/:country_id/restaurants/:restaurant_id_2",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -8101,10 +6582,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants",
+									"raw": "http://localhost:3000/countries/:country_id/restaurants",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -8131,43 +6614,19 @@
 							],
 							"cookie": [],
 							"body": "[\n    {\n        \"name\": \"La Pergola\",\n        \"city\": \"Rome\",\n        \"michelinStars\": 3,\n        \"awardDate\": \"2020-05-20\",\n        \"cultures\": [\n            {\n                \"id\": \"00000000-0000-0000-0000-000000000000\",\n                \"name\": \"Mediterranean\",\n                \"description\": \"Rich and diverse culinary traditions.\"\n            }\n        ],\n        \"country\": {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Italy\"\n        }\n    }\n]"
-						}
-					]
-				},
-				{
-					"name": "Get all restaurants of an invalid country",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"restaurants"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get all restaurants of an invalid country",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants",
+									"raw": "http://localhost:3000/countries/:country_id/restaurants",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -8232,10 +6691,12 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
+									"raw": "http://localhost:3000/countries/:country_id/restaurants/:restaurant_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -8267,48 +6728,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"Italy\",\n    \"restaurants\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"La Pergola\",\n            \"city\": \"Rome\",\n            \"michelinStars\": 3,\n            \"awardDate\": \"2020-05-20\"\n        }\n    ],\n    \"cultures\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Italian Gastronomic Culture\",\n            \"description\": \"Rich and diverse culinary traditions.\"\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Add an invalid restaurant to a country",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"restaurants",
-								":restaurant_id"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "restaurant_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Add an invalid restaurant to a country",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
+									"raw": "http://localhost:3000/countries/:country_id/restaurants/:restaurant_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -8340,48 +6772,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The restaurant with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Add a restaurant to an invalid country",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"restaurants",
-								":restaurant_id"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "0"
-								},
-								{
-									"key": "restaurant_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Add a restaurant to an invalid country",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
+									"raw": "http://localhost:3000/countries/:country_id/restaurants/:restaurant_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -8470,10 +6873,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants",
+									"raw": "http://localhost:3000/countries/:country_id/restaurants",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -8500,42 +6905,7 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"Italy\",\n    \"restaurants\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"La Pergola\",\n            \"city\": \"Rome\",\n            \"michelinStars\": 3,\n            \"awardDate\": \"2020-05-20\"\n        }\n    ],\n    \"cultures\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Italian Gastronomic Culture\",\n            \"description\": \"Rich and diverse culinary traditions.\"\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Update invalid restaurants of a country",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\r\n   {\r\n       \"id\": \"0\"\r\n   }\r\n]",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
 						},
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"restaurants"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
-							]
-						}
-					},
-					"response": [
 						{
 							"name": "Update invalid restaurants of a country",
 							"originalRequest": {
@@ -8551,10 +6921,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants",
+									"raw": "http://localhost:3000/countries/:country_id/restaurants",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -8581,42 +6953,7 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The restaurant with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Update restaurants of an invalid country",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\r\n   {\r\n       \"id\": \"{{restaurant_id_2}}\"\r\n   }\r\n]",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
 						},
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"restaurants"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
 						{
 							"name": "Update restaurants of an invalid country",
 							"originalRequest": {
@@ -8632,10 +6969,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants",
+									"raw": "http://localhost:3000/countries/:country_id/restaurants",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -8700,15 +7039,17 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id_2",
+									"raw": "http://localhost:3000/countries/:country_id/restaurants/:restaurant_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
 										"restaurants",
-										":restaurant_id_2"
+										":restaurant_id"
 									],
 									"variable": [
 										{
@@ -8716,8 +7057,8 @@
 											"value": "00000000-0000-0000-0000-000000000000"
 										},
 										{
-											"key": "restaurant_id_2",
-											"value": "00000000-0000-0000-0000-000000000001"
+											"key": "restaurant_id",
+											"value": "00000000-0000-0000-0000-000000000000"
 										}
 									]
 								}
@@ -8728,48 +7069,19 @@
 							"header": [],
 							"cookie": [],
 							"body": ""
-						}
-					]
-				},
-				{
-					"name": "Delete an invalid restaurant of a country",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"restaurants",
-								":restaurant_id"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "restaurant_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Delete an invalid restaurant of a country",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
+									"raw": "http://localhost:3000/countries/:country_id/restaurants/:restaurant_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -8783,59 +7095,38 @@
 										},
 										{
 											"key": "restaurant_id",
-											"value": "0"
+											"value": "00000000-0000-0000-0000-000000000000"
 										}
 									]
 								}
 							},
 							"status": "Not Found",
 							"code": 404,
-							"_postman_previewlanguage": "Text",
-							"header": [],
-							"cookie": [],
-							"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The restaurant with the given id was not found\"\r\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete a restaurant of an invalid country",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"restaurants",
-								":restaurant_id"
-							],
-							"variable": [
+							"_postman_previewlanguage": "json",
+							"header": [
 								{
-									"key": "country_id",
-									"value": "0"
-								},
-								{
-									"key": "restaurant_id",
-									"value": "00000000-0000-0000-0000-000000000000"
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
 								}
-							]
-						}
-					},
-					"response": [
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The restaurant with the given id was not found\"\n}"
+						},
 						{
 							"name": "Delete a restaurant of an invalid country",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
+									"raw": "http://localhost:3000/countries/:country_id/restaurants/:restaurant_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -8845,7 +7136,7 @@
 									"variable": [
 										{
 											"key": "country_id",
-											"value": "0"
+											"value": "00000000-0000-0000-0000-000000000000"
 										},
 										{
 											"key": "restaurant_id",
@@ -8856,57 +7147,36 @@
 							},
 							"status": "Not Found",
 							"code": 404,
-							"_postman_previewlanguage": "Text",
-							"header": [],
-							"cookie": [],
-							"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The country with the given id was not found\"\r\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete a restaurant non-associated to a country",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id_2",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"restaurants",
-								":restaurant_id_2"
-							],
-							"variable": [
+							"_postman_previewlanguage": "json",
+							"header": [
 								{
-									"key": "country_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "restaurant_id_2",
-									"value": "00000000-0000-0000-0000-000000000001"
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
 								}
-							]
-						}
-					},
-					"response": [
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The country with the given id was not found\"\n}"
+						},
 						{
 							"name": "Delete a restaurant non-associated to a country",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id_2",
+									"raw": "http://localhost:3000/countries/:country_id/restaurants/:restaurant_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
 										"restaurants",
-										":restaurant_id_2"
+										":restaurant_id"
 									],
 									"variable": [
 										{
@@ -8914,18 +7184,26 @@
 											"value": "00000000-0000-0000-0000-000000000000"
 										},
 										{
-											"key": "restaurant_id_2",
-											"value": "00000000-0000-0000-0000-000000000001"
+											"key": "restaurant_id",
+											"value": ""
 										}
 									]
 								}
 							},
 							"status": "Precondition Failed",
 							"code": 412,
-							"_postman_previewlanguage": "Text",
-							"header": [],
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
 							"cookie": [],
-							"body": "{\r\n   \"statusCode\": 412,\r\n   \"message\": \"The restaurant with the given id is not associated to the country\"\r\n}"
+							"body": "{\n    \"statusCode\": 412,\n    \"message\": \"The restaurant with the given id is not associated to the country\"\n}"
 						}
 					]
 				}
@@ -8970,10 +7248,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/countries/:country_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/countries/:country_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -9005,48 +7285,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"Italy\",\n    \"restaurants\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"La Pergola\",\n            \"city\": \"Rome\",\n            \"michelinStars\": 3,\n            \"awardDate\": \"2020-05-20\"\n        }\n    ],\n    \"cultures\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Italian Gastronomic Culture\",\n            \"description\": \"Rich and diverse culinary traditions.\"\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Get an invalid country of a gastronomic culture",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/countries/:country_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"countries",
-								":country_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "country_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get an invalid country of a gastronomic culture",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/countries/:country_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/countries/:country_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -9078,48 +7329,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The country with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get a country of an invalid gastronomic culture",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/countries/:country_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"countries",
-								":country_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "0"
-								},
-								{
-									"key": "country_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get a country of an invalid gastronomic culture",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/countries/:country_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/countries/:country_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -9151,48 +7373,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get a country non-associated to a gastronomic culture",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/countries/:country_id_2",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"countries",
-								":country_id_2"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "country_id_2",
-									"value": "00000000-0000-0000-0000-000000000001"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get a country non-associated to a gastronomic culture",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/countries/:country_id_2",
+									"raw": "http://localhost:3000/cultures/:culture_id/countries/:country_id_2",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -9257,10 +7450,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/countries",
+									"raw": "http://localhost:3000/cultures/:culture_id/countries",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -9287,43 +7482,19 @@
 							],
 							"cookie": [],
 							"body": "[\n    {\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\n        \"name\": \"Italy\",\n        \"restaurants\": [\n            {\n                \"id\": \"00000000-0000-0000-0000-000000000000\",\n                \"name\": \"La Pergola\",\n                \"city\": \"Rome\",\n                \"michelinStars\": 3,\n                \"awardDate\": \"2020-05-20\"\n            }\n        ],\n        \"cultures\": [\n            {\n                \"id\": \"00000000-0000-0000-0000-000000000000\",\n                \"name\": \"Italian Gastronomic Culture\",\n                \"description\": \"Rich and diverse culinary traditions.\"\n            }\n        ]\n    }\n]"
-						}
-					]
-				},
-				{
-					"name": "Get all countries of an invalid gastronomic culture",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/countries",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"countries"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get all countries of an invalid gastronomic culture",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/countries",
+									"raw": "http://localhost:3000/cultures/:culture_id/countries",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -9388,10 +7559,12 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/countries/:country_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/countries/:country_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -9423,48 +7596,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"Italian\",\n    \"description\": \"Rich and diverse culinary traditions.\",\n    \"recipes\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Pasta Carbonara\",\n            \"description\": \"A classic Italian dish.\",\n            \"photo\": \"url_to_photo\",\n            \"preparationProcess\": \"Detailed steps\",\n            \"video\": \"url_to_video\"\n        }\n    ],\n    \"countries\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Italy\"\n        }\n    ],\n    \"restaurants\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"La Pergola\",\n            \"city\": \"Rome\",\n            \"michelinStars\": 3,\n            \"awardDate\": \"2020-05-20\"\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Add an invalid country to a gastronomic culture",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/countries/:country_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"countries",
-								":country_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "country_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Add an invalid country to a gastronomic culture",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/countries/:country_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/countries/:country_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -9496,48 +7640,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The country with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Add a country to an invalid gastronomic culture",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/countries/:country_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"countries",
-								":country_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "0"
-								},
-								{
-									"key": "country_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Add a country to an invalid gastronomic culture",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/countries/:country_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/countries/:country_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -9626,10 +7741,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/countries",
+									"raw": "http://localhost:3000/cultures/:culture_id/countries",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -9656,42 +7773,7 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"Italian\",\n    \"description\": \"Rich and diverse culinary traditions.\",\n    \"recipes\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Pasta Carbonara\",\n            \"description\": \"A classic Italian dish.\",\n            \"photo\": \"url_to_photo\",\n            \"preparationProcess\": \"Detailed steps\",\n            \"video\": \"url_to_video\"\n        }\n    ],\n    \"countries\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Italy\"\n        }\n    ],\n    \"restaurants\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"La Pergola\",\n            \"city\": \"Rome\",\n            \"michelinStars\": 3,\n            \"awardDate\": \"2020-05-20\"\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Update invalid countries of a gastronomic culture",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\r\n   {\r\n       \"id\": \"0\"\r\n   }\r\n]",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
 						},
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/countries",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"countries"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
-							]
-						}
-					},
-					"response": [
 						{
 							"name": "Update invalid countries of a gastronomic culture",
 							"originalRequest": {
@@ -9707,10 +7789,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/countries",
+									"raw": "http://localhost:3000/cultures/:culture_id/countries",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -9737,42 +7821,7 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The country with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Update countries of an invalid gastronomic culture",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\r\n   {\r\n       \"id\": \"{{country_id_2}}\"\r\n   }\r\n]",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
 						},
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/countries",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"countries"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
 						{
 							"name": "Update countries of an invalid gastronomic culture",
 							"originalRequest": {
@@ -9788,10 +7837,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/countries",
+									"raw": "http://localhost:3000/cultures/:culture_id/countries",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -9856,15 +7907,17 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/countries/:country_id_2",
+									"raw": "http://localhost:3000/cultures/:culture_id/countries/:country_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
 										"countries",
-										":country_id_2"
+										":country_id"
 									],
 									"variable": [
 										{
@@ -9872,8 +7925,8 @@
 											"value": "00000000-0000-0000-0000-000000000000"
 										},
 										{
-											"key": "country_id_2",
-											"value": "00000000-0000-0000-0000-000000000001"
+											"key": "country_id",
+											"value": "00000000-0000-0000-0000-000000000000"
 										}
 									]
 								}
@@ -9884,48 +7937,19 @@
 							"header": [],
 							"cookie": [],
 							"body": ""
-						}
-					]
-				},
-				{
-					"name": "Delete an invalid country of a gastronomic culture",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/countries/:country_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"countries",
-								":country_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "country_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Delete an invalid country of a gastronomic culture",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/countries/:country_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/countries/:country_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -9939,59 +7963,38 @@
 										},
 										{
 											"key": "country_id",
-											"value": "0"
+											"value": "00000000-0000-0000-0000-000000000000"
 										}
 									]
 								}
 							},
 							"status": "Not Found",
 							"code": 404,
-							"_postman_previewlanguage": "Text",
-							"header": [],
-							"cookie": [],
-							"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The country with the given id was not found\"\r\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete a country of an invalid gastronomic culture",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/countries/:country_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"countries",
-								":country_id"
-							],
-							"variable": [
+							"_postman_previewlanguage": "json",
+							"header": [
 								{
-									"key": "culture_id",
-									"value": "0"
-								},
-								{
-									"key": "country_id",
-									"value": "00000000-0000-0000-0000-000000000000"
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
 								}
-							]
-						}
-					},
-					"response": [
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The country with the given id was not found\"\n}"
+						},
 						{
 							"name": "Delete a country of an invalid gastronomic culture",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/countries/:country_id",
+									"raw": "http://localhost:3000/cultures/:culture_id/countries/:country_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
@@ -10001,7 +8004,7 @@
 									"variable": [
 										{
 											"key": "culture_id",
-											"value": "0"
+											"value": "00000000-0000-0000-0000-000000000000"
 										},
 										{
 											"key": "country_id",
@@ -10012,57 +8015,36 @@
 							},
 							"status": "Not Found",
 							"code": 404,
-							"_postman_previewlanguage": "Text",
-							"header": [],
-							"cookie": [],
-							"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The gastronomic culture with the given id was not found\"\r\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete a country non-associated to a gastronomic culture",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/countries/:country_id_2",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"countries",
-								":country_id_2"
-							],
-							"variable": [
+							"_postman_previewlanguage": "json",
+							"header": [
 								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "country_id_2",
-									"value": "00000000-0000-0000-0000-000000000001"
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
 								}
-							]
-						}
-					},
-					"response": [
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
+						},
 						{
 							"name": "Delete a country non-associated to a gastronomic culture",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/countries/:country_id_2",
+									"raw": "http://localhost:3000/cultures/:culture_id/countries/:country_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"cultures",
 										":culture_id",
 										"countries",
-										":country_id_2"
+										":country_id"
 									],
 									"variable": [
 										{
@@ -10070,18 +8052,26 @@
 											"value": "00000000-0000-0000-0000-000000000000"
 										},
 										{
-											"key": "country_id_2",
-											"value": "00000000-0000-0000-0000-000000000001"
+											"key": "country_id",
+											"value": "00000000-0000-0000-0000-000000000000"
 										}
 									]
 								}
 							},
 							"status": "Precondition Failed",
 							"code": 412,
-							"_postman_previewlanguage": "Text",
-							"header": [],
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
 							"cookie": [],
-							"body": "{\r\n   \"statusCode\": 412,\r\n   \"message\": \"The country with the given id is not associated to The gastronomic culture\"\r\n}"
+							"body": "{\n    \"statusCode\": 412,\n    \"message\": \"The country with the given id is not associated to The gastronomic culture\"\n}"
 						}
 					]
 				}
@@ -10126,10 +8116,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/countries/:country_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -10154,48 +8146,19 @@
 							"header": [],
 							"cookie": [],
 							"body": "{\r\n\t\"id\": \"00000000-0000-0000-0000-000000000000\",\r\n\t\"name\": \"Italian\",\r\n\t\"description\": \"Rich and diverse culinary traditions.\",\r\n\t\"recipes\": [\r\n\t\t{\r\n\t\t\t\"id\": \"00000000-0000-0000-0000-000000000000\",\r\n\t\t\t\"name\": \"Pasta Carbonara\",\r\n\t\t\t\"description\": \"A classic Italian dish.\",\r\n\t\t\t\"photo\": \"url_to_photo\",\r\n\t\t\t\"preparationProcess\": \"Detailed steps\",\r\n\t\t\t\"video\": \"url_to_video\"\r\n\t\t}\r\n\t],\r\n\t\"products\": [\r\n\t\t{\r\n\t\t\t\"id\": \"00000000-0000-0000-0000-000000000000\",\r\n\t\t\t\"name\": \"Balsamic Vinegar\",\r\n\t\t\t\"description\": \"High-quality extra thick\",\r\n\t\t\t\"history\": \"Used since ancient times\",\r\n\t\t\t\"category\": \"Cooking Essentials\"\r\n\t\t}\r\n\t],\r\n\t\"restaurants\": [\r\n\t\t{\r\n\t\t\t\"id\": \"00000000-0000-0000-0000-000000000000\",\r\n\t\t\t\"name\": \"La Pergola\",\r\n\t\t\t\"city\": \"Rome\",\r\n\t\t\t\"michelinStars\": 3,\r\n\t\t\t\"awardDate\": \"2020-05-20\"\r\n\t\t}\r\n\t],\r\n\t\"countries\": [\r\n\t\t{\r\n\t\t\t\"id\": \"00000000-0000-0000-0000-000000000000\",\r\n\t\t\t\"name\": \"Italy\"\r\n\t\t}\r\n\t]\r\n}"
-						}
-					]
-				},
-				{
-					"name": "Get an invalid gastronomic culture of a country",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/cultures/:culture_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"cultures",
-								":culture_id"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "culture_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get an invalid gastronomic culture of a country",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/countries/:country_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -10227,48 +8190,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get a gastronomic culture of an invalid country",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/cultures/:culture_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"cultures",
-								":culture_id"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "0"
-								},
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get a gastronomic culture of an invalid country",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/countries/:country_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -10300,48 +8234,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The country with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get a gastronomic culture non-associated to a country",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/cultures/:culture_id_2",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"cultures",
-								":culture_id_2"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "culture_id_2",
-									"value": "00000000-0000-0000-0000-000000000001"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get a gastronomic culture non-associated to a country",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/cultures/:culture_id_2",
+									"raw": "http://localhost:3000/countries/:country_id/cultures/:culture_id_2",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -10406,10 +8311,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/cultures",
+									"raw": "http://localhost:3000/countries/:country_id/cultures",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -10436,43 +8343,19 @@
 							],
 							"cookie": [],
 							"body": "[\n    {\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\n        \"name\": \"Italian\",\n        \"description\": \"Rich and diverse culinary traditions.\",\n        \"recipes\": [\n            {\n                \"id\": \"00000000-0000-0000-0000-000000000000\",\n                \"name\": \"Pasta Carbonara\",\n                \"description\": \"A classic Italian dish.\",\n                \"photo\": \"url_to_photo\",\n                \"preparationProcess\": \"Detailed steps\",\n                \"video\": \"url_to_video\"\n            }\n        ],\n        \"products\": [\n            {\n                \"id\": \"00000000-0000-0000-0000-000000000000\",\n                \"name\": \"Balsamic Vinegar\",\n                \"description\": \"High-quality extra thick\",\n                \"history\": \"Used since ancient times\",\n                \"category\": \"Cooking Essentials\"\n            }\n        ],\n        \"restaurants\": [\n            {\n                \"id\": \"00000000-0000-0000-0000-000000000000\",\n                \"name\": \"La Pergola\",\n                \"city\": \"Rome\",\n                \"michelinStars\": 3,\n                \"awardDate\": \"2020-05-20\"\n            }\n        ],\n        \"countries\": [\n            {\n                \"id\": \"00000000-0000-0000-0000-000000000000\",\n                \"name\": \"Italy\"\n            }\n        ]\n    }\n]"
-						}
-					]
-				},
-				{
-					"name": "Get all gastronomic cultures of an invalid country",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/cultures",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"cultures"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Get all gastronomic cultures of an invalid country",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/cultures",
+									"raw": "http://localhost:3000/countries/:country_id/cultures",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -10537,10 +8420,12 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/countries/:country_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -10570,48 +8455,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"Italy\",\n    \"restaurants\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"La Pergola\",\n            \"city\": \"Rome\",\n            \"michelinStars\": 3,\n            \"awardDate\": \"2020-05-20\"\n        }\n    ],\n    \"cultures\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Italian Gastronomic Culture\",\n            \"description\": \"Rich and diverse culinary traditions.\"\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Add an invalid gastronomic culture to a country",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/cultures/:culture_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"cultures",
-								":culture_id"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "culture_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Add an invalid gastronomic culture to a country",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/countries/:country_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -10632,52 +8488,31 @@
 							},
 							"status": "Not Found",
 							"code": 404,
-							"_postman_previewlanguage": "Text",
-							"header": [],
-							"cookie": [],
-							"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The gastronomic culture with the given id was not found\"\r\n}"
-						}
-					]
-				},
-				{
-					"name": "Add a gastronomic culture to an invalid country",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/cultures/:culture_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"cultures",
-								":culture_id"
-							],
-							"variable": [
+							"_postman_previewlanguage": "json",
+							"header": [
 								{
-									"key": "country_id",
-									"value": "0"
-								},
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
 								}
-							]
-						}
-					},
-					"response": [
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
+						},
 						{
 							"name": "Add a gastronomic culture to an invalid country",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/countries/:country_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -10698,10 +8533,18 @@
 							},
 							"status": "Not Found",
 							"code": 404,
-							"_postman_previewlanguage": "Text",
-							"header": [],
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
 							"cookie": [],
-							"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The country with the given id was not found\"\r\n}"
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The country with the given id was not found\"\n}"
 						}
 					]
 				},
@@ -10753,10 +8596,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/cultures",
+									"raw": "http://localhost:3000/countries/:country_id/cultures",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -10783,42 +8628,7 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"Italy\",\n    \"restaurants\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"La Pergola\",\n            \"city\": \"Rome\",\n            \"michelinStars\": 3,\n            \"awardDate\": \"2020-05-20\"\n        }\n    ],\n    \"cultures\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Italian Gastronomic Culture\",\n            \"description\": \"Rich and diverse culinary traditions.\"\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Update invalid cultures of a country",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\r\n   {\r\n       \"id\": \"0\"\r\n   }\r\n]",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
 						},
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/cultures",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"cultures"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
-							]
-						}
-					},
-					"response": [
 						{
 							"name": "Update invalid cultures of a country",
 							"originalRequest": {
@@ -10834,10 +8644,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/cultures",
+									"raw": "http://localhost:3000/countries/:country_id/cultures",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -10864,42 +8676,7 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Update cultures of an invalid country",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\r\n   {\r\n       \"id\": \"00000000-0000-0000-0000-000000000000\"\r\n   }\r\n]",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
 						},
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/cultures",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"cultures"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
 						{
 							"name": "Update cultures of an invalid country",
 							"originalRequest": {
@@ -10915,10 +8692,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/cultures",
+									"raw": "http://localhost:3000/countries/:country_id/cultures",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -10983,10 +8762,12 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/countries/:country_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -11011,48 +8792,19 @@
 							"header": [],
 							"cookie": [],
 							"body": ""
-						}
-					]
-				},
-				{
-					"name": "Delete an invalid gastronomic culture of a country",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/cultures/:culture_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"cultures",
-								":culture_id"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "culture_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Delete an invalid gastronomic culture of a country",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/countries/:country_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -11066,7 +8818,7 @@
 										},
 										{
 											"key": "culture_id",
-											"value": "0"
+											"value": "00000000-0000-0000-0000-000000000000"
 										}
 									]
 								}
@@ -11084,48 +8836,19 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete a gastronomic culture of an invalid country",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/cultures/:culture_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"cultures",
-								":culture_id"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "0"
-								},
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Delete a gastronomic culture of an invalid country",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/cultures/:culture_id",
+									"raw": "http://localhost:3000/countries/:country_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -11135,7 +8858,7 @@
 									"variable": [
 										{
 											"key": "country_id",
-											"value": "0"
+											"value": "00000000-0000-0000-0000-000000000000"
 										},
 										{
 											"key": "culture_id",
@@ -11157,53 +8880,24 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The country with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete a gastronomic culture non-associated to a country",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/cultures/:culture_id_2",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"cultures",
-								":culture_id_2"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "culture_id_2",
-									"value": "00000000-0000-0000-0000-000000000001"
-								}
-							]
-						}
-					},
-					"response": [
+						},
 						{
 							"name": "Delete a gastronomic culture non-associated to a country",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/cultures/:culture_id_2",
+									"raw": "http://localhost:3000/countries/:country_id/cultures/:culture_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
 										"cultures",
-										":culture_id_2"
+										":culture_id"
 									],
 									"variable": [
 										{
@@ -11211,8 +8905,8 @@
 											"value": "00000000-0000-0000-0000-000000000000"
 										},
 										{
-											"key": "culture_id_2",
-											"value": "00000000-0000-0000-0000-000000000001"
+											"key": "culture_id",
+											"value": "00000000-0000-0000-0000-000000000000"
 										}
 									]
 								}
