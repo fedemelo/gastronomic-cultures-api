@@ -8,7 +8,7 @@ export const TypeOrmTestingConfig = () => [
     type: 'sqlite',
     database: ':memory:',
     dropSchema: true,
-    entities: ['src/**/*.entity.ts'],
+    entities: ['src/**/*.entity{.ts,.js}'],
     synchronize: true,
     keepConnectionAlive: true,
   }),
