@@ -1,5 +1,5 @@
 import { GastronomicCultureEntity } from '../gastronomic-culture/gastronomic-culture.entity';
-import { Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, ManyToOne, ManyToMany } from 'typeorm';
 
 @Entity()
 export class CountryEntity {
@@ -8,9 +8,9 @@ export class CountryEntity {
 
   // TODO: Add the missing properties @fedemelo
 
-  @ManyToOne(
+  @ManyToMany(
     () => GastronomicCultureEntity,
     (gastronomicCulture) => gastronomicCulture.countries,
   )
-  gastronomicCulture: GastronomicCultureEntity;
+  gastronomicCultures: GastronomicCultureEntity[];
 }

@@ -2,7 +2,6 @@ import {
   Column,
   Entity,
   PrimaryGeneratedColumn,
-  OneToMany,
   ManyToMany,
   JoinTable,
 } from 'typeorm';
@@ -20,7 +19,8 @@ export class GastronomicCultureEntity {
   @Column()
   description: string;
 
-  @OneToMany(() => CountryEntity, (country) => country.gastronomicCulture)
+  @ManyToMany(() => CountryEntity, (country) => country.gastronomicCultures)
+  @JoinTable()
   countries: CountryEntity[];
 
   @ManyToMany(

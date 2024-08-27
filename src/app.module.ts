@@ -5,6 +5,7 @@ import { GastronomicCultureModule } from './gastronomic-culture/gastronomic-cult
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CountryModule } from './country/country.module';
 import { RestaurantModule } from './restaurant/restaurant.module';
+import { GastronomicCultureCountriesModule } from './gastronomic-culture-countries/gastronomic-culture-countries.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { RestaurantModule } from './restaurant/restaurant.module';
     GastronomicCultureModule,
     CountryModule,
     RestaurantModule,
+    GastronomicCultureCountriesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
