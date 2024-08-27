@@ -5,7 +5,7 @@ import { GastronomicCultureModule } from './gastronomic-culture/gastronomic-cult
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CountryModule } from './country/country.module';
 import { RestaurantModule } from './restaurant/restaurant.module';
-import { GastronomicCultureCountriesModule } from './gastronomic-culture-countries/gastronomic-culture-countries.module';
+import { GastronomicCultureCountriesModule } from './gastronomic-culture-country/gastronomic-culture-country.module';
 
 @Module({
   imports: [

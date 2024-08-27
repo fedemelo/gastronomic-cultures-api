@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { Repository } from 'typeorm';
 import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-config';
-import { GastronomicCultureCountriesService } from './gastronomic-culture-countries.service';
+import { GastronomicCultureCountryService } from './gastronomic-culture-country.service';
 import { GastronomicCultureEntity } from '../gastronomic-culture/gastronomic-culture.entity';
 import { CountryEntity } from '../country/country.entity';
 import { getRepositoryToken } from '@nestjs/typeorm';
@@ -10,7 +10,7 @@ import { GastronomicCultureService } from '../gastronomic-culture/gastronomic-cu
 import { CountryService } from '../country/country.service';
 
 describe('GastronomicCultureCountriesService', () => {
-  let service: GastronomicCultureCountriesService;
+  let service: GastronomicCultureCountryService;
   let gastronomicCultureRepository: Repository<GastronomicCultureEntity>;
   let countryRepository: Repository<CountryEntity>;
   let gastronomicCulture: GastronomicCultureEntity;
@@ -20,14 +20,14 @@ describe('GastronomicCultureCountriesService', () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [...TypeOrmTestingConfig()],
       providers: [
-        GastronomicCultureCountriesService,
+        GastronomicCultureCountryService,
         GastronomicCultureService,
         CountryService,
       ],
     }).compile();
 
-    service = module.get<GastronomicCultureCountriesService>(
-      GastronomicCultureCountriesService,
+    service = module.get<GastronomicCultureCountryService>(
+      GastronomicCultureCountryService,
     );
     gastronomicCultureRepository = module.get<
       Repository<GastronomicCultureEntity>

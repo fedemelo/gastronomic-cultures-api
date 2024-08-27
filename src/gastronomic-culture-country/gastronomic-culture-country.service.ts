@@ -11,7 +11,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 @Injectable()
-export class GastronomicCultureCountriesService {
+export class GastronomicCultureCountryService {
   constructor(
     @InjectRepository(CountryEntity)
     private readonly countryRepository: Repository<CountryEntity>,

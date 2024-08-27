@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { GastronomicCultureCountriesService } from './gastronomic-culture-countries.service';
+import { GastronomicCultureCountryService } from './gastronomic-culture-country.service';
 import { GastronomicCultureService } from '../gastronomic-culture/gastronomic-culture.service';
 
 @Module({
   imports: [GastronomicCultureService],
-  providers: [GastronomicCultureCountriesService],
+  providers: [GastronomicCultureCountryService],
 })
 export class GastronomicCultureCountriesModule {}
