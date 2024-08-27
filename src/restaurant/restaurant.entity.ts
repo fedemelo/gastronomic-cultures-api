@@ -1,5 +1,6 @@
 import { GastronomicCultureEntity } from '../gastronomic-culture/gastronomic-culture.entity';
 import { Entity, PrimaryGeneratedColumn, ManyToMany } from 'typeorm';
+
 @Entity()
 export class RestaurantEntity {
   @PrimaryGeneratedColumn('uuid')

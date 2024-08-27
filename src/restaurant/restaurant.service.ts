@@ -17,7 +17,7 @@ export class RestaurantService {
   async findOne(id: string): Promise<RestaurantEntity> {
     const restaurant = await this.restaurantRepository.findOne({
       where: { id },
-      relations: ['gastronomicCulture'],
+      relations: ['gastronomicCultures'],
     });
     if (!restaurant) {
       throw new BusinessLogicException(
