@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -7,6 +8,8 @@ import { CountryModule } from './country/country.module';
 import { RestaurantModule } from './restaurant/restaurant.module';
 import { GastronomicCultureCountriesModule } from './gastronomic-culture-country/gastronomic-culture-country.module';
 import { GastronomicCultureRestaurantModule } from './gastronomic-culture-restaurant/gastronomic-culture-restaurant.module';
+import { RecipeModule } from './recipe/recipe.module';
+import { GastronomicCultureRecipeModule } from './gastronomic-culture-recipe/gastronomic-culture-recipe.module';
 
 @Module({
   imports: [
@@ -27,6 +30,8 @@ import { GastronomicCultureRestaurantModule } from './gastronomic-culture-restau
     RestaurantModule,
     GastronomicCultureCountriesModule,
     GastronomicCultureRestaurantModule,
+    RecipeModule,
+    GastronomicCultureRecipeModule,
   ],
   controllers: [AppController],
   providers: [AppService],

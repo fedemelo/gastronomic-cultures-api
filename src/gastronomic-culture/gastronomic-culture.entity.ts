@@ -1,12 +1,15 @@
+/* eslint-disable prettier/prettier */
 import {
   Column,
   Entity,
   PrimaryGeneratedColumn,
   ManyToMany,
   JoinTable,
+  OneToMany,
 } from 'typeorm';
 import { CountryEntity } from '../country/country.entity';
 import { RestaurantEntity } from '../restaurant/restaurant.entity';
+import { RecipeEntity } from '../recipe/recipe.entity';
 
 @Entity()
 export class GastronomicCultureEntity {
@@ -18,6 +21,9 @@ export class GastronomicCultureEntity {
 
   @Column()
   description: string;
+
+  @OneToMany(() => RecipeEntity, (recipe) => recipe.gastronomicCulture)
+  recipes: RecipeEntity[];
 
   @ManyToMany(() => CountryEntity, (country) => country.gastronomicCultures)
   @JoinTable()
