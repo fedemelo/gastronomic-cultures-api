@@ -4,9 +4,15 @@ import { GastronomicCultureRecipeService } from './gastronomic-culture-recipe.se
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RecipeEntity } from '../recipe/recipe.entity';
 import { GastronomicCultureEntity } from '../gastronomic-culture/gastronomic-culture.entity';
+import { GastronomicCultureService } from '../gastronomic-culture/gastronomic-culture.service';
+import { RecipeService } from '../recipe/recipe.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([GastronomicCultureEntity, RecipeEntity])],
-  providers: [GastronomicCultureRecipeService]
+  providers: [
+    GastronomicCultureRecipeService,
+    GastronomicCultureService,
+    RecipeService,
+  ],
 })
 export class GastronomicCultureRecipeModule {}
