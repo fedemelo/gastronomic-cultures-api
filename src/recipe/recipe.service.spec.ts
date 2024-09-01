@@ -33,9 +33,9 @@ describe('RecipeService', () => {
         await repository.save({
           name: faker.company.name(),
           description: faker.lorem.sentence(),
-          photo: faker.image.imageUrl(),
+          photo: faker.image.url(),
           preparationProcess: faker.lorem.sentence(),
-          video: faker.image.imageUrl(),
+          video: faker.image.url(),
           gastronomicCulture: null
         });
       recipesList.push(recipe);
@@ -79,9 +79,9 @@ describe('RecipeService', () => {
       id: '',
       name: faker.company.name(),
       description: faker.lorem.sentence(),
-      photo: faker.image.imageUrl(),
+      photo: faker.image.url(),
       preparationProcess: faker.lorem.sentence(),
-      video: faker.image.imageUrl(),
+      video: faker.image.url(),
       gastronomicCulture: null
     };
 

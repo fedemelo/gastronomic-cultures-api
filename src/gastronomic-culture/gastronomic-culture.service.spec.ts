@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Test, TestingModule } from '@nestjs/testing';
 import { GastronomicCultureService } from './gastronomic-culture.service';
 import { Repository } from 'typeorm';
@@ -34,6 +35,7 @@ describe('GastronomicCultureService', () => {
           description: faker.lorem.sentence(),
           countries: [],
           restaurants: [],
+          recipes: [],
         });
       gastronomicCulturesList.push(gastronomicCulture);
     }
@@ -77,6 +79,7 @@ describe('GastronomicCultureService', () => {
       description: faker.lorem.sentence(),
       countries: [],
       restaurants: [],
+      recipes: [],
     };
 
     const newGastronomicCulture: GastronomicCultureEntity =

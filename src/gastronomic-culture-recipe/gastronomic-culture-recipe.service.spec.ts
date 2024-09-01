@@ -49,9 +49,9 @@ describe('GastronomicCultureRecipesService', () => {
       const recipe: RecipeEntity = await recipeRepository.save({
         name: faker.company.name(),
         description: faker.lorem.sentence(),
-        photo: faker.image.imageUrl(),
+        photo: faker.image.url(),
         preparationProcess: faker.lorem.sentence(),
-        video: faker.image.imageUrl()
+        video: faker.image.url()
       });
       recipesList.push(recipe);
     }
@@ -68,7 +68,13 @@ describe('GastronomicCultureRecipesService', () => {
   });
 
   it('addRecipeGastronomicCulture should add a recipe to a gastronomic culture', async () => {
-    const newRecipe: RecipeEntity = await recipeRepository.save({});
+    const newRecipe: RecipeEntity = await recipeRepository.save({
+      name: faker.company.name(),
+      description: faker.lorem.sentence(),
+      photo: faker.image.url(),
+      preparationProcess: faker.lorem.sentence(),
+      video: faker.image.url()
+    });
 
     const newGastronomicCulture: GastronomicCultureEntity =
       await gastronomicCultureRepository.save({
@@ -111,9 +117,9 @@ describe('GastronomicCultureRecipesService', () => {
     const newRecipe: RecipeEntity = await recipeRepository.save({
       name: faker.company.name(),
       description: faker.lorem.sentence(),
-      photo: faker.image.imageUrl(),
+      photo: faker.image.url(),
       preparationProcess: faker.lorem.sentence(),
-      video: faker.image.imageUrl()
+      video: faker.image.url()
     });
 
     await expect(() =>
@@ -166,9 +172,9 @@ describe('GastronomicCultureRecipesService', () => {
     const newRecipe: RecipeEntity = await recipeRepository.save({
        name: faker.company.name(),
        description: faker.lorem.sentence(),
-       photo: faker.image.imageUrl(),
+       photo: faker.image.url(),
        preparationProcess: faker.lorem.sentence(),
-       video: faker.image.imageUrl()
+       video: faker.image.url()
     });
 
     await expect(() =>
@@ -201,9 +207,9 @@ describe('GastronomicCultureRecipesService', () => {
     const newRecipe: RecipeEntity = await recipeRepository.save({
       name: faker.company.name(),
       description: faker.lorem.sentence(),
-      photo: faker.image.imageUrl(),
+      photo: faker.image.url(),
       preparationProcess: faker.lorem.sentence(),
-      video: faker.image.imageUrl()
+      video: faker.image.url()
     });
 
     const updatedGastronomicCulture: GastronomicCultureEntity =
@@ -225,9 +231,9 @@ describe('GastronomicCultureRecipesService', () => {
     const newRecipe: RecipeEntity = await recipeRepository.save({
       name: faker.company.name(),
       description: faker.lorem.sentence(),
-      photo: faker.image.imageUrl(),
+      photo: faker.image.url(),
       preparationProcess: faker.lorem.sentence(),
-      video: faker.image.imageUrl()
+      video: faker.image.url()
     });
 
     await expect(() =>
@@ -294,9 +300,9 @@ describe('GastronomicCultureRecipesService', () => {
     const newRecipe: RecipeEntity = await recipeRepository.save({
         name: faker.company.name(),
         description: faker.lorem.sentence(),
-        photo: faker.image.imageUrl(),
+        photo: faker.image.url(),
         preparationProcess: faker.lorem.sentence(),
-        video: faker.image.imageUrl()
+        video: faker.image.url()
     });
 
     await expect(() =>

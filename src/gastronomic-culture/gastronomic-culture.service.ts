@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { GastronomicCultureEntity } from './gastronomic-culture.entity';
@@ -16,14 +17,14 @@ export class GastronomicCultureService {
 
   async findAll(): Promise<GastronomicCultureEntity[]> {
     return await this.gastronomicCultureRepository.find({
-      relations: ['countries', 'restaurants'],
+      relations: ['countries', 'restaurants', 'recipes'],
     });
   }
 
   async findOne(id: string): Promise<GastronomicCultureEntity> {
     const gastronomicCulture = await this.gastronomicCultureRepository.findOne({
       where: { id },
-      relations: ['countries', 'restaurants'],
+      relations: ['countries', 'restaurants', 'recipes'],
     });
     if (!gastronomicCulture) {
       throw new BusinessLogicException(
