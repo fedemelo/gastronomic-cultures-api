@@ -10,6 +10,7 @@ import { GastronomicCultureCountriesModule } from './gastronomic-culture-country
 import { GastronomicCultureRestaurantModule } from './gastronomic-culture-restaurant/gastronomic-culture-restaurant.module';
 import { RecipeModule } from './recipe/recipe.module';
 import { GastronomicCultureRecipeModule } from './gastronomic-culture-recipe/gastronomic-culture-recipe.module';
+import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { GastronomicCultureRecipeModule } from './gastronomic-culture-recipe/gas
     GastronomicCultureRestaurantModule,
     RecipeModule,
     GastronomicCultureRecipeModule,
+    ProductModule,
   ],
   controllers: [AppController],
   providers: [AppService],

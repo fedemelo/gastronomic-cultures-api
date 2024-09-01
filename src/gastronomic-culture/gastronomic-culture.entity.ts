@@ -10,6 +10,7 @@ import {
 import { CountryEntity } from '../country/country.entity';
 import { RestaurantEntity } from '../restaurant/restaurant.entity';
 import { RecipeEntity } from '../recipe/recipe.entity';
+import { ProductEntity } from '../product/product.entity';
 
 @Entity()
 export class GastronomicCultureEntity {
@@ -35,4 +36,7 @@ export class GastronomicCultureEntity {
   )
   @JoinTable()
   restaurants: RestaurantEntity[];
+
+  @OneToMany(() => ProductEntity, (product) => product.gastronomicCulture)
+  products: ProductEntity[];
 }
