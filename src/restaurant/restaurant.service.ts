@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { RestaurantEntity } from './restaurant.entity';
-import { Repository } from 'typeorm';
 import {
   BusinessError,
   BusinessLogicException,
 } from '../shared/errors/business-errors';
+import { Repository } from 'typeorm';
+import { RestaurantEntity } from './restaurant.entity';
 
 @Injectable()
 export class RestaurantService {
@@ -14,20 +14,60 @@ export class RestaurantService {
     private readonly restaurantRepository: Repository<RestaurantEntity>,
   ) {}
 
-  async findOne(id: string): Promise<RestaurantEntity> {
-    const restaurant = await this.restaurantRepository.findOne({
-      where: { id },
+  async findAll(): Promise<RestaurantEntity[]> {
+    return await this.restaurantRepository.find({
       relations: ['gastronomicCultures'],
     });
-    if (!restaurant) {
+  }
+
+  async findOne(id: string): Promise<RestaurantEntity> {
+    const restaurant: RestaurantEntity =
+      await this.restaurantRepository.findOne({
+        where: { id },
+        relations: ['gastronomicCultures'],
+      });
+    if (!restaurant)
       throw new BusinessLogicException(
         'The restaurant with the given id was not found',
         BusinessError.NOT_FOUND,
       );
-    }
+
     return restaurant;
   }
 
-  // TODO: Additional methods like get all, create, update, delete are missing @fedemelo
-  // Add the missing methods and adjust the previous methods to use the new entity properties
+  async create(restaurant: RestaurantEntity): Promise<RestaurantEntity> {
+    return await this.restaurantRepository.save(restaurant);
+  }
+
+  async update(
+    id: string,
+    restaurant: RestaurantEntity,
+  ): Promise<RestaurantEntity> {
+    const persistedRestaurant: RestaurantEntity =
+      await this.restaurantRepository.findOne({ where: { id } });
+    if (!persistedRestaurant)
+      throw new BusinessLogicException(
+        'The restaurant with the given id was not found',
+        BusinessError.NOT_FOUND,
+      );
+
+    return await this.restaurantRepository.save({
+      ...persistedRestaurant,
+      ...restaurant,
+    });
+  }
+
+  async delete(id: string) {
+    const restaurant: RestaurantEntity =
+      await this.restaurantRepository.findOne({
+        where: { id },
+      });
+    if (!restaurant)
+      throw new BusinessLogicException(
+        'The restaurant with the given id was not found',
+        BusinessError.NOT_FOUND,
+      );
+
+    await this.restaurantRepository.remove(restaurant);
+  }
 }
