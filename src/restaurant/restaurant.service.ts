@@ -36,6 +36,9 @@ export class RestaurantService {
   }
 
   async create(restaurant: RestaurantEntity): Promise<RestaurantEntity> {
+    this.validateMichelinStars(restaurant.michelinStars);
+    this.validateAwardDate(restaurant.awardDate);
+
     return await this.restaurantRepository.save(restaurant);
   }
 
@@ -50,6 +53,9 @@ export class RestaurantService {
         'The restaurant with the given id was not found',
         BusinessError.NOT_FOUND,
       );
+
+    this.validateMichelinStars(restaurant.michelinStars);
+    this.validateAwardDate(restaurant.awardDate);
 
     return await this.restaurantRepository.save({
       ...persistedRestaurant,
@@ -69,5 +75,23 @@ export class RestaurantService {
       );
 
     await this.restaurantRepository.remove(restaurant);
+  }
+
+  private validateMichelinStars(michelinStars: number) {
+    if (michelinStars > 3) {
+      throw new BusinessLogicException(
+        'A restaurant cannot have more than 3 Michelin stars',
+        BusinessError.PRECONDITION_FAILED,
+      );
+    }
+  }
+
+  private validateAwardDate(awardDate: Date) {
+    if (awardDate > new Date()) {
+      throw new BusinessLogicException(
+        'The award date cannot be in the future',
+        BusinessError.PRECONDITION_FAILED,
+      );
+    }
   }
 }

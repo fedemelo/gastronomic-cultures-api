@@ -89,6 +89,64 @@ describe('RestaurantService', () => {
     expect(storedRestaurant.name).toEqual(newRestaurant.name);
   });
 
+  it('create should throw an exception when the restaurant has more than 3 Michelin stars', async () => {
+    const restaurant: RestaurantEntity = {
+      id: '',
+      name: faker.word.words(),
+      city: faker.location.city(),
+      michelinStars: 4,
+      awardDate: faker.date.past(),
+      country: country,
+      gastronomicCultures: [],
+    };
+
+    await expect(() => service.create(restaurant)).rejects.toHaveProperty(
+      'message',
+      'A restaurant cannot have more than 3 Michelin stars',
+    );
+  });
+
+  it('create should throw an exception when the award date is in the future', async () => {
+    const restaurant: RestaurantEntity = {
+      id: '',
+      name: faker.word.words(),
+      city: faker.location.city(),
+      michelinStars: 2,
+      awardDate: faker.date.future(),
+      country: country,
+      gastronomicCultures: [],
+    };
+
+    await expect(() => service.create(restaurant)).rejects.toHaveProperty(
+      'message',
+      'The award date cannot be in the future',
+    );
+  });
+
+  it('update should throw an exception when the restaurant has more than 3 Michelin stars', async () => {
+    const restaurant: RestaurantEntity = restaurantsList[0];
+    restaurant.michelinStars = 4;
+
+    await expect(() =>
+      service.update(restaurant.id, restaurant),
+    ).rejects.toHaveProperty(
+      'message',
+      'A restaurant cannot have more than 3 Michelin stars',
+    );
+  });
+
+  it('update should throw an exception when the award date is in the future', async () => {
+    const restaurant: RestaurantEntity = restaurantsList[0];
+    restaurant.awardDate = faker.date.future();
+
+    await expect(() =>
+      service.update(restaurant.id, restaurant),
+    ).rejects.toHaveProperty(
+      'message',
+      'The award date cannot be in the future',
+    );
+  });
+
   it('update should modify a restaurant', async () => {
     const restaurant: RestaurantEntity = restaurantsList[0];
     restaurant.name = 'New name';
