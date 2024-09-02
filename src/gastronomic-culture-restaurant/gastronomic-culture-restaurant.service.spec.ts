@@ -8,13 +8,16 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { faker } from '@faker-js/faker';
 import { GastronomicCultureService } from '../gastronomic-culture/gastronomic-culture.service';
 import { RestaurantService } from '../restaurant/restaurant.service';
+import { CountryEntity } from '../country/country.entity';
 
 describe('GastronomicCultureRestaurantService', () => {
   let service: GastronomicCultureRestaurantService;
   let gastronomicCultureRepository: Repository<GastronomicCultureEntity>;
   let restaurantRepository: Repository<RestaurantEntity>;
+  let countryRepository: Repository<CountryEntity>;
   let gastronomicCulture: GastronomicCultureEntity;
   let restaurantsList: RestaurantEntity[];
+  let country: CountryEntity;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -35,6 +38,9 @@ describe('GastronomicCultureRestaurantService', () => {
     restaurantRepository = module.get<Repository<RestaurantEntity>>(
       getRepositoryToken(RestaurantEntity),
     );
+    countryRepository = module.get<Repository<CountryEntity>>(
+      getRepositoryToken(CountryEntity),
+    );
 
     await seedDatabase();
   });
@@ -42,11 +48,21 @@ describe('GastronomicCultureRestaurantService', () => {
   const seedDatabase = async () => {
     restaurantRepository.clear();
     gastronomicCultureRepository.clear();
+    countryRepository.clear();
+
+    country = await countryRepository.save({
+      name: faker.location.country(),
+    });
 
     restaurantsList = [];
     for (let i = 0; i < 5; i++) {
       const restaurant: RestaurantEntity = await restaurantRepository.save({
-        // TODO: Complete with country fields @fedemelo
+        name: faker.company.name(),
+        city: faker.location.city(),
+        michelinStars: faker.number.int({ min: 0, max: 3 }),
+        awardDate: faker.date.past(),
+        country: country,
+        gastronomicCultures: [],
       });
       restaurantsList.push(restaurant);
     }
@@ -64,7 +80,11 @@ describe('GastronomicCultureRestaurantService', () => {
 
   it('addRestaurantToGastronomicCulture should add a restaurant to a gastronomic culture', async () => {
     const newRestaurant: RestaurantEntity = await restaurantRepository.save({
-      // TODO: Complete with country fields @fedemelo
+      name: faker.company.name(),
+      city: faker.location.city(),
+      michelinStars: faker.number.int({ min: 0, max: 3 }),
+      awardDate: faker.date.past(),
+      gastronomicCultures: [],
     });
 
     const newGastronomicCulture: GastronomicCultureEntity =
@@ -81,7 +101,12 @@ describe('GastronomicCultureRestaurantService', () => {
 
     expect(result.restaurants.length).toBe(1);
     expect(result.restaurants[0]).not.toBeNull();
-    // TODO: Complete with country fields @fedemelo
+    expect(result.restaurants[0].name).toBe(newRestaurant.name);
+    expect(result.restaurants[0].city).toBe(newRestaurant.city);
+    expect(result.restaurants[0].michelinStars).toBe(
+      newRestaurant.michelinStars,
+    );
+    expect(result.restaurants[0].awardDate).toEqual(newRestaurant.awardDate);
   });
 
   it('addRestaurantToGastronomicCulture should throw an exception for an invalid restaurant', async () => {
@@ -101,7 +126,12 @@ describe('GastronomicCultureRestaurantService', () => {
 
   it('addRestaurantToGastronomicCulture should throw an exception for an invalid gastronomic culture', async () => {
     const newRestaurant: RestaurantEntity = await restaurantRepository.save({
-      // TODO: Complete with country fields @fedemelo
+      name: faker.company.name(),
+      city: faker.location.city(),
+      michelinStars: faker.number.int({ min: 0, max: 3 }),
+      awardDate: faker.date.past(),
+      country: country,
+      gastronomicCultures: [],
     });
 
     await expect(() =>
@@ -120,7 +150,10 @@ describe('GastronomicCultureRestaurantService', () => {
         restaurant.id,
       );
     expect(storedRestaurant).not.toBeNull();
-    // TODO: Complete with country fields @fedemelo
+    expect(storedRestaurant.name).toBe(restaurant.name);
+    expect(storedRestaurant.city).toBe(restaurant.city);
+    expect(storedRestaurant.michelinStars).toBe(restaurant.michelinStars);
+    expect(storedRestaurant.awardDate).toEqual(restaurant.awardDate);
   });
 
   it('findRestaurantByGastronomicCultureIdAndRestaurantId should throw an exception for an invalid restaurant', async () => {
@@ -150,7 +183,12 @@ describe('GastronomicCultureRestaurantService', () => {
 
   it('findRestaurantByGastronomicCultureIdAndRestaurantId should throw an exception for a restaurant not associated with the gastronomic culture', async () => {
     const newRestaurant: RestaurantEntity = await restaurantRepository.save({
-      // TODO: Complete with country fields @fedemelo
+      name: faker.company.name(),
+      city: faker.location.city(),
+      michelinStars: faker.number.int({ min: 0, max: 3 }),
+      awardDate: faker.date.past(),
+      country: country,
+      gastronomicCultures: [],
     });
 
     await expect(() =>
@@ -183,7 +221,12 @@ describe('GastronomicCultureRestaurantService', () => {
 
   it('associateRestaurantsToGastronomicCulture should update restaurants list for a gastronomic culture', async () => {
     const newRestaurant: RestaurantEntity = await restaurantRepository.save({
-      // TODO: Complete with country fields @fedemelo
+      name: faker.company.name(),
+      city: faker.location.city(),
+      michelinStars: faker.number.int({ min: 0, max: 3 }),
+      awardDate: faker.date.past(),
+      country: country,
+      gastronomicCultures: [],
     });
 
     const updatedGastronomicCulture: GastronomicCultureEntity =
@@ -192,12 +235,28 @@ describe('GastronomicCultureRestaurantService', () => {
         [newRestaurant],
       );
     expect(updatedGastronomicCulture.restaurants.length).toBe(1);
-    // TODO: Complete with country fields @fedemelo
+    expect(updatedGastronomicCulture.restaurants[0].name).toBe(
+      newRestaurant.name,
+    );
+    expect(updatedGastronomicCulture.restaurants[0].city).toBe(
+      newRestaurant.city,
+    );
+    expect(updatedGastronomicCulture.restaurants[0].michelinStars).toBe(
+      newRestaurant.michelinStars,
+    );
+    expect(updatedGastronomicCulture.restaurants[0].awardDate).toEqual(
+      newRestaurant.awardDate,
+    );
   });
 
   it('associateRestaurantsToGastronomicCulture should throw an exception for an invalid gastronomic culture', async () => {
     const newRestaurant: RestaurantEntity = await restaurantRepository.save({
-      // TODO: Complete with country fields @fedemelo
+      name: faker.company.name(),
+      city: faker.location.city(),
+      michelinStars: faker.number.int({ min: 0, max: 3 }),
+      awardDate: faker.date.past(),
+      country: country,
+      gastronomicCultures: [],
     });
 
     await expect(() =>
@@ -265,7 +324,12 @@ describe('GastronomicCultureRestaurantService', () => {
 
   it('deleteRestaurantFromGastronomicCulture should throw an exception for a non-associated restaurant', async () => {
     const newRestaurant: RestaurantEntity = await restaurantRepository.save({
-      // TODO: Complete with country fields @fedemelo
+      name: faker.company.name(),
+      city: faker.location.city(),
+      michelinStars: faker.number.int({ min: 0, max: 3 }),
+      awardDate: faker.date.past(),
+      country: country,
+      gastronomicCultures: [],
     });
 
     await expect(() =>

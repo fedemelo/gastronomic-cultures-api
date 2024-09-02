@@ -46,7 +46,7 @@ describe('GastronomicCultureCountriesService', () => {
     countriesList = [];
     for (let i = 0; i < 5; i++) {
       const country: CountryEntity = await countryRepository.save({
-        // TODO: Complete with country fields @fedemelo
+        name: faker.location.country(),
       });
       countriesList.push(country);
     }
@@ -63,7 +63,9 @@ describe('GastronomicCultureCountriesService', () => {
   });
 
   it('addCountryGastronomicCulture should add a country to a gastronomic culture', async () => {
-    const newCountry: CountryEntity = await countryRepository.save({});
+    const newCountry: CountryEntity = await countryRepository.save({
+      name: faker.location.country(),
+    });
 
     const newGastronomicCulture: GastronomicCultureEntity =
       await gastronomicCultureRepository.save({
@@ -79,7 +81,8 @@ describe('GastronomicCultureCountriesService', () => {
 
     expect(result.countries.length).toBe(1);
     expect(result.countries[0]).not.toBeNull();
-    // TODO: Complete with country fields @fedemelo
+    expect(result.countries[0].name).toBe(newCountry.name);
+    expect(result.countries[0].id).toBe(newCountry.id);
   });
 
   it('addCountryGastronomicCulture should throw an exception for an invalid country', async () => {
@@ -99,7 +102,7 @@ describe('GastronomicCultureCountriesService', () => {
 
   it('addCountryGastronomicCulture should throw an exception for an invalid gastronomic culture', async () => {
     const newCountry: CountryEntity = await countryRepository.save({
-      // TODO: Complete with country fields @fedemelo
+      name: faker.location.country(),
     });
 
     await expect(() =>
@@ -118,7 +121,8 @@ describe('GastronomicCultureCountriesService', () => {
         country.id,
       );
     expect(storedCountry).not.toBeNull();
-    // TODO: Complete with country fields @fedemelo
+    expect(storedCountry.name).toBe(country.name);
+    expect(storedCountry.id).toBe(country.id);
   });
 
   it('findCountryByGastronomicCultureIdCountryId should throw an exception for an invalid country', async () => {
@@ -145,7 +149,7 @@ describe('GastronomicCultureCountriesService', () => {
 
   it('findCountryByGastronomicCultureIdCountryId should throw an exception for a country not associated to the gastronomic culture', async () => {
     const newCountry: CountryEntity = await countryRepository.save({
-      // TODO: Complete with country fields @fedemelo
+      name: faker.location.country(),
     });
 
     await expect(() =>
@@ -176,7 +180,7 @@ describe('GastronomicCultureCountriesService', () => {
 
   it('associateCountriesGastronomicCulture should update countries list for a gastronomic culture', async () => {
     const newCountry: CountryEntity = await countryRepository.save({
-      // TODO: Complete with country fields @fedemelo
+      name: faker.location.country(),
     });
 
     const updatedGastronomicCulture: GastronomicCultureEntity =
@@ -185,13 +189,13 @@ describe('GastronomicCultureCountriesService', () => {
         [newCountry],
       );
     expect(updatedGastronomicCulture.countries.length).toBe(1);
-
-    // TODO: Complete with country fields @fedemelo
+    expect(updatedGastronomicCulture.countries[0].name).toBe(newCountry.name);
+    expect(updatedGastronomicCulture.countries[0].id).toBe(newCountry.id);
   });
 
   it('associateCountriesGastronomicCulture should throw an exception for an invalid gastronomic culture', async () => {
     const newCountry: CountryEntity = await countryRepository.save({
-      // TODO: Complete with country fields @fedemelo
+      name: faker.location.country(),
     });
 
     await expect(() =>
@@ -216,7 +220,7 @@ describe('GastronomicCultureCountriesService', () => {
     );
   });
 
-  it('deleteCountryGastronomicCulture should remove a country from a gastronomic culture', async () => {
+  it('deleteCountryFromGastronomicCulture should remove a country from a gastronomic culture', async () => {
     const country: CountryEntity = countriesList[0];
 
     await service.deleteCountryFromGastronomicCulture(
@@ -256,7 +260,7 @@ describe('GastronomicCultureCountriesService', () => {
 
   it('deleteCountryGastronomicCulture should throw an exception for a non-associated country', async () => {
     const newCountry: CountryEntity = await countryRepository.save({
-      // TODO: Complete with country fields @fedemelo
+      name: faker.location.country(),
     });
 
     await expect(() =>

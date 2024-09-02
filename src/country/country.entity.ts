@@ -1,12 +1,23 @@
 import { GastronomicCultureEntity } from '../gastronomic-culture/gastronomic-culture.entity';
-import { Entity, PrimaryGeneratedColumn, ManyToOne, ManyToMany } from 'typeorm';
+import { RestaurantEntity } from '../restaurant/restaurant.entity';
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  ManyToMany,
+} from 'typeorm';
 
 @Entity()
 export class CountryEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  // TODO: Add the missing properties @fedemelo
+  @Column()
+  name: string;
+
+  @OneToMany(() => RestaurantEntity, (restaurant) => restaurant.country)
+  restaurants: RestaurantEntity[];
 
   @ManyToMany(
     () => GastronomicCultureEntity,
