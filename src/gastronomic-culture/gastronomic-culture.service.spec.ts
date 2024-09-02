@@ -36,6 +36,7 @@ describe('GastronomicCultureService', () => {
           countries: [],
           restaurants: [],
           recipes: [],
+          products: [],
         });
       gastronomicCulturesList.push(gastronomicCulture);
     }
@@ -80,6 +81,7 @@ describe('GastronomicCultureService', () => {
       countries: [],
       restaurants: [],
       recipes: [],
+      products: [],
     };
 
     const newGastronomicCulture: GastronomicCultureEntity =
