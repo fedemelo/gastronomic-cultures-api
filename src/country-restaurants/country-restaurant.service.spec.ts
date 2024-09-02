@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Test, TestingModule } from '@nestjs/testing';
 import { RestaurantEntity } from '../restaurant/restaurant.entity';
 import { Repository } from 'typeorm';
@@ -7,6 +6,8 @@ import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-co
 import { CountryRestaurantService } from './country-restaurant.service';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { faker } from '@faker-js/faker';
+import { CountryService } from '../country/country.service';
+import { RestaurantService } from '../restaurant/restaurant.service';
 
 describe('CountryRestaurantService', () => {
   let service: CountryRestaurantService;
@@ -18,7 +19,7 @@ describe('CountryRestaurantService', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [...TypeOrmTestingConfig()],
-      providers: [CountryRestaurantService],
+      providers: [CountryRestaurantService, CountryService, RestaurantService],
     }).compile();
 
     service = module.get<CountryRestaurantService>(CountryRestaurantService);
@@ -83,7 +84,9 @@ describe('CountryRestaurantService', () => {
     expect(result.restaurants[0]).not.toBeNull();
     expect(result.restaurants[0].name).toBe(newRestaurant.name);
     expect(result.restaurants[0].city).toBe(newRestaurant.city);
-    expect(result.restaurants[0].michelinStars).toBe(newRestaurant.michelinStars);
+    expect(result.restaurants[0].michelinStars).toBe(
+      newRestaurant.michelinStars,
+    );
     expect(result.restaurants[0].awardDate).toEqual(newRestaurant.awardDate);
   });
 
@@ -121,10 +124,11 @@ describe('CountryRestaurantService', () => {
 
   it('findRestaurantByCountryIdRestaurantId should return restaurant by country', async () => {
     const restaurant: RestaurantEntity = restaurantsList[0];
-    const storedRestaurant: RestaurantEntity = await service.findRestaurantByCountryIdRestaurantId(
-      country.id,
-      restaurant.id,
-    );
+    const storedRestaurant: RestaurantEntity =
+      await service.findRestaurantByCountryIdRestaurantId(
+        country.id,
+        restaurant.id,
+      );
     expect(storedRestaurant).not.toBeNull();
     expect(storedRestaurant.name).toBe(restaurant.name);
     expect(storedRestaurant.city).toBe(restaurant.city);
@@ -161,7 +165,10 @@ describe('CountryRestaurantService', () => {
     });
 
     await expect(() =>
-      service.findRestaurantByCountryIdRestaurantId(country.id, newRestaurant.id),
+      service.findRestaurantByCountryIdRestaurantId(
+        country.id,
+        newRestaurant.id,
+      ),
     ).rejects.toHaveProperty(
       'message',
       'The restaurant with the given id is not associated to the country',
@@ -169,7 +176,8 @@ describe('CountryRestaurantService', () => {
   });
 
   it('findRestaurantsByCountryId should return restaurants by country', async () => {
-    const restaurants: RestaurantEntity[] = await service.findRestaurantsByCountryId(country.id);
+    const restaurants: RestaurantEntity[] =
+      await service.findRestaurantsByCountryId(country.id);
     expect(restaurants.length).toBe(5);
   });
 
@@ -191,13 +199,18 @@ describe('CountryRestaurantService', () => {
       gastronomicCultures: [],
     });
 
-    const updatedCountry: CountryEntity = await service.associateRestaurantsCountry(country.id, [newRestaurant]);
+    const updatedCountry: CountryEntity =
+      await service.associateRestaurantsCountry(country.id, [newRestaurant]);
     expect(updatedCountry.restaurants.length).toBe(1);
 
     expect(updatedCountry.restaurants[0].name).toBe(newRestaurant.name);
     expect(updatedCountry.restaurants[0].city).toBe(newRestaurant.city);
-    expect(updatedCountry.restaurants[0].michelinStars).toBe(newRestaurant.michelinStars);
-    expect(updatedCountry.restaurants[0].awardDate).toEqual(newRestaurant.awardDate);
+    expect(updatedCountry.restaurants[0].michelinStars).toBe(
+      newRestaurant.michelinStars,
+    );
+    expect(updatedCountry.restaurants[0].awardDate).toEqual(
+      newRestaurant.awardDate,
+    );
   });
 
   it('associateRestaurantsCountry should throw an exception for an invalid country', async () => {
