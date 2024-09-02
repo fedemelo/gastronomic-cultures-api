@@ -8,16 +8,10 @@ import { GastronomicCultureService } from '../gastronomic-culture/gastronomic-cu
 import { RecipeService } from '../recipe/recipe.service';
 import { GastronomicCultureEntity } from '../gastronomic-culture/gastronomic-culture.entity';
 import { RecipeEntity } from '../recipe/recipe.entity';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
 
 @Injectable()
 export class GastronomicCultureRecipeService {
   constructor(
-    @InjectRepository(RecipeEntity)
-    private readonly recipeRepository: Repository<RecipeEntity>,
-    @InjectRepository(GastronomicCultureEntity)
-    private readonly gastronomicCultureRepository: Repository<GastronomicCultureEntity>,
     private readonly gastronomicCultureService: GastronomicCultureService,
     private readonly recipeService: RecipeService,
   ) {}

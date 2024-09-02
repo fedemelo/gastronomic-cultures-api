@@ -7,18 +7,11 @@ import {
   BusinessError,
   BusinessLogicException,
 } from '../shared/errors/business-errors';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
 
 @Injectable()
 export class CountryRestaurantService {
   constructor(
-    @InjectRepository(CountryEntity)
-    private readonly countryRepository: Repository<CountryEntity>,
     private readonly countryService: CountryService,
-
-    @InjectRepository(RestaurantEntity)
-    private readonly restaurantRepository: Repository<RestaurantEntity>,
     private readonly restaurantService: RestaurantService,
   ) {}
 
