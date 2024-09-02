@@ -6,7 +6,6 @@ import {
   PrimaryGeneratedColumn,
   OneToMany,
   ManyToMany,
-  JoinTable,
 } from 'typeorm';
 
 @Entity()
@@ -24,6 +23,5 @@ export class CountryEntity {
     () => GastronomicCultureEntity,
     (gastronomicCulture) => gastronomicCulture.countries,
   )
-  @JoinTable()
   gastronomicCultures: GastronomicCultureEntity[];
 }
