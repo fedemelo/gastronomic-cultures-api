@@ -17,14 +17,14 @@ export class GastronomicCultureService {
 
   async findAll(): Promise<GastronomicCultureEntity[]> {
     return await this.gastronomicCultureRepository.find({
-      relations: ['countries', 'restaurants', 'recipes'],
+      relations: ['countries', 'restaurants', 'recipes', 'products'],
     });
   }
 
   async findOne(id: string): Promise<GastronomicCultureEntity> {
     const gastronomicCulture = await this.gastronomicCultureRepository.findOne({
       where: { id },
-      relations: ['countries', 'restaurants', 'recipes'],
+      relations: ['countries', 'restaurants', 'recipes', 'products'],
     });
     if (!gastronomicCulture) {
       throw new BusinessLogicException(
