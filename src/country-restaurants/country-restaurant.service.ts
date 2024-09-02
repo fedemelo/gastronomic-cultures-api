@@ -111,10 +111,10 @@ export class CountryRestaurantService {
         BusinessError.NOT_FOUND,
       );
 
-    for (let i = 0; i < restaurants.length; i++) {
+    for (const restaurantItem of restaurants) {
       const restaurant: RestaurantEntity =
         await this.restaurantRepository.findOne({
-          where: { id: restaurants[i].id },
+          where: { id: restaurantItem.id },
         });
       if (!restaurant)
         throw new BusinessLogicException(

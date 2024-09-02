@@ -108,15 +108,18 @@ export class GastronomicCultureProductService {
             );
         }
 
-        for (let i = 0; i < products.length; i++) {
-            const product = await this.productRepository.findOne({where: {id: products[i].id}});
-            if (!product) {
-                throw new BusinessLogicException(
-                    'The product with the given id does not exist',
-                    BusinessError.NOT_FOUND,
-                );
-            }
+        for (const productItem of products) {
+          const product = await this.productRepository.findOne({
+            where: { id: productItem.id },
+          });
+          if (!product) {
+            throw new BusinessLogicException(
+              'The product with the given id does not exist',
+              BusinessError.NOT_FOUND,
+            );
+          }
         }
+          
 
         gastronomicCulture.products = products;
         return await this.gastronomicCultureRepository.save(gastronomicCulture);

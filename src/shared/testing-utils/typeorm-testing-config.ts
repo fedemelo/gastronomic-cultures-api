@@ -20,6 +20,5 @@ export const TypeOrmTestingConfig = () => [
     CountryEntity,
     RecipeEntity,
     ProductEntity,
-    // TODO: Add missing entities @fedemelo @pdazad @dburgos26
   ]),
 ];
