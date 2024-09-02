@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CountryEntity } from './country.entity';
-import { Repository } from 'typeorm';
 import {
   BusinessError,
   BusinessLogicException,
 } from '../shared/errors/business-errors';
+import { Repository } from 'typeorm';
+import { CountryEntity } from './country.entity';
 
 @Injectable()
 export class CountryService {
@@ -14,20 +14,54 @@ export class CountryService {
     private readonly countryRepository: Repository<CountryEntity>,
   ) {}
 
-  async findOne(id: string): Promise<CountryEntity> {
-    const country = await this.countryRepository.findOne({
-      where: { id },
-      relations: ['gastronomicCultures'],
+  async findAll(): Promise<CountryEntity[]> {
+    return await this.countryRepository.find({
+      relations: ['restaurants', 'gastronomicCultures'],
     });
-    if (!country) {
+  }
+
+  async findOne(id: string): Promise<CountryEntity> {
+    const country: CountryEntity = await this.countryRepository.findOne({
+      where: { id },
+      relations: ['restaurants', 'gastronomicCultures'],
+    });
+    if (!country)
       throw new BusinessLogicException(
         'The country with the given id was not found',
         BusinessError.NOT_FOUND,
       );
-    }
     return country;
   }
 
-  // TODO: Additional methods like get all, create, update, delete are missing @fedemelo
-  // Add the missing methods and adjust the previous methods to use the new entity properties
+  async create(country: CountryEntity): Promise<CountryEntity> {
+    return await this.countryRepository.save(country);
+  }
+
+  async update(id: string, country: CountryEntity): Promise<CountryEntity> {
+    const persistedCountry: CountryEntity =
+      await this.countryRepository.findOne({ where: { id } });
+    if (!persistedCountry)
+      throw new BusinessLogicException(
+        'The country with the given id was not found',
+        BusinessError.NOT_FOUND,
+      );
+
+    return await this.countryRepository.save({
+      ...persistedCountry,
+      ...country,
+    });
+  }
+
+  async delete(id: string) {
+    const country: CountryEntity = await this.countryRepository.findOne({
+      where: { id },
+    });
+    if (!country)
+      throw new BusinessLogicException(
+        'The country with the given id was not found',
+        BusinessError.NOT_FOUND,
+      );
+
+    await this.countryRepository.remove(country);
+  }
 }
