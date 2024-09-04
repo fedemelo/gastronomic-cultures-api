@@ -5,6 +5,7 @@ import { GastronomicCultureEntity } from '../gastronomic-culture/gastronomic-cul
 import { CountryEntity } from '../country/country.entity';
 import { GastronomicCultureService } from '../gastronomic-culture/gastronomic-culture.service';
 import { CountryService } from '../country/country.service';
+import { GastronomicCultureCountryController } from './gastronomic-culture-country.controller';
 
 @Module({
   imports: [
@@ -15,5 +16,6 @@ import { CountryService } from '../country/country.service';
     GastronomicCultureService,
     CountryService,
   ],
+  controllers: [GastronomicCultureCountryController],
 })
 export class GastronomicCultureCountriesModule {}

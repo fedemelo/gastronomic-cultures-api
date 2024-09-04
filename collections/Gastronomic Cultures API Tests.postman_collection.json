@@ -1033,11 +1033,15 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/countries",
+									"raw": "http://localhost:3000/api/v1/countries",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
+										"api",
+										"v1",
 										"countries"
 									]
 								}
@@ -1825,11 +1829,15 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/restaurants",
+									"raw": "http://localhost:3000/api/v1/restaurants",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
+										"api",
+										"v1",
 										"restaurants"
 									]
 								}
@@ -4483,7 +4491,89 @@
 			"name": "Gastronomic Cultures-Restaurants",
 			"item": [
 				{
-					"name": "Add a restaurant to a gastronomic culture - Success",
+					"name": "Add Gastronomic Culture - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Extracting data from the response",
+									"var responseData = pm.response.json();",
+									"",
+									"// Set the pm globals to the id of the created product",
+									"pm.globals.set(\"cultureId\", responseData.id);",
+									"",
+									"// Test for the status code to be 201",
+									"pm.test(\"Response status code is 201\", function () {",
+									"  pm.response.to.have.status(201);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Latin American\",\n  \"description\": \"Rich and diverse culinary traditions.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/cultures",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cultures"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Latin American\",\n  \"description\": \"Rich and diverse culinary traditions.\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/cultures",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"cultures"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"name\": \"Latin American\",\n  \"description\": \"Rich and diverse culinary traditions.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Add Restaurant 1 - Success",
 					"event": [
 						{
 							"listen": "test",
@@ -4493,11 +4583,170 @@
 									"pm.test(\"Response status code is 201\", function () {",
 									"   pm.response.to.have.status(201);",
 									"});",
-									"// Extracting data from the response and setting pm.globals",
+									"",
 									"var responseData = pm.response.json();",
-									"pm.globals.set(\"restaurantId\", responseData.id);"
+									"pm.globals.set(\"restaurantId1\", responseData.id);"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"El Celler de Can Roca\",\n  \"city\": \"Girona\",\n  \"michelinStars\": 3,\n  \"awardDate\": \"2021-06-15\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/restaurants",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"restaurants"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"El Celler de Can Roca\",\n  \"city\": \"Girona\",\n  \"michelinStars\": 3,\n  \"awardDate\": \"2021-06-15\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/restaurants",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"restaurants"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"name\": \"El Celler de Can Roca\",\n  \"city\": \"Girona\",\n  \"michelinStars\": 3,\n  \"awardDate\": \"2021-06-15\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Add Restaurant 2 - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for the status code to be 201",
+									"pm.test(\"Response status code is 201\", function () {",
+									"   pm.response.to.have.status(201);",
+									"});",
+									"",
+									"var responseData = pm.response.json();",
+									"pm.globals.set(\"restaurantId2\", responseData.id);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"El Celler de Can Roca\",\n  \"city\": \"Girona\",\n  \"michelinStars\": 3,\n  \"awardDate\": \"2021-06-15\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/restaurants",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"restaurants"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"El Celler de Can Roca\",\n  \"city\": \"Girona\",\n  \"michelinStars\": 3,\n  \"awardDate\": \"2021-06-15\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/restaurants",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"restaurants"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"name\": \"El Celler de Can Roca\",\n  \"city\": \"Girona\",\n  \"michelinStars\": 3,\n  \"awardDate\": \"2021-06-15\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Add a restaurant to gastronomic culture - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for the status code to be 201",
+									"pm.test(\"Response status code is 201\", function () {",
+									"   pm.response.to.have.status(201);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -4505,7 +4754,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/cultures/{{cultureId}}/restaurants/{{restaurantId}}",
+							"raw": "{{base_url}}/cultures/{{cultureId}}/restaurants/{{restaurantId1}}",
 							"host": [
 								"{{base_url}}"
 							],
@@ -4513,7 +4762,7 @@
 								"cultures",
 								"{{cultureId}}",
 								"restaurants",
-								"{{restaurantId}}"
+								"{{restaurantId1}}"
 							]
 						}
 					},
@@ -4645,7 +4894,8 @@
 									"   pm.expect(data.message).to.eql(\"The gastronomic culture with the given id was not found\");",
 									"});"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -4653,7 +4903,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/cultures/00000000-0000-4000-8000-000000000000/restaurants/{{restaurantId}}",
+							"raw": "{{base_url}}/cultures/00000000-0000-4000-8000-000000000000/restaurants/{{restaurantId1}}",
 							"host": [
 								"{{base_url}}"
 							],
@@ -4661,7 +4911,7 @@
 								"cultures",
 								"00000000-0000-4000-8000-000000000000",
 								"restaurants",
-								"{{restaurantId}}"
+								"{{restaurantId1}}"
 							]
 						}
 					},
@@ -4714,7 +4964,8 @@
 									"   pm.response.to.have.status(200);",
 									"});"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -4722,7 +4973,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/cultures/{{cultureId}}/restaurants/{{restaurantId}}",
+							"raw": "{{base_url}}/cultures/{{cultureId}}/restaurants/{{restaurantId1}}",
 							"host": [
 								"{{base_url}}"
 							],
@@ -4730,7 +4981,7 @@
 								"cultures",
 								"{{cultureId}}",
 								"restaurants",
-								"{{restaurantId}}"
+								"{{restaurantId1}}"
 							]
 						}
 					},
@@ -4815,11 +5066,15 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/{{cultureId}}/restaurants/00000000-0000-4000-8000-000000000000",
+									"raw": "http://localhost:3000/api/v1/cultures/{{cultureId}}/restaurants/00000000-0000-4000-8000-000000000000",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
+										"api",
+										"v1",
 										"cultures",
 										"{{cultureId}}",
 										"restaurants",
@@ -4858,7 +5113,8 @@
 									"   pm.expect(data.message).to.eql(\"The gastronomic culture with the given id was not found\");",
 									"});"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -4866,7 +5122,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/cultures/00000000-0000-4000-8000-000000000000/restaurants/{{restaurantId}}",
+							"raw": "{{base_url}}/cultures/00000000-0000-4000-8000-000000000000/restaurants/{{restaurantId1}}",
 							"host": [
 								"{{base_url}}"
 							],
@@ -4874,7 +5130,7 @@
 								"cultures",
 								"00000000-0000-4000-8000-000000000000",
 								"restaurants",
-								"{{restaurantId}}"
+								"{{restaurantId1}}"
 							]
 						}
 					},
@@ -4959,11 +5215,15 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/{{cultureId}}/restaurants/{{restaurantId2}}",
+									"raw": "http://localhost:3000/api/v1/cultures/{{cultureId}}/restaurants/{{restaurantId2}}",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
+										"api",
+										"v1",
 										"cultures",
 										"{{cultureId}}",
 										"restaurants",
@@ -5023,11 +5283,15 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/{{cultureId}}/restaurants",
+									"raw": "http://localhost:3000/api/v1/cultures/{{cultureId}}/restaurants",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
+										"api",
+										"v1",
 										"cultures",
 										"{{cultureId}}",
 										"restaurants"
@@ -5091,11 +5355,15 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/00000000-0000-4000-8000-000000000000/restaurants",
+									"raw": "http://localhost:3000/api/v1/cultures/00000000-0000-4000-8000-000000000000/restaurants",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
+										"api",
+										"v1",
 										"cultures",
 										"00000000-0000-4000-8000-000000000000",
 										"restaurants"
@@ -5172,11 +5440,15 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/cultures/{{cultureId}}/restaurants",
+									"raw": "http://localhost:3000/api/v1/cultures/{{cultureId}}/restaurants",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
+										"api",
+										"v1",
 										"cultures",
 										"{{cultureId}}",
 										"restaurants"
@@ -5258,11 +5530,15 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/cultures/{{cultureId}}/restaurants",
+									"raw": "http://localhost:3000/api/v1/cultures/{{cultureId}}/restaurants",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
+										"api",
+										"v1",
 										"cultures",
 										"{{cultureId}}",
 										"restaurants"
@@ -5344,11 +5620,15 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/cultures/00000000-0000-4000-8000-000000000000/restaurants",
+									"raw": "http://localhost:3000/api/v1/cultures/00000000-0000-4000-8000-000000000000/restaurants",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
+										"api",
+										"v1",
 										"cultures",
 										"00000000-0000-4000-8000-000000000000",
 										"restaurants"
@@ -5381,7 +5661,8 @@
 									"   pm.response.to.have.status(204);",
 									"});"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -5389,7 +5670,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/cultures/{{cultureId}}/restaurants/{{restaurantId}}",
+							"raw": "{{base_url}}/cultures/{{cultureId}}/restaurants/{{restaurantId2}}",
 							"host": [
 								"{{base_url}}"
 							],
@@ -5397,7 +5678,7 @@
 								"cultures",
 								"{{cultureId}}",
 								"restaurants",
-								"{{restaurantId}}"
+								"{{restaurantId2}}"
 							]
 						}
 					},
@@ -5408,11 +5689,15 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/{{cultureId}}/restaurants/{{restaurantId}}",
+									"raw": "http://localhost:3000/api/v1/cultures/{{cultureId}}/restaurants/{{restaurantId}}",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
+										"api",
+										"v1",
 										"cultures",
 										"{{cultureId}}",
 										"restaurants",
@@ -5473,11 +5758,15 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/{{cultureId}}/restaurants/00000000-0000-4000-8000-000000000000",
+									"raw": "http://localhost:3000/api/v1/cultures/{{cultureId}}/restaurants/00000000-0000-4000-8000-000000000000",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
+										"api",
+										"v1",
 										"cultures",
 										"{{cultureId}}",
 										"restaurants",
@@ -5516,7 +5805,8 @@
 									"   pm.expect(data.message).to.eql(\"The gastronomic culture with the given id was not found\");",
 									"});"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -5524,7 +5814,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/cultures/00000000-0000-4000-8000-000000000000/restaurants/{{restaurantId}}",
+							"raw": "{{base_url}}/cultures/00000000-0000-4000-8000-000000000000/restaurants/{{restaurantId1}}",
 							"host": [
 								"{{base_url}}"
 							],
@@ -5532,7 +5822,7 @@
 								"cultures",
 								"00000000-0000-4000-8000-000000000000",
 								"restaurants",
-								"{{restaurantId}}"
+								"{{restaurantId1}}"
 							]
 						}
 					},
@@ -5543,11 +5833,15 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/00000000-0000-4000-8000-000000000000/restaurants/{{restaurantId}}",
+									"raw": "http://localhost:3000/api/v1/cultures/00000000-0000-4000-8000-000000000000/restaurants/{{restaurantId}}",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
+										"api",
+										"v1",
 										"cultures",
 										"00000000-0000-4000-8000-000000000000",
 										"restaurants",
@@ -5613,11 +5907,15 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/{{cultureId}}/restaurants/{{restaurantId2}}",
+									"raw": "http://localhost:3000/api/v1/cultures/{{cultureId}}/restaurants/{{restaurantId2}}",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
+										"api",
+										"v1",
 										"cultures",
 										"{{cultureId}}",
 										"restaurants",
@@ -6947,11 +7245,15 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/countries",
+									"raw": "http://localhost:3000/api/v1/countries",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
+										"api",
+										"v1",
 										"countries"
 									]
 								}
@@ -7027,11 +7329,15 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/countries",
+									"raw": "http://localhost:3000/api/v1/countries",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
+										"api",
+										"v1",
 										"countries"
 									]
 								}
@@ -7898,7 +8204,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n   {\r\n       \"id\": \"0\"\r\n   }\r\n]",
+							"raw": "[\r\n   {\r\n       \"id\": \"00000000-0000-4000-8000-000000000000\"\r\n   }\r\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -8002,13 +8308,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/cultures/{{cultureId}}/countries",
+							"raw": "{{base_url}}/cultures/00000000-0000-4000-8000-000000000000/countries",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"cultures",
-								"{{cultureId}}",
+								"00000000-0000-4000-8000-000000000000",
 								"countries"
 							]
 						}
@@ -8084,13 +8390,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/cultures/{{cultureid}}/countries/{{countryId2}}",
+							"raw": "{{base_url}}/cultures/{{cultureId}}/countries/{{countryId2}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"cultures",
-								"{{cultureid}}",
+								"{{cultureId}}",
 								"countries",
 								"{{countryId2}}"
 							]
@@ -8319,7 +8625,7 @@
 									"",
 									"pm.test(\"Get expected error message\", function () {",
 									"   var data = pm.response.json();",
-									"   pm.expect(data.message).to.eql(\"The country with the given id is not associated to The gastronomic culture\");",
+									"   pm.expect(data.message).to.eql(\"The country with the given id is not associated to the gastronomic culture\");",
 									"});"
 								],
 								"type": "text/javascript",
