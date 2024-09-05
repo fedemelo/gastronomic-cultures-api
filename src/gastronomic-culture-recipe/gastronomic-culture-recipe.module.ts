@@ -6,6 +6,7 @@ import { RecipeEntity } from '../recipe/recipe.entity';
 import { GastronomicCultureEntity } from '../gastronomic-culture/gastronomic-culture.entity';
 import { GastronomicCultureService } from '../gastronomic-culture/gastronomic-culture.service';
 import { RecipeService } from '../recipe/recipe.service';
+import { GastronomicCultureRecipeController } from './gastronomic-culture-recipe.controller';
 
 @Module({
   imports: [TypeOrmModule.forFeature([GastronomicCultureEntity, RecipeEntity])],
@@ -14,5 +15,6 @@ import { RecipeService } from '../recipe/recipe.service';
     GastronomicCultureService,
     RecipeService,
   ],
+  controllers: [GastronomicCultureRecipeController],
 })
 export class GastronomicCultureRecipeModule {}
