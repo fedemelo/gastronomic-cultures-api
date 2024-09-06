@@ -1,11 +1,10 @@
 {
 	"info": {
-		"_postman_id": "52bc5ad5-55e6-499f-b5bc-f6b9aba6a312",
+		"_postman_id": "b9a34d87-4e48-4d16-9bcd-6b154f8a6226",
 		"name": "Gastronomic Cultures API Tests",
 		"description": "This collection provides comprehensive CRUD operations and detailed views for managing gastronomic data, including products, gastronomic cultures, countries, recipes, and restaurants.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "14950540",
-		"_collection_link": "https://www.postman.com/dark-zodiac-951857/workspace/gastronomic-cultures/collection/14950540-52bc5ad5-55e6-499f-b5bc-f6b9aba6a312?action=share&source=collection_link&creator=14950540"
+		"_exporter_id": "37773935"
 	},
 	"item": [
 		{
@@ -1395,12 +1394,29 @@
 			"item": [
 				{
 					"name": "Add Recipe - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"recipeId\", data.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Risotto\",\n  \"description\": \"Creamy Italian rice dish.\",\n  \"photo\": \"url_to_photo\",\n  \"preparationProcess\": \"Detailed steps\",\n  \"video\": \"url_to_video\"\n}",
+							"raw": "{\n  \"name\": \"Risotto\",\n  \"description\": \"Creamy Italian rice dish.\",\n  \"photo\": \"https://www.google.com/url.jpg\",\n  \"preparationProcess\": \"Detailed steps\",\n  \"video\": \"https://www.google.com/url.mov\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1453,6 +1469,25 @@
 				},
 				{
 					"name": "Get All Recipes - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Number of recipes > ' + 0, function () {\r",
+									"   var data = pm.response.json()\r",
+									"   pm.expect(data.length).to.greaterThan(0)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -1487,23 +1522,37 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
-							"body": "[\n  {\n    \"name\": \"Pasta Carbonara\",\n    \"description\": \"A classic Italian dish.\",\n    \"photo\": \"url_to_photo\",\n    \"preparationProcess\": \"Detailed steps\",\n    \"video\": \"url_to_video\",\n    \"culture\": {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"name\": \"Italian\",\n      \"description\": \"Rich and diverse culinary traditions.\"\n    }\n  }\n]"
+							"body": "[\n  {\n    \"name\": \"Pasta Carbonara\",\n    \"description\": \"A classic Italian dish.\",\n    \"photo\": \"url_to_photo\",\n    \"preparationProcess\": \"Detailed steps\",\n    \"video\": \"url_to_video\",\n    \"culture\": null\n  }\n]"
 						}
 					]
 				},
 				{
 					"name": "Get Recipe - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/recipes/00000000-0000-0000-0000-000000000000",
+							"raw": "{{base_url}}/recipes/{{recipeId}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"recipes",
-								"00000000-0000-0000-0000-000000000000"
+								"{{recipeId}}"
 							]
 						}
 					},
@@ -1514,13 +1563,13 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/recipes/00000000-0000-0000-0000-000000000000",
+									"raw": "{{base_url}}/recipes/{{recipeId}}",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"recipes",
-										"00000000-0000-0000-0000-000000000000"
+										"{{recipeId}}"
 									]
 								}
 							},
@@ -1529,12 +1578,31 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
-							"body": "{\n    \"name\": \"Pasta Carbonara\",\n    \"description\": \"A classic Italian dish.\",\n    \"photo\": \"url_to_photo\",\n    \"preparationProcess\": \"Detailed steps\",\n    \"video\": \"url_to_video\",\n    \"culture\": {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"name\": \"Italian\",\n      \"description\": \"Rich and diverse culinary traditions.\"\n    }\n}"
+							"body": "{\n    \"name\": \"Pasta Carbonara\",\n    \"description\": \"A classic Italian dish.\",\n    \"photo\": \"url_to_photo\",\n    \"preparationProcess\": \"Detailed steps\",\n    \"video\": \"url_to_video\",\n    \"culture\": null\n}"
 						}
 					]
 				},
 				{
 					"name": "Get Recipe - Not Found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The recipe with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -1571,18 +1639,32 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
-							"body": "{\n  \"error\": \"Recipe not found with id 00000000-0000-0000-0000-000000000000\"\n}"
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The recipe with the given id was not found\"\n}"
 						}
 					]
 				},
 				{
 					"name": "Update Recipe - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Risotto\",\n  \"description\": \"Updated description\",\n  \"photo\": \"url_to_photo\",\n  \"preparationProcess\": \"Detailed steps\",\n  \"video\": \"url_to_video\"\n}",
+							"raw": "{\n  \"name\": \"Risotto\",\n  \"description\": \"Updated description\",\n  \"photo\": \"https://www.google.com/url.jpg\",\n  \"preparationProcess\": \"Detailed steps\",\n  \"video\": \"https://www.google.com/url.mov\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1590,13 +1672,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/recipes/00000000-0000-0000-0000-000000000000",
+							"raw": "{{base_url}}/recipes/{{recipeId}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"recipes",
-								"00000000-0000-0000-0000-000000000000"
+								"{{recipeId}}"
 							]
 						}
 					},
@@ -1608,7 +1690,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"name\": \"Risotto\",\n  \"description\": \"Updated description\",\n  \"photo\": \"url_to_photo\",\n  \"preparationProcess\": \"Detailed steps\",\n  \"video\": \"url_to_video\"\n}",
+									"raw": "{\n    \"name\": \"Risotto\",\n    \"description\": \"Updated description\",\n    \"photo\": \"https://www.google.com/url.jpg\",\n    \"preparationProcess\": \"Detailed steps\",\n    \"video\": \"https://www.google.com/url.mov\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1616,7 +1698,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/api/v1/recipes/00000000-0000-0000-0000-000000000000",
+									"raw": "http://localhost:3000/api/v1/recipes/{{recipeId}}",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -1626,7 +1708,7 @@
 										"api",
 										"v1",
 										"recipes",
-										"00000000-0000-0000-0000-000000000000"
+										"{{recipeId}}"
 									]
 								}
 							},
@@ -1635,18 +1717,37 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
-							"body": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"name\": \"Risotto\",\n  \"description\": \"Updated description\",\n  \"photo\": \"url_to_photo\",\n  \"preparationProcess\": \"Detailed steps\",\n  \"video\": \"url_to_video\"\n}"
+							"body": "{\n    \"id\": \"c2584233-8380-4457-97db-3b1232c27d41\",\n    \"name\": \"Risotto\",\n    \"description\": \"Updated description\",\n    \"photo\": \"https://www.google.com/url.jpg\",\n    \"preparationProcess\": \"Detailed steps\",\n    \"video\": \"https://www.google.com/url.mov\"\n}"
 						}
 					]
 				},
 				{
 					"name": "Update Recipe - Not Found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The recipe with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Risotto\",\n  \"description\": \"Updated description\",\n  \"photo\": \"url_to_photo\",\n  \"preparationProcess\": \"Detailed steps\",\n  \"video\": \"url_to_video\"\n}",
+							"raw": "{\n  \"name\": \"Risotto\",\n  \"description\": \"Updated description\",\n  \"photo\": \"https://www.google.com/url.jpg\",\n  \"preparationProcess\": \"Detailed steps\",\n  \"video\": \"https://www.google.com/url.mov\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1695,23 +1796,37 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
-							"body": "{\n  \"error\": \"Recipe not found with id 00000000-0000-0000-0000-000000000000\"\n}"
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The recipe with the given id was not found\"\n}"
 						}
 					]
 				},
 				{
 					"name": "Delete Recipe - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"   pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/recipes/00000000-0000-0000-0000-000000000000",
+							"raw": "{{base_url}}/recipes/{{recipeId}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"recipes",
-								"00000000-0000-0000-0000-000000000000"
+								"{{recipeId}}"
 							]
 						}
 					},
@@ -1722,13 +1837,13 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/recipes/00000000-0000-0000-0000-000000000000",
+									"raw": "{{base_url}}/recipes/{{recipeId}}",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"recipes",
-										"00000000-0000-0000-0000-000000000000"
+										"{{recipeId}}"
 									]
 								}
 							},
@@ -1743,6 +1858,25 @@
 				},
 				{
 					"name": "Delete Recipe - Not Found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The recipe with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -1779,7 +1913,7 @@
 							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
-							"body": "{\n  \"error\": \"Recipe not found with id 00000000-0000-0000-0000-000000000000\"\n}"
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The recipe with the given id was not found\"\n}"
 						}
 					]
 				}
@@ -3342,30 +3476,503 @@
 			"name": "Gastronomic Culture-Recipes",
 			"item": [
 				{
-					"name": "Get a recipe of a gastronomic culture",
+					"name": "Add Gastronomic Culture - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Extracting data from the response",
+									"var responseData = pm.response.json();",
+									"",
+									"// Set the pm globals to the id of the created product",
+									"pm.globals.set(\"cultureId\", responseData.id);",
+									"",
+									"// Test for the status code to be 201",
+									"pm.test(\"Response status code is 201\", function () {",
+									"  pm.response.to.have.status(201);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
-						"method": "GET",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Latin American\",\n  \"description\": \"Rich and diverse culinary traditions.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/cultures",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cultures"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Latin American\",\n  \"description\": \"Rich and diverse culinary traditions.\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/cultures",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"cultures"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"name\": \"Latin American\",\n  \"description\": \"Rich and diverse culinary traditions.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Add Recipe - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"recipeId\", data.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Risotto\",\n  \"description\": \"Creamy Italian rice dish.\",\n  \"photo\": \"https://www.google.com/url.jpg\",\n  \"preparationProcess\": \"Detailed steps\",\n  \"video\": \"https://www.google.com/url.mov\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/recipes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"recipes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Risotto\",\n  \"description\": \"Creamy Italian rice dish.\",\n  \"photo\": \"url_to_photo\",\n  \"preparationProcess\": \"Detailed steps\",\n  \"video\": \"url_to_video\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/recipes",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"recipes"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"name\": \"Risotto\",\n  \"description\": \"Creamy Italian rice dish.\",\n  \"photo\": \"url_to_photo\",\n  \"preparationProcess\": \"Detailed steps\",\n  \"video\": \"url_to_video\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Add Recipe 2 - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"recipeId2\", data.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Pasta carbonara\",\n  \"description\": \"Creamy Italian rice dish.\",\n  \"photo\": \"https://www.google.com/url.jpg\",\n  \"preparationProcess\": \"Detailed steps\",\n  \"video\": \"https://www.google.com/url.mov\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/recipes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"recipes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Risotto\",\n  \"description\": \"Creamy Italian rice dish.\",\n  \"photo\": \"url_to_photo\",\n  \"preparationProcess\": \"Detailed steps\",\n  \"video\": \"url_to_video\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/recipes",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"recipes"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"name\": \"Risotto\",\n  \"description\": \"Creamy Italian rice dish.\",\n  \"photo\": \"url_to_photo\",\n  \"preparationProcess\": \"Detailed steps\",\n  \"video\": \"url_to_video\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Add a recipe to a gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
+							"raw": "{{base_url}}/cultures/{{cultureId}}/recipes/{{recipeId}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"cultures",
-								":culture_id",
+								"{{cultureId}}",
+								"recipes",
+								"{{recipeId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add a recipe to a gastronomic culture",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/cultures/{{cultureId}}/recipes/{{recipeId}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cultures",
+										"{{cultureId}}",
+										"recipes",
+										"{{recipeId}}"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"a35ba732-e28c-479f-b3b7-c95f1c8586db\",\n    \"name\": \"Latin American\",\n    \"description\": \"Rich and diverse culinary traditions.\",\n    \"countries\": [],\n    \"restaurants\": [],\n    \"recipes\": [\n        {\n            \"id\": \"e45ef456-773f-4608-b8fc-7ab4d673ff49\",\n            \"name\": \"Risotto\",\n            \"description\": \"Creamy Italian rice dish.\",\n            \"photo\": \"https://www.google.com/url.jpg\",\n            \"preparationProcess\": \"Detailed steps\",\n            \"video\": \"https://www.google.com/url.mov\",\n            \"gastronomicCulture\": null\n        }\n    ],\n    \"products\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Add an invalid recipe to a gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The recipe with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cultures/{{cultureId}}/recipes/:recipe_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cultures",
+								"{{cultureId}}",
 								"recipes",
 								":recipe_id"
 							],
 							"variable": [
 								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
 									"key": "recipe_id",
-									"value": "00000000-0000-0000-0000-000000000000"
+									"value": "00000000-0000-4000-8000-000000000000"
 								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add an invalid recipe to a gastronomic culture",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/cultures/{{cultureId}}/recipes/:recipe_id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cultures",
+										"{{cultureId}}",
+										"recipes",
+										":recipe_id"
+									],
+									"variable": [
+										{
+											"key": "recipe_id",
+											"value": "00000000-0000-4000-8000-000000000000"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The recipe with the given id was not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Add a recipe to an invalid gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The gastronomic culture with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cultures/:cultureId/recipes/{{recipeId}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cultures",
+								":cultureId",
+								"recipes",
+								"{{recipeId}}"
+							],
+							"variable": [
+								{
+									"key": "cultureId",
+									"value": "00000000-0000-4000-8000-000000000000"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add a recipe to an invalid gastronomic culture",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/cultures/:culture_id/recipes/{{recipeId}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cultures",
+										":culture_id",
+										"recipes",
+										"{{recipeId}}"
+									],
+									"variable": [
+										{
+											"key": "culture_id",
+											"value": "00000000-0000-0000-0000-000000000000"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get a recipe of a gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cultures/{{cultureId}}/recipes/{{recipeId}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cultures",
+								"{{cultureId}}",
+								"recipes",
+								"{{recipeId}}"
 							]
 						}
 					},
@@ -3376,25 +3983,15 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
+									"raw": "{{base_url}}/cultures/{{cultureId}}/recipes/{{recipeId}}",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"cultures",
-										":culture_id",
+										"{{cultureId}}",
 										"recipes",
-										":recipe_id"
-									],
-									"variable": [
-										{
-											"key": "culture_id",
-											"value": "00000000-0000-0000-0000-000000000000"
-										},
-										{
-											"key": "recipe_id",
-											"value": "00000000-0000-0000-0000-000000000000"
-										}
+										"{{recipeId}}"
 									]
 								}
 							},
@@ -3410,34 +4007,49 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"name\": \"Pasta Carbonara\",\n    \"description\": \"A classic Italian dish.\",\n    \"photo\": \"url_to_photo\",\n    \"preparationProcess\": \"Detailed steps\",\n    \"video\": \"url_to_video\",\n    \"culture\": {\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\n        \"name\": \"Italian\",\n        \"description\": \"Rich and diverse culinary traditions.\"\n    }\n}"
+							"body": "{\n    \"id\": \"e45ef456-773f-4608-b8fc-7ab4d673ff49\",\n    \"name\": \"Risotto\",\n    \"description\": \"Creamy Italian rice dish.\",\n    \"photo\": \"https://www.google.com/url.jpg\",\n    \"preparationProcess\": \"Detailed steps\",\n    \"video\": \"https://www.google.com/url.mov\",\n    \"gastronomicCulture\": {\n        \"id\": \"a35ba732-e28c-479f-b3b7-c95f1c8586db\",\n        \"name\": \"Latin American\",\n        \"description\": \"Rich and diverse culinary traditions.\"\n    }\n}"
 						}
 					]
 				},
 				{
 					"name": "Get an invalid recipe of a gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The recipe with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
+							"raw": "{{base_url}}/cultures/{{cultureId}}/recipes/:recipe_id",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"cultures",
-								":culture_id",
+								"{{cultureId}}",
 								"recipes",
 								":recipe_id"
 							],
 							"variable": [
 								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
 									"key": "recipe_id",
-									"value": "0"
+									"value": "00000000-0000-0000-0000-000000000000"
 								}
 							]
 						}
@@ -3449,24 +4061,20 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
+									"raw": "{{base_url}}/cultures/{{cultureId}}/recipes/:recipe_id",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"cultures",
-										":culture_id",
+										"{{cultureId}}",
 										"recipes",
 										":recipe_id"
 									],
 									"variable": [
 										{
-											"key": "culture_id",
-											"value": "00000000-0000-0000-0000-000000000000"
-										},
-										{
 											"key": "recipe_id",
-											"value": "0"
+											"value": "00000000-0000-0000-0000-000000000000"
 										}
 									]
 								}
@@ -3489,11 +4097,30 @@
 				},
 				{
 					"name": "Get a recipe of an invalid gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The gastronomic culture with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
+							"raw": "{{base_url}}/cultures/:culture_id/recipes/{{recipeId}}",
 							"host": [
 								"{{base_url}}"
 							],
@@ -3501,16 +4128,12 @@
 								"cultures",
 								":culture_id",
 								"recipes",
-								":recipe_id"
+								"{{recipeId}}"
 							],
 							"variable": [
 								{
 									"key": "culture_id",
-									"value": "0"
-								},
-								{
-									"key": "recipe_id",
-									"value": "00000000-0000-0000-0000-000000000000\n\n"
+									"value": "00000000-0000-0000-0000-000000000000"
 								}
 							]
 						}
@@ -3522,7 +4145,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
+									"raw": "{{base_url}}/cultures/:culture_id/recipes/{{recipeId}}",
 									"host": [
 										"{{base_url}}"
 									],
@@ -3530,15 +4153,11 @@
 										"cultures",
 										":culture_id",
 										"recipes",
-										":recipe_id"
+										"{{recipeId}}"
 									],
 									"variable": [
 										{
 											"key": "culture_id",
-											"value": "0"
-										},
-										{
-											"key": "recipe_id",
 											"value": "00000000-0000-0000-0000-000000000000"
 										}
 									]
@@ -3562,29 +4181,38 @@
 				},
 				{
 					"name": "Get a recipe non-associated to a gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 412\", function () {\r",
+									"   pm.response.to.have.status(412);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The recipe with the given id is not associated to the gastronomic culture\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id_2",
+							"raw": "{{base_url}}/cultures/{{cultureId}}/recipes/{{recipeId2}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"cultures",
-								":culture_id",
+								"{{cultureId}}",
 								"recipes",
-								":recipe_id_2"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "recipe_id_2",
-									"value": "00000000-0000-0000-0000-000000000001"
-								}
+								"{{recipeId2}}"
 							]
 						}
 					},
@@ -3595,25 +4223,15 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id_2",
+									"raw": "{{base_url}}/cultures/{{cultureId}}/recipes/{{recipeId2}}",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"cultures",
-										":culture_id",
+										"{{cultureId}}",
 										"recipes",
-										":recipe_id_2"
-									],
-									"variable": [
-										{
-											"key": "culture_id",
-											"value": "00000000-0000-0000-0000-000000000000"
-										},
-										{
-											"key": "recipe_id_2",
-											"value": "00000000-0000-0000-0000-000000000001"
-										}
+										"{{recipeId2}}"
 									]
 								}
 							},
@@ -3635,6 +4253,90 @@
 				},
 				{
 					"name": "Get all recipes of a gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cultures/{{cultureId}}/recipes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cultures",
+								"{{cultureId}}",
+								"recipes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all recipes of a gastronomic culture",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/cultures/{{cultureId}}/recipes",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cultures",
+										"{{cultureId}}",
+										"recipes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"de2a2469-f2e9-4a58-a6cb-5a090392143a\",\n        \"name\": \"Risotto\",\n        \"description\": \"Creamy Italian rice dish.\",\n        \"photo\": \"https://www.google.com/url.jpg\",\n        \"preparationProcess\": \"Detailed steps\",\n        \"video\": \"https://www.google.com/url.mov\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get all recipes of an invalid gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The gastronomic culture with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -3652,69 +4354,6 @@
 								{
 									"key": "culture_id",
 									"value": "00000000-0000-0000-0000-000000000000"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Get all recipes of a gastronomic culture",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"cultures",
-										":culture_id",
-										"recipes"
-									],
-									"variable": [
-										{
-											"key": "culture_id",
-											"value": "00000000-0000-0000-0000-000000000000"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"name\": \"Pasta Carbonara\",\n        \"description\": \"A classic Italian dish.\",\n        \"photo\": \"url_to_photo\",\n        \"preparationProcess\": \"Detailed steps\",\n        \"video\": \"url_to_video\",\n        \"culture\": {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Italian\",\n            \"description\": \"Rich and diverse culinary traditions.\"\n        }\n    }\n]"
-						}
-					]
-				},
-				{
-					"name": "Get all recipes of an invalid gastronomic culture",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/recipes",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"recipes"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "0"
 								}
 							]
 						}
@@ -3738,7 +4377,7 @@
 									"variable": [
 										{
 											"key": "culture_id",
-											"value": "0"
+											"value": "00000000-0000-0000-0000-000000000000"
 										}
 									]
 								}
@@ -3753,232 +4392,27 @@
 					]
 				},
 				{
-					"name": "Add a recipe to a gastronomic culture",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"recipes",
-								":recipe_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "recipe_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Add a recipe to a gastronomic culture",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"cultures",
-										":culture_id",
-										"recipes",
-										":recipe_id"
-									],
-									"variable": [
-										{
-											"key": "culture_id",
-											"value": "00000000-0000-0000-0000-000000000000"
-										},
-										{
-											"key": "recipe_id",
-											"value": "00000000-0000-0000-0000-000000000000"
-										}
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"Italian\",\n    \"description\": \"Rich and diverse culinary traditions.\",\n    \"recipes\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Pasta Carbonara\",\n            \"description\": \"A classic Italian dish.\",\n            \"photo\": \"url_to_photo\",\n            \"preparationProcess\": \"Detailed steps\",\n            \"video\": \"url_to_video\"\n        }\n    ],\n    \"products\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Balsamic Vinegar\",\n            \"description\": \"High-quality extra thick\",\n            \"history\": \"Used since ancient times\",\n            \"category\": \"Cooking Essentials\"\n        }\n    ],\n    \"restaurants\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"La Pergola\",\n            \"city\": \"Rome\",\n            \"michelinStars\": 3,\n            \"awardDate\": \"2020-05-20\"\n        }\n    ],\n    \"countries\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Italy\"\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Add an invalid recipe to a gastronomic culture",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"recipes",
-								":recipe_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "recipe_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Add an invalid recipe to a gastronomic culture",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"cultures",
-										":culture_id",
-										"recipes",
-										":recipe_id"
-									],
-									"variable": [
-										{
-											"key": "culture_id",
-											"value": "00000000-0000-0000-0000-000000000000"
-										},
-										{
-											"key": "recipe_id",
-											"value": "0"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The recipe with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Add a recipe to an invalid gastronomic culture",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"recipes",
-								":recipe_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "0"
-								},
-								{
-									"key": "recipe_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Add a recipe to an invalid gastronomic culture",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"cultures",
-										":culture_id",
-										"recipes",
-										":recipe_id"
-									],
-									"variable": [
-										{
-											"key": "culture_id",
-											"value": "0"
-										},
-										{
-											"key": "recipe_id",
-											"value": "00000000-0000-0000-0000-000000000000"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
 					"name": "Update recipes of a gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n   {\r\n       \"id\": \"{{recipe_id_2}}\"\r\n   }\r\n]",
+							"raw": "[\r\n   {\r\n       \"id\": \"{{recipeId2}}\"\r\n   }\r\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3986,20 +4420,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/recipes",
+							"raw": "{{base_url}}/cultures/{{cultureId}}/recipes",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"cultures",
-								":culture_id",
+								"{{cultureId}}",
 								"recipes"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
 							]
 						}
 					},
@@ -4017,7 +4445,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "[\r\n   {\r\n       \"id\": \"{{recipe_id_2}}\"\r\n   }\r\n]",
+									"raw": "[\r\n   {\r\n       \"id\": \"{{recipeId2}}\"\r\n   }\r\n]",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -4025,20 +4453,14 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes",
+									"raw": "{{base_url}}/cultures/{{cultureId}}/recipes",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"cultures",
-										":culture_id",
+										"{{cultureId}}",
 										"recipes"
-									],
-									"variable": [
-										{
-											"key": "culture_id",
-											"value": "00000000-0000-0000-0000-000000000000"
-										}
 									]
 								}
 							},
@@ -4054,18 +4476,37 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"Italian\",\n    \"description\": \"Rich and diverse culinary traditions.\",\n    \"recipes\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Pasta Carbonara\",\n            \"description\": \"A classic Italian dish.\",\n            \"photo\": \"url_to_photo\",\n            \"preparationProcess\": \"Detailed steps\",\n            \"video\": \"url_to_video\"\n        }\n    ],\n    \"products\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Balsamic Vinegar\",\n            \"description\": \"High-quality extra thick\",\n            \"history\": \"Used since ancient times\",\n            \"category\": \"Cooking Essentials\"\n        }\n    ],\n    \"restaurants\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"La Pergola\",\n            \"city\": \"Rome\",\n            \"michelinStars\": 3,\n            \"awardDate\": \"2020-05-20\"\n        }\n    ],\n    \"countries\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Italy\"\n        }\n    ]\n}"
+							"body": "{\n    \"id\": \"24382c00-1ac1-44a5-9f8d-84d56d7eddae\",\n    \"name\": \"Latin American\",\n    \"description\": \"Rich and diverse culinary traditions.\",\n    \"countries\": [],\n    \"restaurants\": [],\n    \"recipes\": [\n        {\n            \"id\": \"0963e0a4-d3e5-4d1a-9d94-18de7bbd139b\"\n        }\n    ],\n    \"products\": []\n}"
 						}
 					]
 				},
 				{
 					"name": "Update invalid recipes of a gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The recipe with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n   {\r\n       \"id\": \"0\"\r\n   }\r\n]",
+							"raw": "[\r\n   {\r\n       \"id\": \"00000000-0000-0000-0000-000000000000\"\r\n   }\r\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4073,20 +4514,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/recipes",
+							"raw": "{{base_url}}/cultures/{{cultureId}}/recipes",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"cultures",
-								":culture_id",
+								"{{cultureId}}",
 								"recipes"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
 							]
 						}
 					},
@@ -4098,7 +4533,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "[\r\n   {\r\n       \"id\": \"0\"\r\n   }\r\n]",
+									"raw": "[\r\n   {\r\n       \"id\": \"00000000-0000-0000-0000-000000000000\"\r\n   }\r\n]",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -4106,20 +4541,14 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes",
+									"raw": "{{base_url}}/cultures/{{cultureId}}/recipes",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"cultures",
-										":culture_id",
+										"{{cultureId}}",
 										"recipes"
-									],
-									"variable": [
-										{
-											"key": "culture_id",
-											"value": "00000000-0000-0000-0000-000000000000"
-										}
 									]
 								}
 							},
@@ -4141,12 +4570,31 @@
 				},
 				{
 					"name": "Update recipes of an invalid gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The gastronomic culture with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n   {\r\n       \"id\": \"{{recipe_id_2}}\"\r\n   }\r\n]",
+							"raw": "[\r\n   {\r\n       \"id\": \"{{recipeId2}}\"\r\n   }\r\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4166,7 +4614,7 @@
 							"variable": [
 								{
 									"key": "culture_id",
-									"value": "0"
+									"value": "00000000-0000-0000-0000-000000000000"
 								}
 							]
 						}
@@ -4199,7 +4647,7 @@
 									"variable": [
 										{
 											"key": "culture_id",
-											"value": "0"
+											"value": "00000000-0000-0000-0000-000000000000"
 										}
 									]
 								}
@@ -4222,29 +4670,33 @@
 				},
 				{
 					"name": "Delete a recipe of a gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"   pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id_2",
+							"raw": "{{base_url}}/cultures/{{cultureId}}/recipes/{{recipeId2}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"cultures",
-								":culture_id",
+								"{{cultureId}}",
 								"recipes",
-								":recipe_id_2"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "recipe_id_2",
-									"value": "00000000-0000-0000-0000-000000000001"
-								}
+								"{{recipeId2}}"
 							]
 						}
 					},
@@ -4255,25 +4707,15 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id_2",
+									"raw": "{{base_url}}/cultures/{{cultureId}}/recipes/{{recipeId2}}",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"cultures",
-										":culture_id",
+										"{{cultureId}}",
 										"recipes",
-										":recipe_id_2"
-									],
-									"variable": [
-										{
-											"key": "culture_id",
-											"value": "00000000-0000-0000-0000-000000000000"
-										},
-										{
-											"key": "recipe_id_2",
-											"value": "00000000-0000-0000-0000-000000000001"
-										}
+										"{{recipeId2}}"
 									]
 								}
 							},
@@ -4288,28 +4730,43 @@
 				},
 				{
 					"name": "Delete an invalid recipe of a gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The recipe with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
+							"raw": "{{base_url}}/cultures/{{cultureId}}/recipes/:recipe_id",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"cultures",
-								":culture_id",
+								"{{cultureId}}",
 								"recipes",
 								":recipe_id"
 							],
 							"variable": [
 								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
 									"key": "recipe_id",
-									"value": "0"
+									"value": "00000000-0000-0000-0000-000000000000"
 								}
 							]
 						}
@@ -4321,24 +4778,20 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
+									"raw": "{{base_url}}/cultures/{{cultureId}}/recipes/:recipe_id",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"cultures",
-										":culture_id",
+										"{{cultureId}}",
 										"recipes",
 										":recipe_id"
 									],
 									"variable": [
 										{
-											"key": "culture_id",
-											"value": "00000000-0000-0000-0000-000000000000"
-										},
-										{
 											"key": "recipe_id",
-											"value": "0"
+											"value": "00000000-0000-0000-0000-000000000000"
 										}
 									]
 								}
@@ -4354,11 +4807,30 @@
 				},
 				{
 					"name": "Delete a recipe of an invalid gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The gastronomic culture with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
+							"raw": "{{base_url}}/cultures/:culture_id/recipes/{{recipeId}}",
 							"host": [
 								"{{base_url}}"
 							],
@@ -4366,15 +4838,11 @@
 								"cultures",
 								":culture_id",
 								"recipes",
-								":recipe_id"
+								"{{recipeId}}"
 							],
 							"variable": [
 								{
 									"key": "culture_id",
-									"value": "0"
-								},
-								{
-									"key": "recipe_id",
 									"value": "00000000-0000-0000-0000-000000000000"
 								}
 							]
@@ -4387,7 +4855,7 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id",
+									"raw": "{{base_url}}/cultures/:culture_id/recipes/{{recipeId}}",
 									"host": [
 										"{{base_url}}"
 									],
@@ -4395,16 +4863,12 @@
 										"cultures",
 										":culture_id",
 										"recipes",
-										":recipe_id"
+										"{{recipeId}}"
 									],
 									"variable": [
 										{
 											"key": "culture_id",
-											"value": "0"
-										},
-										{
-											"key": "recipe_id",
-											"value": "00000000-0000-0000-0000-000000000000"
+											"value": "000000000-0000-0000-0000-000000000000"
 										}
 									]
 								}
@@ -4420,29 +4884,38 @@
 				},
 				{
 					"name": "Delete a recipe non-associated to a gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 412\", function () {\r",
+									"   pm.response.to.have.status(412);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The recipe with the given id is not associated to the gastronomic culture\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id_2",
+							"raw": "{{base_url}}/cultures/{{cultureId}}/recipes/{{recipeId2}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"cultures",
-								":culture_id",
+								"{{cultureId}}",
 								"recipes",
-								":recipe_id_2"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "recipe_id_2",
-									"value": "00000000-0000-0000-0000-000000000001"
-								}
+								"{{recipeId2}}"
 							]
 						}
 					},
@@ -4453,25 +4926,15 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/recipes/:recipe_id_2",
+									"raw": "{{base_url}}/cultures/{{cultureId}}/recipes/{{recipeId2}}",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"cultures",
-										":culture_id",
+										"{{cultureId}}",
 										"recipes",
-										":recipe_id_2"
-									],
-									"variable": [
-										{
-											"key": "culture_id",
-											"value": "00000000-0000-0000-0000-000000000000"
-										},
-										{
-											"key": "recipe_id_2",
-											"value": "00000000-0000-0000-0000-000000000001"
-										}
+										"{{recipeId2}}"
 									]
 								}
 							},

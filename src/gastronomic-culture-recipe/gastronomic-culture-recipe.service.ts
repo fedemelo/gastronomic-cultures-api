@@ -21,8 +21,15 @@ export class GastronomicCultureRecipeService {
     recipeId: string,
   ): Promise<GastronomicCultureEntity> {
     const recipe = await this.recipeService.findOne(recipeId);
+    if (!recipe) {
+      throw new BusinessLogicException('The recipe with the given id was not found', BusinessError.NOT_FOUND);
+    }
+
     const gastronomicCulture =
       await this.gastronomicCultureService.findOne(gastronomicCultureId);
+    if (!gastronomicCulture) {
+      throw new BusinessLogicException('The gastronomic culture with the given id was not found', BusinessError.NOT_FOUND);
+    }
 
     gastronomicCulture.recipes = [...gastronomicCulture.recipes, recipe];
     return await this.gastronomicCultureService.update(
@@ -30,13 +37,22 @@ export class GastronomicCultureRecipeService {
       gastronomicCulture,
     );
   }
+
   async findRecipeByGastronomicCultureIdAndRecipeId(
     gastronomicCultureId: string,
     recipeId: string,
   ): Promise<RecipeEntity> {
     const recipe: RecipeEntity = await this.recipeService.findOne(recipeId);
+    if (!recipe) {
+      throw new BusinessLogicException('The recipe with the given id was not found', BusinessError.NOT_FOUND);
+    }
+
     const gastronomicCulture: GastronomicCultureEntity =
       await this.gastronomicCultureService.findOne(gastronomicCultureId);
+    if (!gastronomicCulture) {
+      throw new BusinessLogicException('The gastronomic culture with the given id was not found', BusinessError.NOT_FOUND);
+    }
+
     const recipeFound = gastronomicCulture.recipes.find(
       (recipeEntity: RecipeEntity) => recipeEntity.id === recipe.id,
     );
@@ -48,35 +64,55 @@ export class GastronomicCultureRecipeService {
     }
     return recipe;
   }
+
   async findRecipesByGastronomicCultureId(
     gastronomicCultureId: string,
   ): Promise<RecipeEntity[]> {
     const gastronomicCulture: GastronomicCultureEntity =
       await this.gastronomicCultureService.findOne(gastronomicCultureId);
+    if (!gastronomicCulture) {
+      throw new BusinessLogicException('The gastronomic culture with the given id was not found', BusinessError.NOT_FOUND);
+    }
+    
     return gastronomicCulture.recipes;
   }
+
   async associateRecipesToGastronomicCulture(
     gastronomicCultureId: string,
     recipes: RecipeEntity[],
   ): Promise<GastronomicCultureEntity> {
     const gastronomicCulture: GastronomicCultureEntity =
       await this.gastronomicCultureService.findOne(gastronomicCultureId);
+    if (!gastronomicCulture) {
+      throw new BusinessLogicException('The gastronomic culture with the given id was not found', BusinessError.NOT_FOUND);
+    }
+
     for (const recipe of recipes) {
       await this.recipeService.findOne(recipe.id);
     }
+
     gastronomicCulture.recipes = recipes;
     return await this.gastronomicCultureService.update(
       gastronomicCultureId,
       gastronomicCulture,
     );
   }
+
   async deleteRecipeFromGastronomicCulture(
     gastronomicCultureId: string,
     recipeId: string,
   ): Promise<void> {
     const recipe = await this.recipeService.findOne(recipeId);
+    if (!recipe) {
+      throw new BusinessLogicException('The recipe with the given id was not found', BusinessError.NOT_FOUND);
+    }
+
     const gastronomicCulture =
       await this.gastronomicCultureService.findOne(gastronomicCultureId);
+    if (!gastronomicCulture) {
+      throw new BusinessLogicException('The gastronomic culture with the given id was not found', BusinessError.NOT_FOUND);
+    }
+
     const recipeFound = gastronomicCulture.recipes.find(
       (recipeEntity: RecipeEntity) => recipeEntity.id === recipe.id,
     );
@@ -86,6 +122,7 @@ export class GastronomicCultureRecipeService {
         BusinessError.PRECONDITION_FAILED,
       );
     }
+
     gastronomicCulture.recipes = gastronomicCulture.recipes.filter(
       (recipeEntity: RecipeEntity) => recipeEntity.id !== recipe.id,
     );
