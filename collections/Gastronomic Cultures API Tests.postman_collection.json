@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "c0deeda8-6c50-484e-855d-88edc7a6c497",
+		"_postman_id": "4abccc42-51c0-4f07-8aed-30eb676efb6f",
 		"name": "Gastronomic Cultures API Tests",
 		"description": "This collection provides comprehensive CRUD operations and detailed views for managing gastronomic data, including products, gastronomic cultures, countries, recipes, and restaurants.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "37773784"
+		"_exporter_id": "37855496"
 	},
 	"item": [
 		{
@@ -12,6 +12,23 @@
 			"item": [
 				{
 					"name": "Add Product - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"product_id\", data.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -74,6 +91,25 @@
 				},
 				{
 					"name": "Get All Products - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Number of products > ' + 0, function () {\r",
+									"   var data = pm.response.json()\r",
+									"   pm.expect(data.length).to.greaterThan(0)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -118,17 +154,31 @@
 				},
 				{
 					"name": "Get Product - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/products/00000000-0000-0000-0000-000000000000",
+							"raw": "{{base_url}}/products/{{product_id}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"products",
-								"00000000-0000-0000-0000-000000000000"
+								"{{product_id}}"
 							]
 						}
 					},
@@ -164,6 +214,25 @@
 				},
 				{
 					"name": "Get Product - Not Found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The product with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -210,6 +279,20 @@
 				},
 				{
 					"name": "Update Product - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -223,13 +306,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/products/00000000-0000-0000-0000-000000000000",
+							"raw": "{{base_url}}/products/{{product_id}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"products",
-								"00000000-0000-0000-0000-000000000000"
+								"{{product_id}}"
 							]
 						}
 					},
@@ -274,6 +357,25 @@
 				},
 				{
 					"name": "Update Product - Not Found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The product with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -338,17 +440,31 @@
 				},
 				{
 					"name": "Delete Product - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"   pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/products/00000000-0000-0000-0000-000000000000",
+							"raw": "{{base_url}}/products/{{product_id}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"products",
-								"00000000-0000-0000-0000-000000000000"
+								"{{product_id}}"
 							]
 						}
 					},
@@ -384,6 +500,25 @@
 				},
 				{
 					"name": "Delete Product - Not Found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The product with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -2600,448 +2735,274 @@
 			"name": "Gastronomic Cultures-Products",
 			"item": [
 				{
-					"name": "Get a product of a gastronomic culture",
+					"name": "Add Gastronomic Culture - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Extracting data from the response",
+									"var responseData = pm.response.json();",
+									"",
+									"// Set the pm globals to the id of the created product",
+									"pm.globals.set(\"cultureId\", responseData.id);",
+									"",
+									"// Test for the status code to be 201",
+									"pm.test(\"Response status code is 201\", function () {",
+									"  pm.response.to.have.status(201);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Latin American\",\n  \"description\": \"Rich and diverse culinary traditions.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
+							"raw": "{{base_url}}/cultures",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"cultures",
-								":culture_id",
-								"products",
-								":product_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "product_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
+								"cultures"
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Get a product of a gastronomic culture",
+							"name": "Success Response",
 							"originalRequest": {
-								"method": "GET",
+								"method": "POST",
 								"header": [],
-								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"cultures",
-										":culture_id",
-										"products",
-										":product_id"
-									],
-									"variable": [
-										{
-											"key": "culture_id",
-											"value": "00000000-0000-0000-0000-000000000000"
-										},
-										{
-											"key": "product_id",
-											"value": "00000000-0000-0000-0000-000000000000"
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Latin American\",\n  \"description\": \"Rich and diverse culinary traditions.\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"Olive Oil\",\n    \"description\": \"High-quality extra virgin\",\n    \"history\": \"Used since ancient times\",\n    \"category\": \"Cooking Essentials\",\n    \"cultures\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Mediterranean\",\n            \"description\": \"Rich and diverse culinary traditions.\"\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Get an invalid product of a gastronomic culture",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"products",
-								":product_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
+									}
 								},
-								{
-									"key": "product_id",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Get an invalid product of a gastronomic culture",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
 								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
+									"raw": "http://localhost:3000/cultures",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
-										"cultures",
-										":culture_id",
-										"products",
-										":product_id"
-									],
-									"variable": [
-										{
-											"key": "culture_id",
-											"value": "00000000-0000-0000-0000-000000000000"
-										},
-										{
-											"key": "product_id",
-											"value": "0"
-										}
+										"cultures"
 									]
 								}
 							},
-							"status": "Not Found",
-							"code": 404,
+							"status": "Created",
+							"code": 201,
 							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
+							"header": [],
 							"cookie": [],
-							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The product with the given id was not found\"\n}"
+							"body": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"name\": \"Latin American\",\n  \"description\": \"Rich and diverse culinary traditions.\"\n}"
 						}
 					]
 				},
 				{
-					"name": "Get a product of an invalid gastronomic culture",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
-								"products",
-								":product_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "0"
-								},
-								{
-									"key": "product_id",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": [
+					"name": "Add Product 1 - Success",
+					"event": [
 						{
-							"name": "Get a product of an invalid gastronomic culture",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"cultures",
-										":culture_id",
-										"products",
-										":product_id"
-									],
-									"variable": [
-										{
-											"key": "culture_id",
-											"value": "0"
-										},
-										{
-											"key": "product_id",
-											"value": "00000000-0000-0000-0000-000000000000"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"product_id_1\", data.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
 						}
-					]
-				},
-				{
-					"name": "Get a product non-associated to a gastronomic culture",
+					],
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Balsamic Vinegar\",\n  \"description\": \"Aged 12 years\",\n  \"history\": \"Originates from Italy\",\n  \"category\": \"Condiments\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
+							"raw": "{{base_url}}/products",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"cultures",
-								":culture_id",
-								"products",
-								":product_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "product_id",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Get a product non-associated to a gastronomic culture",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/products/:product_id_2",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"cultures",
-										":culture_id",
-										"products",
-										":product_id_2"
-									],
-									"variable": [
-										{
-											"key": "culture_id",
-											"value": "00000000-0000-0000-0000-000000000000"
-										},
-										{
-											"key": "product_id_2",
-											"value": "00000000-0000-0000-0000-000000000001"
-										}
-									]
-								}
-							},
-							"status": "Precondition Failed",
-							"code": 412,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 412,\n    \"message\": \"The product with the given id is not associated to The gastronomic culture\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get all products of a gastronomic culture",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"cultures",
-								":culture_id",
 								"products"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Get all products of a gastronomic culture",
+							"name": "Success Response",
 							"originalRequest": {
-								"method": "GET",
+								"method": "POST",
 								"header": [],
-								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/products",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"cultures",
-										":culture_id",
-										"products"
-									],
-									"variable": [
-										{
-											"key": "culture_id",
-											"value": "00000000-0000-0000-0000-000000000000"
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Balsamic Vinegar\",\n  \"description\": \"Aged 12 years\",\n  \"history\": \"Originates from Italy\",\n  \"category\": \"Condiments\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"products"
 									]
 								}
 							},
-							"status": "OK",
-							"code": 200,
+							"status": "Created",
+							"code": 201,
 							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
+							"header": [],
 							"cookie": [],
-							"body": "[\n    {\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\n        \"name\": \"Olive Oil\",\n        \"description\": \"High-quality extra virgin\",\n        \"history\": \"Used since ancient times\",\n        \"category\": \"Cooking Essentials\",\n        \"cultures\": [\n            {\n                \"id\": \"00000000-0000-0000-0000-000000000000\",\n                \"name\": \"Mediterranean\",\n                \"description\": \"Rich and diverse culinary traditions.\"\n            }\n        ]\n    }\n]"
+							"body": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"name\": \"Balsamic Vinegar\",\n  \"description\": \"Aged 12 years\",\n  \"history\": \"Originates from Italy\",\n  \"category\": \"Condiments\"\n}"
 						}
 					]
 				},
 				{
-					"name": "Get all products of an invalid gastronomic culture",
+					"name": "Add Product 2 - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"product_id_2\", data.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Balsamic Vinegar\",\n  \"description\": \"Aged 12 years\",\n  \"history\": \"Originates from Italy\",\n  \"category\": \"Condiments\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products",
+							"raw": "{{base_url}}/products",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"cultures",
-								":culture_id",
 								"products"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "0"
-								}
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Get all products of an invalid gastronomic culture",
+							"name": "Success Response",
 							"originalRequest": {
-								"method": "GET",
+								"method": "POST",
 								"header": [],
-								"url": {
-									"raw": "{{base_url}}/cultures/:culture_id/products",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"cultures",
-										":culture_id",
-										"products"
-									],
-									"variable": [
-										{
-											"key": "culture_id",
-											"value": "0"
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Balsamic Vinegar\",\n  \"description\": \"Aged 12 years\",\n  \"history\": \"Originates from Italy\",\n  \"category\": \"Condiments\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"products"
 									]
 								}
 							},
-							"status": "Not Found",
-							"code": 404,
+							"status": "Created",
+							"code": 201,
 							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
+							"header": [],
 							"cookie": [],
-							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
+							"body": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"name\": \"Balsamic Vinegar\",\n  \"description\": \"Aged 12 years\",\n  \"history\": \"Originates from Italy\",\n  \"category\": \"Condiments\"\n}"
 						}
 					]
 				},
 				{
 					"name": "Add a product to a gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
+							"raw": "{{base_url}}/cultures/{{cultureId}}/products/{{product_id_1}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"cultures",
-								":culture_id",
+								"{{cultureId}}",
 								"products",
-								":product_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "product_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
+								"{{product_id_1}}"
 							]
 						}
 					},
@@ -3092,29 +3053,38 @@
 				},
 				{
 					"name": "Add an invalid product to a gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The product with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
+							"raw": "{{base_url}}/cultures/{{cultureId}}/products/00000000-0000-0000-0000-000000000000",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"cultures",
-								":culture_id",
+								"{{cultureId}}",
 								"products",
-								":product_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "product_id",
-									"value": "0"
-								}
+								"00000000-0000-0000-0000-000000000000"
 							]
 						}
 					},
@@ -3165,29 +3135,38 @@
 				},
 				{
 					"name": "Add a product to an invalid gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The gastronomic culture with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
+							"raw": "{{base_url}}/cultures/00000000-0000-0000-0000-000000000000/products/{{product_id_1}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"cultures",
-								":culture_id",
+								"00000000-0000-0000-0000-000000000000",
 								"products",
-								":product_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "0"
-								},
-								{
-									"key": "product_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
+								"{{product_id_1}}"
 							]
 						}
 					},
@@ -3237,7 +3216,491 @@
 					]
 				},
 				{
+					"name": "Get a product of a gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cultures/{{cultureId}}/products/{{product_id_1}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cultures",
+								"{{cultureId}}",
+								"products",
+								"{{product_id_1}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get a product of a gastronomic culture",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cultures",
+										":culture_id",
+										"products",
+										":product_id"
+									],
+									"variable": [
+										{
+											"key": "culture_id",
+											"value": "00000000-0000-0000-0000-000000000000"
+										},
+										{
+											"key": "product_id",
+											"value": "00000000-0000-0000-0000-000000000000"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"Olive Oil\",\n    \"description\": \"High-quality extra virgin\",\n    \"history\": \"Used since ancient times\",\n    \"category\": \"Cooking Essentials\",\n    \"cultures\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Mediterranean\",\n            \"description\": \"Rich and diverse culinary traditions.\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get an invalid product of a gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The product with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cultures/{{cultureId}}/products/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cultures",
+								"{{cultureId}}",
+								"products",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get an invalid product of a gastronomic culture",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cultures",
+										":culture_id",
+										"products",
+										":product_id"
+									],
+									"variable": [
+										{
+											"key": "culture_id",
+											"value": "00000000-0000-0000-0000-000000000000"
+										},
+										{
+											"key": "product_id",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The product with the given id was not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get a product of an invalid gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The gastronomic culture with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cultures/00000000-0000-0000-0000-000000000000/products/{{product_id_1}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cultures",
+								"00000000-0000-0000-0000-000000000000",
+								"products",
+								"{{product_id_1}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get a product of an invalid gastronomic culture",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cultures",
+										":culture_id",
+										"products",
+										":product_id"
+									],
+									"variable": [
+										{
+											"key": "culture_id",
+											"value": "0"
+										},
+										{
+											"key": "product_id",
+											"value": "00000000-0000-0000-0000-000000000000"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get a product non-associated to a gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 412\", function () {\r",
+									"   pm.response.to.have.status(412);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The product with the given id is not associated to the gastronomic culture\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cultures/{{cultureId}}/products/{{product_id_2}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cultures",
+								"{{cultureId}}",
+								"products",
+								"{{product_id_2}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get a product non-associated to a gastronomic culture",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/cultures/:culture_id/products/:product_id_2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cultures",
+										":culture_id",
+										"products",
+										":product_id_2"
+									],
+									"variable": [
+										{
+											"key": "culture_id",
+											"value": "00000000-0000-0000-0000-000000000000"
+										},
+										{
+											"key": "product_id_2",
+											"value": "00000000-0000-0000-0000-000000000001"
+										}
+									]
+								}
+							},
+							"status": "Precondition Failed",
+							"code": 412,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 412,\n    \"message\": \"The product with the given id is not associated to The gastronomic culture\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all products of a gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cultures/{{cultureId}}/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cultures",
+								"{{cultureId}}",
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all products of a gastronomic culture",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/cultures/:culture_id/products",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cultures",
+										":culture_id",
+										"products"
+									],
+									"variable": [
+										{
+											"key": "culture_id",
+											"value": "00000000-0000-0000-0000-000000000000"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\n        \"name\": \"Olive Oil\",\n        \"description\": \"High-quality extra virgin\",\n        \"history\": \"Used since ancient times\",\n        \"category\": \"Cooking Essentials\",\n        \"cultures\": [\n            {\n                \"id\": \"00000000-0000-0000-0000-000000000000\",\n                \"name\": \"Mediterranean\",\n                \"description\": \"Rich and diverse culinary traditions.\"\n            }\n        ]\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get all products of an invalid gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The gastronomic culture with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cultures/00000000-0000-0000-0000-000000000000/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cultures",
+								"00000000-0000-0000-0000-000000000000",
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all products of an invalid gastronomic culture",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/cultures/:culture_id/products",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cultures",
+										":culture_id",
+										"products"
+									],
+									"variable": [
+										{
+											"key": "culture_id",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
+						}
+					]
+				},
+				{
 					"name": "Update products of a gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -3251,20 +3714,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products",
+							"raw": "{{base_url}}/cultures/{{cultureId}}/products",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"cultures",
-								":culture_id",
+								"{{cultureId}}",
 								"products"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
 							]
 						}
 					},
@@ -3325,12 +3782,31 @@
 				},
 				{
 					"name": "Update invalid products of a gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The product with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n   {\r\n       \"id\": \"0\"\r\n   }\r\n]",
+							"raw": "[\r\n   {\r\n       \"id\": \"00000000-0000-0000-0000-000000000000\"\r\n   }\r\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3338,20 +3814,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products",
+							"raw": "{{base_url}}/cultures/{{cultureId}}/products",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"cultures",
-								":culture_id",
+								"{{cultureId}}",
 								"products"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
 							]
 						}
 					},
@@ -3406,6 +3876,25 @@
 				},
 				{
 					"name": "Update products of an invalid gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The gastronomic culture with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -3419,20 +3908,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products",
+							"raw": "{{base_url}}/cultures/00000000-0000-0000-0000-000000000000/products",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"cultures",
-								":culture_id",
+								"00000000-0000-0000-0000-000000000000",
 								"products"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "0"
-								}
 							]
 						}
 					},
@@ -3487,29 +3970,33 @@
 				},
 				{
 					"name": "Delete a product of a gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"   pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products/:product_id_2",
+							"raw": "{{base_url}}/cultures/{{cultureId}}/products/{{product_id_2}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"cultures",
-								":culture_id",
+								"{{cultureId}}",
 								"products",
-								":product_id_2"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "product_id_2",
-									"value": "00000000-0000-0000-0000-000000000001"
-								}
+								"{{product_id_2}}"
 							]
 						}
 					},
@@ -3553,29 +4040,38 @@
 				},
 				{
 					"name": "Delete an invalid product of a gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The product with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
+							"raw": "{{base_url}}/cultures/{{cultureId}}/products/00000000-0000-0000-0000-000000000000",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"cultures",
-								":culture_id",
+								"{{cultureId}}",
 								"products",
-								":product_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "product_id",
-									"value": "0"
-								}
+								"00000000-0000-0000-0000-000000000000"
 							]
 						}
 					},
@@ -3619,29 +4115,38 @@
 				},
 				{
 					"name": "Delete a product of an invalid gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The gastronomic culture with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products/:product_id",
+							"raw": "{{base_url}}/cultures/00000000-0000-0000-0000-000000000000/products/{{product_id_1}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"cultures",
-								":culture_id",
+								"00000000-0000-0000-0000-000000000000",
 								"products",
-								":product_id"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "0"
-								},
-								{
-									"key": "product_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
+								"{{product_id_1}}"
 							]
 						}
 					},
@@ -3685,29 +4190,38 @@
 				},
 				{
 					"name": "Delete a product non-associated to a gastronomic culture",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 412\", function () {\r",
+									"   pm.response.to.have.status(412);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The product with the given id is not associated to the gastronomic culture\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/cultures/:culture_id/products/:product_id_2",
+							"raw": "{{base_url}}/cultures/{{cultureId}}/products/{{product_id_1}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"cultures",
-								":culture_id",
+								"{{cultureId}}",
 								"products",
-								":product_id_2"
-							],
-							"variable": [
-								{
-									"key": "culture_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "product_id_2",
-									"value": "00000000-0000-0000-0000-000000000001"
-								}
+								"{{product_id_1}}"
 							]
 						}
 					},
