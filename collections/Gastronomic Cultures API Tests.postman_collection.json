@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "b9a34d87-4e48-4d16-9bcd-6b154f8a6226",
+		"_postman_id": "4def476a-c385-4e04-920e-f48d204f9cdd",
 		"name": "Gastronomic Cultures API Tests",
 		"description": "This collection provides comprehensive CRUD operations and detailed views for managing gastronomic data, including products, gastronomic cultures, countries, recipes, and restaurants.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "37773935"
+		"_exporter_id": "37773784"
 	},
 	"item": [
 		{
@@ -994,6 +994,21 @@
 			"item": [
 				{
 					"name": "Add Country - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseData = pm.response.json();",
+									"pm.globals.set(\"countryId\", responseData.id);",
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -1056,6 +1071,24 @@
 				},
 				{
 					"name": "Get All Countries - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Number of countries > ' + 0, function () {",
+									"   var data = pm.response.json()",
+									"   pm.expect(data.length).to.greaterThan(0)",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"   pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -1096,6 +1129,82 @@
 				},
 				{
 					"name": "Get Country - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"   pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/countries/{{countryId}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"countries",
+								"{{countryId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/countries/{{countryId}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"countries",
+										"{{countryId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n\t\"id\": \"00000000-0000-0000-0000-000000000000\",\n\t\"name\": \"Italy\",\n\t\"restaurants\": [\n\t\t{\n\t\t\t\"id\": \"00000000-0000-0000-0000-000000000000\",\n\t\t\t\"name\": \"La Pergola\",\n\t\t\t\"city\": \"Rome\",\n\t\t\t\"michelinStars\": 3,\n\t\t\t\"awardDate\": \"2020-05-20\"\n\t\t}\n\t],\n\t\"cultures\": [\n\t\t{\n\t\t\t\"id\": \"00000000-0000-0000-0000-000000000000\",\n\t\t\t\"name\": \"Italian Gastronomic Culture\",\n\t\t\t\"description\": \"Rich and diverse culinary traditions.\"\n\t\t}\n\t]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Country - Not Found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"   pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Get expected error message\", function () {",
+									"   var data = pm.response.json();",
+									"   pm.expect(data.message).to.eql(\"The country with the given id was not found\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -1112,57 +1221,17 @@
 					},
 					"response": [
 						{
-							"name": "Success Response",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/countries/00000000-0000-0000-0000-000000000000",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"countries",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [],
-							"cookie": [],
-							"body": "{\n\t\"id\": \"00000000-0000-0000-0000-000000000000\",\n\t\"name\": \"Italy\",\n\t\"restaurants\": [\n\t\t{\n\t\t\t\"id\": \"00000000-0000-0000-0000-000000000000\",\n\t\t\t\"name\": \"La Pergola\",\n\t\t\t\"city\": \"Rome\",\n\t\t\t\"michelinStars\": 3,\n\t\t\t\"awardDate\": \"2020-05-20\"\n\t\t}\n\t],\n\t\"cultures\": [\n\t\t{\n\t\t\t\"id\": \"00000000-0000-0000-0000-000000000000\",\n\t\t\t\"name\": \"Italian Gastronomic Culture\",\n\t\t\t\"description\": \"Rich and diverse culinary traditions.\"\n\t\t}\n\t]\n}"
-						}
-					]
-				},
-				{
-					"name": "Get Country - Not Found",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/00000000-0000-4000-8000-000000000000",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								"00000000-0000-4000-8000-000000000000"
-							]
-						}
-					},
-					"response": [
-						{
 							"name": "Not Found",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/00000000-0000-4000-8000-000000000000",
+									"raw": "http://localhost:3000/countries/00000000-0000-4000-8000-000000000000",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										"00000000-0000-4000-8000-000000000000"
@@ -1180,6 +1249,102 @@
 				},
 				{
 					"name": "Update Country - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"   pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Spain\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/countries/{{countryId}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"countries",
+								"{{countryId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Spain\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/countries/{{countryId}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"countries",
+										"{{countryId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"name\": \"Spain\"\n}\n"
+						}
+					]
+				},
+				{
+					"name": "Update Country - Not Found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"   pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Get expected error message\", function () {",
+									"   var data = pm.response.json();",
+									"   pm.expect(data.message).to.eql(\"The country with the given id was not found\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -1205,70 +1370,6 @@
 					},
 					"response": [
 						{
-							"name": "Success Response",
-							"originalRequest": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"name\": \"Spain\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:3000/api/v1/countries/00000000-0000-0000-0000-000000000000",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"v1",
-										"countries",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [],
-							"cookie": [],
-							"body": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"name\": \"Spain\"\n}\n"
-						}
-					]
-				},
-				{
-					"name": "Update Country - Not Found",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"Spain\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{base_url}}/countries/00000000-0000-4000-8000-000000000000",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								"00000000-0000-4000-8000-000000000000"
-							]
-						}
-					},
-					"response": [
-						{
 							"name": "Not Found",
 							"originalRequest": {
 								"method": "PUT",
@@ -1283,10 +1384,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/countries/00000000-0000-4000-8000-000000000000",
+									"raw": "http://localhost:3000/countries/00000000-0000-4000-8000-000000000000",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										"00000000-0000-4000-8000-000000000000"
@@ -1304,6 +1407,84 @@
 				},
 				{
 					"name": "Delete Country - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {",
+									"   pm.response.to.have.status(204);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/countries/{{countryId}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"countries",
+								"{{countryId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/countries/{{countryId}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"countries",
+										"{{countryId}}"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Delete Country - Not Found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"   pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Get expected error message\", function () {",
+									"   var data = pm.response.json();",
+									"   pm.expect(data.message).to.eql(\"The country with the given id was not found\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -1320,57 +1501,17 @@
 					},
 					"response": [
 						{
-							"name": "Success Response",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/countries/00000000-0000-0000-0000-000000000000",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"countries",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"status": "No Content",
-							"code": 204,
-							"_postman_previewlanguage": "json",
-							"header": [],
-							"cookie": [],
-							"body": ""
-						}
-					]
-				},
-				{
-					"name": "Delete Country - Not Found",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/00000000-0000-4000-8000-000000000000",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								"00000000-0000-4000-8000-000000000000"
-							]
-						}
-					},
-					"response": [
-						{
 							"name": "Not Found",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/00000000-0000-4000-8000-000000000000",
+									"raw": "http://localhost:3000/countries/00000000-0000-4000-8000-000000000000",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										"00000000-0000-4000-8000-000000000000"
@@ -1925,6 +2066,21 @@
 			"item": [
 				{
 					"name": "Add Restaurant - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseData = pm.response.json();",
+									"pm.globals.set(\"restaurantId\", responseData.id);",
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -1987,6 +2143,24 @@
 				},
 				{
 					"name": "Get All Restaurants - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Number of restaurants > ' + 0, function () {",
+									"   var data = pm.response.json();",
+									"   pm.expect(data.length).to.greaterThan(0);",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"   pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -2027,17 +2201,30 @@
 				},
 				{
 					"name": "Get Restaurant - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"   pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/restaurants/00000000-0000-0000-0000-000000000000",
+							"raw": "{{base_url}}/restaurants/{{restaurantId}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"restaurants",
-								"00000000-0000-0000-0000-000000000000"
+								"{{restaurantId}}"
 							]
 						}
 					},
@@ -2048,13 +2235,15 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/restaurants/00000000-0000-0000-0000-000000000000",
+									"raw": "http://localhost:3000/restaurants/{{restaurantId}}",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"restaurants",
-										"00000000-0000-0000-0000-000000000000"
+										"{{restaurantId}}"
 									]
 								}
 							},
@@ -2069,6 +2258,25 @@
 				},
 				{
 					"name": "Get Restaurant - Not Found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"   pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Get expected error message\", function () {",
+									"   var data = pm.response.json();",
+									"   pm.expect(data.message).to.eql(\"The restaurant with the given id was not found\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -2090,10 +2298,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/restaurants/00000000-0000-4000-8000-000000000000",
+									"raw": "http://localhost:3000/restaurants/00000000-0000-4000-8000-000000000000",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"restaurants",
 										"00000000-0000-4000-8000-000000000000"
@@ -2111,6 +2321,19 @@
 				},
 				{
 					"name": "Update Restaurant - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"   pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -2124,13 +2347,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/restaurants/00000000-0000-0000-0000-000000000000",
+							"raw": "{{base_url}}/restaurants/{{restaurantId}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"restaurants",
-								"00000000-0000-0000-0000-000000000000"
+								"{{restaurantId}}"
 							]
 						}
 					},
@@ -2150,13 +2373,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/restaurants/00000000-0000-0000-0000-000000000000",
+									"raw": "{{base_url}}/restaurants/{{restaurantId}}",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"restaurants",
-										"00000000-0000-0000-0000-000000000000"
+										"{{restaurantId}}"
 									]
 								}
 							},
@@ -2171,6 +2394,25 @@
 				},
 				{
 					"name": "Update Restaurant - Not Found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"   pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Get expected error message\", function () {",
+									"   var data = pm.response.json();",
+									"   pm.expect(data.message).to.eql(\"The restaurant with the given id was not found\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -2231,17 +2473,30 @@
 				},
 				{
 					"name": "Delete Restaurant - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {",
+									"   pm.response.to.have.status(204);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/restaurants/00000000-0000-0000-0000-000000000000",
+							"raw": "{{base_url}}/restaurants/{{restaurantId}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"restaurants",
-								"00000000-0000-0000-0000-000000000000"
+								"{{restaurantId}}"
 							]
 						}
 					},
@@ -2252,13 +2507,15 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/restaurants/00000000-0000-0000-0000-000000000000",
+									"raw": "http://localhost:3000/restaurants/{{restaurantId}}",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"restaurants",
-										"00000000-0000-0000-0000-000000000000"
+										"{{restaurantId}}"
 									]
 								}
 							},
@@ -2273,6 +2530,25 @@
 				},
 				{
 					"name": "Delete Restaurant - Not Found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"   pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Get expected error message\", function () {",
+									"   var data = pm.response.json();",
+									"   pm.expect(data.message).to.eql(\"The restaurant with the given id was not found\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -2294,10 +2570,12 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/restaurants/00000000-0000-4000-8000-000000000000",
+									"raw": "http://localhost:3000/restaurants/00000000-0000-4000-8000-000000000000",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"restaurants",
 										"00000000-0000-4000-8000-000000000000"
@@ -6407,462 +6685,215 @@
 			"name": "Country-Restaurants",
 			"item": [
 				{
-					"name": "Get a restaurant of a country",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"restaurants",
-								":restaurant_id"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "restaurant_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
-							]
-						}
-					},
-					"response": [
+					"name": "Add Restaurant - Success",
+					"event": [
 						{
-							"name": "Get a restaurant of a country",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"countries",
-										":country_id",
-										"restaurants",
-										":restaurant_id"
-									],
-									"variable": [
-										{
-											"key": "country_id",
-											"value": "00000000-0000-0000-0000-000000000000"
-										},
-										{
-											"key": "restaurant_id",
-											"value": "00000000-0000-0000-0000-000000000000"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"name\": \"La Pergola\",\n    \"city\": \"Rome\",\n    \"michelinStars\": 3,\n    \"awardDate\": \"2020-05-20\",\n    \"cultures\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Mediterranean\",\n            \"description\": \"Rich and diverse culinary traditions.\"\n        }\n    ],\n    \"country\": {\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\n        \"name\": \"Italy\"\n    }\n}"
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Extracting data from the response",
+									"var responseData = pm.response.json();",
+									"",
+									"// Set the pm globals to the id of the created restaurant",
+									"pm.globals.set(\"restaurantId\", responseData.id);",
+									"",
+									"// Test for the status code to be 201",
+									"pm.test(\"Response status code is 201\", function () {",
+									"  pm.response.to.have.status(201);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
 						}
-					]
-				},
-				{
-					"name": "Get an invalid restaurant of a country",
+					],
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"La Pergola\",\n  \"city\": \"Rome\",\n  \"michelinStars\": 3,\n  \"awardDate\": \"2020-05-20\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
+							"raw": "{{base_url}}/restaurants",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"countries",
-								":country_id",
-								"restaurants",
-								":restaurant_id"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "restaurant_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Get an invalid restaurant of a country",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"countries",
-										":country_id",
-										"restaurants",
-										":restaurant_id"
-									],
-									"variable": [
-										{
-											"key": "country_id",
-											"value": "00000000-0000-0000-0000-000000000000"
-										},
-										{
-											"key": "restaurant_id",
-											"value": "0"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The restaurant with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get a restaurant of an invalid country",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"restaurants",
-								":restaurant_id"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "0"
-								},
-								{
-									"key": "restaurant_id",
-									"value": "00000000-0000-0000-0000-000000000000\n\n"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Get a restaurant of an invalid country",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"countries",
-										":country_id",
-										"restaurants",
-										":restaurant_id"
-									],
-									"variable": [
-										{
-											"key": "country_id",
-											"value": "0"
-										},
-										{
-											"key": "restaurant_id",
-											"value": "00000000-0000-0000-0000-000000000000"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The country with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get a restaurant non-associated to a country",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id_2",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"restaurants",
-								":restaurant_id_2"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "restaurant_id_2",
-									"value": "00000000-0000-0000-0000-000000000001"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Get a restaurant non-associated to a country",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id_2",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"countries",
-										":country_id",
-										"restaurants",
-										":restaurant_id_2"
-									],
-									"variable": [
-										{
-											"key": "country_id",
-											"value": "00000000-0000-0000-0000-000000000000"
-										},
-										{
-											"key": "restaurant_id_2",
-											"value": "00000000-0000-0000-0000-000000000001"
-										}
-									]
-								}
-							},
-							"status": "Precondition Failed",
-							"code": 412,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 412,\n    \"message\": \"The restaurant with the given id is not associated to the country\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get all restaurants of a country",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
 								"restaurants"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Get all restaurants of a country",
+							"name": "Success Response",
 							"originalRequest": {
-								"method": "GET",
+								"method": "POST",
 								"header": [],
-								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"countries",
-										":country_id",
-										"restaurants"
-									],
-									"variable": [
-										{
-											"key": "country_id",
-											"value": "00000000-0000-0000-0000-000000000000"
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"La Pergola\",\n  \"city\": \"Rome\",\n  \"michelinStars\": 3,\n  \"awardDate\": \"2020-05-20\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/restaurants",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"restaurants"
 									]
 								}
 							},
-							"status": "OK",
-							"code": 200,
+							"status": "Created",
+							"code": 201,
 							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
+							"header": [],
 							"cookie": [],
-							"body": "[\n    {\n        \"name\": \"La Pergola\",\n        \"city\": \"Rome\",\n        \"michelinStars\": 3,\n        \"awardDate\": \"2020-05-20\",\n        \"cultures\": [\n            {\n                \"id\": \"00000000-0000-0000-0000-000000000000\",\n                \"name\": \"Mediterranean\",\n                \"description\": \"Rich and diverse culinary traditions.\"\n            }\n        ],\n        \"country\": {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Italy\"\n        }\n    }\n]"
+							"body": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"name\": \"La Pergola\",\n  \"city\": \"Rome\",\n  \"michelinStars\": 3,\n  \"awardDate\": \"2020-05-20\"\n}"
 						}
 					]
 				},
 				{
-					"name": "Get all restaurants of an invalid country",
+					"name": "Add Country - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test to get the data and set the pm globals to the id of the created country",
+									"pm.test(\"Get the data and set the pm globals to the id of the created country\", function () {",
+									"    var responseData = pm.response.json();",
+									"    pm.globals.set(\"countryId\", responseData.id);",
+									"});",
+									"",
+									"// Test for the status code to be 201",
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Italy\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants",
+							"raw": "{{base_url}}/countries",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"countries",
-								":country_id",
-								"restaurants"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "0"
-								}
+								"countries"
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Get all restaurants of an invalid country",
+							"name": "Success Response",
 							"originalRequest": {
-								"method": "GET",
+								"method": "POST",
 								"header": [],
-								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"countries",
-										":country_id",
-										"restaurants"
-									],
-									"variable": [
-										{
-											"key": "country_id",
-											"value": "0"
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Italy\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/countries",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"countries"
 									]
 								}
 							},
-							"status": "Not Found",
-							"code": 404,
+							"status": "Created",
+							"code": 201,
 							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
+							"header": [],
 							"cookie": [],
-							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The country with the given id was not found\"\n}"
+							"body": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"name\": \"Italy\"\n}"
 						}
 					]
 				},
 				{
-					"name": "Add a restaurant to a country",
+					"name": "Add a Restaurant to a Country",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"   pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
+							"raw": "{{base_url}}/countries/{{countryId}}/restaurants/{{restaurantId}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"countries",
-								":country_id",
+								"{{countryId}}",
 								"restaurants",
-								":restaurant_id"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "restaurant_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
+								"{{restaurantId}}"
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Add a restaurant to a country",
+							"name": "Add a Restaurant to a Country",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
+									"raw": "http://localhost:3000/countries/:country_id/restaurants/:restaurant_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -6884,58 +6915,61 @@
 							"status": "Created",
 							"code": 201,
 							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
+							"header": [],
 							"cookie": [],
-							"body": "{\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"Italy\",\n    \"restaurants\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"La Pergola\",\n            \"city\": \"Rome\",\n            \"michelinStars\": 3,\n            \"awardDate\": \"2020-05-20\"\n        }\n    ],\n    \"cultures\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Italian Gastronomic Culture\",\n            \"description\": \"Rich and diverse culinary traditions.\"\n        }\n    ]\n}"
+							"body": "{\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"La Pergola\",\n    \"city\": \"Rome\",\n    \"michelinStars\": 3,\n    \"awardDate\": \"2020-05-20\",\n    \"country\": {\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\n        \"name\": \"Italy\"\n    }\n}"
 						}
 					]
 				},
 				{
-					"name": "Add an invalid restaurant to a country",
+					"name": "Add an Invalid Restaurant to a Country",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"   pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Get expected error message\", function () {",
+									"   var data = pm.response.json();",
+									"   pm.expect(data.message).to.eql(\"The restaurant with the given id was not found\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
+							"raw": "{{base_url}}/countries/{{countryId}}/restaurants/00000000-0000-4000-8000-000000000000",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"countries",
-								":country_id",
+								"{{countryId}}",
 								"restaurants",
-								":restaurant_id"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "restaurant_id",
-									"value": "0"
-								}
+								"00000000-0000-4000-8000-000000000000"
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Add an invalid restaurant to a country",
+							"name": "Add an Invalid Restaurant to a Country",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
+									"raw": "http://localhost:3000/countries/:country_id/restaurants/:restaurant_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -6971,44 +7005,54 @@
 					]
 				},
 				{
-					"name": "Add a restaurant to an invalid country",
+					"name": "Add a Restaurant to an Invalid Country",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"   pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Get expected error message\", function () {",
+									"   var data = pm.response.json();",
+									"   pm.expect(data.message).to.eql(\"The country with the given id was not found\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
+							"raw": "{{base_url}}/countries/00000000-0000-4000-8000-000000000000/restaurants/{{restaurantId}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"countries",
-								":country_id",
+								"00000000-0000-4000-8000-000000000000",
 								"restaurants",
-								":restaurant_id"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "0"
-								},
-								{
-									"key": "restaurant_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
+								"{{restaurantId}}"
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Add a restaurant to an invalid country",
+							"name": "Add a Restaurant to an Invalid Country",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
+									"raw": "http://localhost:3000/countries/:country_id/restaurants/:restaurant_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -7044,63 +7088,209 @@
 					]
 				},
 				{
-					"name": "Update restaurants of a country",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\r\n   {\r\n       \"id\": \"{{restaurant_id_2}}\"\r\n   }\r\n]",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
+					"name": "Get a Restaurant of a Country",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"   pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
 							}
-						},
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
 						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants",
+							"raw": "{{base_url}}/countries/{{countryId}}/restaurants/{{restaurantId}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"countries",
-								":country_id",
-								"restaurants"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
+								"{{countryId}}",
+								"restaurants",
+								"{{restaurantId}}"
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Update restaurants of a country",
+							"name": "Get a Restaurant of a Country",
 							"originalRequest": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "[\r\n   {\r\n       \"id\": \"00000000-0000-0000-0000-000000000000\"\r\n   }\r\n]",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
+								"method": "GET",
+								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants",
+									"raw": "http://localhost:3000/countries/:country_id/restaurants/:restaurant_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
+									"path": [
+										"countries",
+										":country_id",
+										"restaurants",
+										":restaurant_id"
+									],
+									"variable": [
+										{
+											"key": "country_id",
+											"value": "00000000-0000-0000-0000-000000000000"
+										},
+										{
+											"key": "restaurant_id",
+											"value": "00000000-0000-0000-0000-000000000000"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"La Pergola\",\n    \"city\": \"Rome\",\n    \"michelinStars\": 3,\n    \"awardDate\": \"2020-05-20\",\n    \"country\": {\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\n        \"name\": \"Italy\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get an Invalid Restaurant of a Country",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"   pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Get expected error message\", function () {",
+									"   var data = pm.response.json();",
+									"   pm.expect(data.message).to.eql(\"The restaurant with the given id was not found\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/countries/{{countryId}}/restaurants/00000000-0000-4000-8000-000000000000",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"countries",
+								"{{countryId}}",
+								"restaurants",
+								"00000000-0000-4000-8000-000000000000"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get an Invalid Restaurant of a Country",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/countries/:country_id/restaurants/:restaurant_id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"countries",
+										":country_id",
+										"restaurants",
+										":restaurant_id"
+									],
+									"variable": [
+										{
+											"key": "country_id",
+											"value": "00000000-0000-0000-0000-000000000000"
+										},
+										{
+											"key": "restaurant_id",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The restaurant with the given id was not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all Restaurants of a Country",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"   pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/countries/{{countryId}}/restaurants",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"countries",
+								"{{countryId}}",
+								"restaurants"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all Restaurants of a Country",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/countries/:country_id/restaurants",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -7126,18 +7316,31 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"Italy\",\n    \"restaurants\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"La Pergola\",\n            \"city\": \"Rome\",\n            \"michelinStars\": 3,\n            \"awardDate\": \"2020-05-20\"\n        }\n    ],\n    \"cultures\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Italian Gastronomic Culture\",\n            \"description\": \"Rich and diverse culinary traditions.\"\n        }\n    ]\n}"
+							"body": "[\n    {\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\n        \"name\": \"La Pergola\",\n        \"city\": \"Rome\",\n        \"michelinStars\": 3,\n        \"awardDate\": \"2020-05-20\",\n        \"country\": {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Italy\"\n        }\n    }\n]"
 						}
 					]
 				},
 				{
-					"name": "Update invalid restaurants of a country",
+					"name": "Update Restaurants of a Country",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"   pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n   {\r\n       \"id\": \"0\"\r\n   }\r\n]",
+							"raw": "[\n   {\n       \"id\": \"{{restaurantId}}\"\n   }\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -7145,32 +7348,26 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants",
+							"raw": "{{base_url}}/countries/{{countryId}}/restaurants",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"countries",
-								":country_id",
+								"{{countryId}}",
 								"restaurants"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Update invalid restaurants of a country",
+							"name": "Update Restaurants of a Country",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "[\r\n   {\r\n       \"id\": \"0\"\r\n   }\r\n]",
+									"raw": "[\n   {\n       \"id\": \"00000000-0000-0000-0000-000000000000\"\n   }\n]",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -7178,10 +7375,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants",
+									"raw": "http://localhost:3000/countries/:country_id/restaurants",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
@@ -7195,8 +7394,8 @@
 									]
 								}
 							},
-							"status": "Not Found",
-							"code": 404,
+							"status": "OK",
+							"code": 200,
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
@@ -7207,135 +7406,59 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The restaurant with the given id was not found\"\n}"
+							"body": "{\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"Italy\",\n    \"restaurants\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"La Pergola\",\n            \"city\": \"Rome\",\n            \"michelinStars\": 3,\n            \"awardDate\": \"2020-05-20\"\n        }\n    ]\n}"
 						}
 					]
 				},
 				{
-					"name": "Update restaurants of an invalid country",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\r\n   {\r\n       \"id\": \"{{restaurant_id_2}}\"\r\n   }\r\n]",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"restaurants"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
+					"name": "Delete a Restaurant of a Country",
+					"event": [
 						{
-							"name": "Update restaurants of an invalid country",
-							"originalRequest": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "[\r\n   {\r\n       \"id\": \"00000000-0000-0000-0000-000000000000\"\r\n   }\r\n]",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"countries",
-										":country_id",
-										"restaurants"
-									],
-									"variable": [
-										{
-											"key": "country_id",
-											"value": "0"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The country with the given id was not found\"\n}"
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {",
+									"   pm.response.to.have.status(204);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
-					]
-				},
-				{
-					"name": "Delete a restaurant of a country",
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id_2",
+							"raw": "{{base_url}}/countries/{{countryId}}/restaurants/{{restaurantId}}",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"countries",
-								":country_id",
+								"{{countryId}}",
 								"restaurants",
-								":restaurant_id_2"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "restaurant_id_2",
-									"value": "00000000-0000-0000-0000-000000000001"
-								}
+								"{{restaurantId}}"
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Delete a restaurant of a country",
+							"name": "Delete a Restaurant of a Country",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id_2",
+									"raw": "http://localhost:3000/countries/:country_id/restaurants/:restaurant_id",
+									"protocol": "http",
 									"host": [
-										"{{base_url}}"
+										"localhost"
 									],
+									"port": "3000",
 									"path": [
 										"countries",
 										":country_id",
 										"restaurants",
-										":restaurant_id_2"
+										":restaurant_id"
 									],
 									"variable": [
 										{
@@ -7343,222 +7466,24 @@
 											"value": "00000000-0000-0000-0000-000000000000"
 										},
 										{
-											"key": "restaurant_id_2",
-											"value": "00000000-0000-0000-0000-000000000001"
+											"key": "restaurant_id",
+											"value": "00000000-0000-0000-0000-000000000000"
 										}
 									]
 								}
 							},
 							"status": "No Content",
 							"code": 204,
-							"_postman_previewlanguage": "Text",
+							"_postman_previewlanguage": "json",
 							"header": [],
 							"cookie": [],
 							"body": ""
 						}
 					]
-				},
-				{
-					"name": "Delete an invalid restaurant of a country",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"restaurants",
-								":restaurant_id"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "restaurant_id",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Delete an invalid restaurant of a country",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"countries",
-										":country_id",
-										"restaurants",
-										":restaurant_id"
-									],
-									"variable": [
-										{
-											"key": "country_id",
-											"value": "00000000-0000-0000-0000-000000000000"
-										},
-										{
-											"key": "restaurant_id",
-											"value": "0"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "Text",
-							"header": [],
-							"cookie": [],
-							"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The restaurant with the given id was not found\"\r\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete a restaurant of an invalid country",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"restaurants",
-								":restaurant_id"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "0"
-								},
-								{
-									"key": "restaurant_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Delete a restaurant of an invalid country",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"countries",
-										":country_id",
-										"restaurants",
-										":restaurant_id"
-									],
-									"variable": [
-										{
-											"key": "country_id",
-											"value": "0"
-										},
-										{
-											"key": "restaurant_id",
-											"value": "00000000-0000-0000-0000-000000000000"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "Text",
-							"header": [],
-							"cookie": [],
-							"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The country with the given id was not found\"\r\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete a restaurant non-associated to a country",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id_2",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"countries",
-								":country_id",
-								"restaurants",
-								":restaurant_id_2"
-							],
-							"variable": [
-								{
-									"key": "country_id",
-									"value": "00000000-0000-0000-0000-000000000000"
-								},
-								{
-									"key": "restaurant_id_2",
-									"value": "00000000-0000-0000-0000-000000000001"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Delete a restaurant non-associated to a country",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/countries/:country_id/restaurants/:restaurant_id_2",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"countries",
-										":country_id",
-										"restaurants",
-										":restaurant_id_2"
-									],
-									"variable": [
-										{
-											"key": "country_id",
-											"value": "00000000-0000-0000-0000-000000000000"
-										},
-										{
-											"key": "restaurant_id_2",
-											"value": "00000000-0000-0000-0000-000000000001"
-										}
-									]
-								}
-							},
-							"status": "Precondition Failed",
-							"code": 412,
-							"_postman_previewlanguage": "Text",
-							"header": [],
-							"cookie": [],
-							"body": "{\r\n   \"statusCode\": 412,\r\n   \"message\": \"The restaurant with the given id is not associated to the country\"\r\n}"
-						}
-					]
 				}
 			],
-			"description": "`Restaurant` `\\*` —— `1` `Country`: Un restaurante está ubicado en un país y un país puede tener múltiples restaurantes."
-		},
+			"protocolProfileBehavior": {}
+		},		
 		{
 			"name": "Gastronomic Cultures-Countries",
 			"item": [
