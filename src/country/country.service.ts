@@ -34,6 +34,7 @@ export class CountryService {
   }
 
   async create(country: CountryEntity): Promise<CountryEntity> {
+    await this.validateUniqueCountryName(country.name);
     return await this.countryRepository.save(country);
   }
 
@@ -63,5 +64,18 @@ export class CountryService {
       );
 
     await this.countryRepository.remove(country);
+  }
+
+  private async validateUniqueCountryName(name: string): Promise<void> {
+    const country: CountryEntity = await this.countryRepository.findOne({
+      where: { name },
+    });
+
+    if (country) {
+      throw new BusinessLogicException(
+        'A country with the given name already exists',
+        BusinessError.ALREADY_EXISTS,
+      );
+    }
   }
 }

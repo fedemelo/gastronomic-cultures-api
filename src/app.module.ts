@@ -12,6 +12,7 @@ import { RecipeModule } from './recipe/recipe.module';
 import { GastronomicCultureRecipeModule } from './gastronomic-culture-recipe/gastronomic-culture-recipe.module';
 import { ProductModule } from './product/product.module';
 import { GastronomicCultureProductModule } from './gastronomic-culture-product/gastronomic-culture-product.module';
+import { CountryRestaurantModule } from './country-restaurant/country-restaurant.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { GastronomicCultureProductModule } from './gastronomic-culture-product/g
     GastronomicCultureRecipeModule,
     ProductModule,
     GastronomicCultureProductModule,
+    CountryRestaurantModule,
   ],
   controllers: [AppController],
   providers: [AppService],
