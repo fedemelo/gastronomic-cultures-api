@@ -8,6 +8,7 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
@@ -15,6 +16,10 @@ import { RestaurantEntity } from 'src/restaurant/restaurant.entity';
 import { RestaurantDto } from '../restaurant/restaurant.dto';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { CountryRestaurantService } from './country-restaurant.service';
+import { Role } from '../user/roles/roles';
+import { Roles } from '../user/roles/roles.decorator';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { RolesGuard } from '../auth/guards/roles.guard';
 
 @Controller('countries')
 @UseInterceptors(BusinessErrorsInterceptor)
@@ -35,6 +40,8 @@ export class CountryRestaurantController {
   }
 
   @Get(':countryId/restaurants/:restaurantId')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.ReadAll)
   async findRestaurantByCountryIdRestaurantId(
     @Param('countryId') countryId: string,
     @Param('restaurantId') restaurantId: string,
@@ -46,6 +53,8 @@ export class CountryRestaurantController {
   }
 
   @Get(':countryId/restaurants')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.ReadAll)
   async findRestaurantsByCountryId(@Param('countryId') countryId: string) {
     return await this.countryRestaurantService.findRestaurantsByCountryId(
       countryId,

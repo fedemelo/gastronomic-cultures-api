@@ -9,11 +9,16 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { RestaurantEntity } from '../restaurant/restaurant.entity';
 import { RestaurantDto } from '../restaurant/restaurant.dto';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
+import { Role } from '../user/roles/roles';
+import { Roles } from '../user/roles/roles.decorator';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { RolesGuard } from '../auth/guards/roles.guard';
 
 @UseInterceptors(BusinessErrorsInterceptor)
 @Controller('cultures')
@@ -23,6 +28,8 @@ export class GastronomicCultureRestaurantController {
   ) {}
 
   @Get(':cultureId/restaurants')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.ReadAll)
   async findRestaurantsByGastronomicCultureId(
     @Param('cultureId') cultureId: string,
   ) {
@@ -32,6 +39,8 @@ export class GastronomicCultureRestaurantController {
   }
 
   @Get(':cultureId/restaurants/:restaurantId')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.ReadAll)
   async findRestaurantByGastronomicCultureIdAndRestaurantId(
     @Param('cultureId') cultureId: string,
     @Param('restaurantId') restaurantId: string,

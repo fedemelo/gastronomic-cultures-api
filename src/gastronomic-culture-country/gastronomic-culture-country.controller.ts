@@ -7,6 +7,7 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
@@ -14,6 +15,10 @@ import { GastronomicCultureCountryService } from './gastronomic-culture-country.
 import { CountryDto } from '../country/country.dto';
 import { plainToInstance } from 'class-transformer';
 import { CountryEntity } from 'src/country/country.entity';
+import { Role } from '../user/roles/roles';
+import { Roles } from '../user/roles/roles.decorator';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { RolesGuard } from '../auth/guards/roles.guard';
 
 @UseInterceptors(BusinessErrorsInterceptor)
 @Controller('cultures')
@@ -34,6 +39,8 @@ export class GastronomicCultureCountryController {
   }
 
   @Get(':cultureId/countries/:countryId')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.ReadAll)
   async findCountryByGastronomicCultureIdAndCountryId(
     @Param('cultureId') cultureId: string,
     @Param('countryId') countryId: string,
@@ -45,6 +52,8 @@ export class GastronomicCultureCountryController {
   }
 
   @Get(':cultureId/countries')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.ReadAll)
   async findCountriesByGastronomicCultureId(
     @Param('cultureId') cultureId: string,
   ) {

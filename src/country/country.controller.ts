@@ -8,6 +8,7 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
@@ -15,6 +16,10 @@ import { BusinessErrorsInterceptor } from '../shared/interceptors/business-error
 import { CountryDto } from './country.dto';
 import { CountryEntity } from './country.entity';
 import { CountryService } from './country.service';
+import { Roles } from '../user/roles/roles.decorator';
+import { Role } from '../user/roles/roles';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { RolesGuard } from '../auth/guards/roles.guard';
 
 @Controller('countries')
 @UseInterceptors(BusinessErrorsInterceptor)
@@ -22,11 +27,15 @@ export class CountryController {
   constructor(private readonly countryService: CountryService) {}
 
   @Get()
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.ReadAll)
   async findAll() {
     return await this.countryService.findAll();
   }
 
   @Get(':countryId')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.ReadAll)
   async findOne(@Param('countryId') countryId: string) {
     return await this.countryService.findOne(countryId);
   }
