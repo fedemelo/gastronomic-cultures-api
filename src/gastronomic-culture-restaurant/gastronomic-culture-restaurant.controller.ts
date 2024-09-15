@@ -52,6 +52,7 @@ export class GastronomicCultureRestaurantController {
   }
 
   @Post(':cultureId/restaurants/:restaurantId')
+  @Roles(Role.Admin, Role.Write)
   async addRestaurantToGastronomicCulture(
     @Param('cultureId') cultureId: string,
     @Param('restaurantId') restaurantId: string,

@@ -40,6 +40,7 @@ export class ProductController {
   }
 
   @Post()
+  @Roles(Role.Admin, Role.Write)
   async create(@Body() productDto: ProductDto) {
     const product: ProductEntity = plainToInstance(ProductEntity, productDto);
     return await this.productService.create(product);

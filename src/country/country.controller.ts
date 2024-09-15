@@ -41,6 +41,7 @@ export class CountryController {
   }
 
   @Post()
+  @Roles(Role.Admin, Role.Write)
   async create(@Body() countryDto: CountryDto) {
     const country: CountryEntity = plainToInstance(CountryEntity, countryDto);
     return await this.countryService.create(country);

@@ -28,6 +28,7 @@ export class GastronomicCultureCountryController {
   ) {}
 
   @Post(':cultureId/countries/:countryId')
+  @Roles(Role.Admin, Role.Write)
   async addCountryToGastronomicCulture(
     @Param('cultureId') cultureId: string,
     @Param('countryId') countryId: string,

@@ -41,6 +41,7 @@ export class RecipeController {
   }
 
   @Post()
+  @Roles(Role.Admin, Role.Write)
   async create(@Body() recipeDto: RecipeDto) {
     const recipe = plainToInstance(RecipeEntity, recipeDto);
     return await this.recipeService.create(recipe);
