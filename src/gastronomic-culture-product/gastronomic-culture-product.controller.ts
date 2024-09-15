@@ -77,6 +77,8 @@ export class GastronomicCultureProductController {
   }
 
   @Delete(':cultureId/products/:productId')
+  @UseGuards(JwtAuthGuard, RolesGuard) 
+  @Roles(Role.Admin, Role.Delete) 
   @HttpCode(204)
   async deleteProductGastronomicCulture(
     @Param('cultureId') cultureId: string,

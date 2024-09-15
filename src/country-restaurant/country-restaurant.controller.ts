@@ -76,6 +76,8 @@ export class CountryRestaurantController {
   }
 
   @Delete(':countryId/restaurants/:restaurantId')
+  @UseGuards(JwtAuthGuard, RolesGuard) 
+  @Roles(Role.Admin, Role.Delete) 
   @HttpCode(204)
   async deleteRestaurantCountry(
     @Param('countryId') countryId: string,

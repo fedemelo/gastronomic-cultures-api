@@ -57,6 +57,8 @@ export class ProductController {
   }
 
   @Delete(':productId')
+  @UseGuards(JwtAuthGuard, RolesGuard) 
+  @Roles(Role.Admin, Role.Delete) 
   @HttpCode(204)
   async delete(@Param('productId') productId: string) {
     return await this.productService.delete(productId);

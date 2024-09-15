@@ -58,6 +58,8 @@ export class RecipeController {
   }
 
   @Delete(':recipeId')
+  @UseGuards(JwtAuthGuard, RolesGuard) 
+  @Roles(Role.Admin, Role.Delete) 
   @HttpCode(204)
   async delete(@Param('recipeId') recipeId: string) {
     return await this.recipeService.delete(recipeId);

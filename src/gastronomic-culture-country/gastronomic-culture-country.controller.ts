@@ -77,6 +77,8 @@ export class GastronomicCultureCountryController {
   }
 
   @Delete(':cultureId/countries/:countryId')
+  @UseGuards(JwtAuthGuard, RolesGuard) 
+  @Roles(Role.Admin, Role.Delete) 
   @HttpCode(204)
   async deleteCountryFromGastronomicCulture(
     @Param('cultureId') cultureId: string,

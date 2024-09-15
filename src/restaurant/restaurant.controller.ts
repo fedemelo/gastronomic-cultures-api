@@ -58,6 +58,8 @@ export class RestaurantController {
   }
 
   @Delete(':restaurantId')
+  @UseGuards(JwtAuthGuard, RolesGuard) 
+  @Roles(Role.Admin, Role.Delete) 
   @HttpCode(204)
   async delete(@Param('restaurantId') restaurantId: string) {
     return await this.restaurantService.delete(restaurantId);

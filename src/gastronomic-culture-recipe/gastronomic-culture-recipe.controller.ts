@@ -78,6 +78,8 @@ export class GastronomicCultureRecipeController {
   }
 
   @Delete(':cultureId/recipes/:recipeId')
+  @UseGuards(JwtAuthGuard, RolesGuard) 
+  @Roles(Role.Admin, Role.Delete) 
   @HttpCode(204)
   async deleteRecipeFromGastronomicCulture(
     @Param('cultureId') cultureId: string,

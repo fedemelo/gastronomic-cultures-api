@@ -68,6 +68,8 @@ export class GastronomicCultureController {
   }
 
   @Delete(':cultureId')
+  @UseGuards(JwtAuthGuard, RolesGuard) 
+  @Roles(Role.Admin, Role.Delete) 
   @HttpCode(204)
   async delete(@Param('cultureId') cultureId: string) {
     return await this.gastronomicCultureService.delete(cultureId);
