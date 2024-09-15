@@ -28,6 +28,7 @@ export class GastronomicCultureProductController {
   ) {}
 
   @Post(':cultureId/products/:productId')
+  @Roles(Role.Admin, Role.Write)
   async addProductGastronomicCulture(
     @Param('cultureId') cultureId: string,
     @Param('productId') productId: string,
