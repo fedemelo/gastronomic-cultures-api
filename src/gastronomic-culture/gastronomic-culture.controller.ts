@@ -42,6 +42,7 @@ export class GastronomicCultureController {
   }
 
   @Post()
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.Admin, Role.Write)
   async create(@Body() gastronomicCultureDto: GastronomicCultureDto) {
     const gastronomicCulture = plainToInstance(

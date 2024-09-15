@@ -28,6 +28,7 @@ export class GastronomicCultureCountryController {
   ) {}
 
   @Post(':cultureId/countries/:countryId')
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.Admin, Role.Write)
   async addCountryToGastronomicCulture(
     @Param('cultureId') cultureId: string,

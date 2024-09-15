@@ -29,6 +29,7 @@ export class CountryRestaurantController {
   ) {}
 
   @Post(':countryId/restaurants/:restaurantId')
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.Admin, Role.Write)
   async addRestaurantCountry(
     @Param('countryId') countryId: string,

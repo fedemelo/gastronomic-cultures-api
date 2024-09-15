@@ -41,6 +41,7 @@ export class RestaurantController {
   }
 
   @Post()
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.Admin, Role.Write)
   async create(@Body() restaurantDto: RestaurantDto) {
     const restaurant = plainToInstance(RestaurantEntity, restaurantDto);

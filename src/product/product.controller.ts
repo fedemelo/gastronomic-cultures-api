@@ -40,6 +40,7 @@ export class ProductController {
   }
 
   @Post()
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.Admin, Role.Write)
   async create(@Body() productDto: ProductDto) {
     const product: ProductEntity = plainToInstance(ProductEntity, productDto);
