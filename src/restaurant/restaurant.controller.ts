@@ -49,6 +49,8 @@ export class RestaurantController {
   }
 
   @Put(':restaurantId')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.Write)
   async update(
     @Param('restaurantId') restaurantId: string,
     @Body() restaurantDto: RestaurantDto,
@@ -58,8 +60,8 @@ export class RestaurantController {
   }
 
   @Delete(':restaurantId')
-  @UseGuards(JwtAuthGuard, RolesGuard) 
-  @Roles(Role.Admin, Role.Delete) 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.Delete)
   @HttpCode(204)
   async delete(@Param('restaurantId') restaurantId: string) {
     return await this.restaurantService.delete(restaurantId);

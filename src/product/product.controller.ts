@@ -48,6 +48,8 @@ export class ProductController {
   }
 
   @Put(':productId')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.Write)
   async update(
     @Param('productId') productId: string,
     @Body() productDto: ProductDto,
@@ -57,8 +59,8 @@ export class ProductController {
   }
 
   @Delete(':productId')
-  @UseGuards(JwtAuthGuard, RolesGuard) 
-  @Roles(Role.Admin, Role.Delete) 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.Delete)
   @HttpCode(204)
   async delete(@Param('productId') productId: string) {
     return await this.productService.delete(productId);

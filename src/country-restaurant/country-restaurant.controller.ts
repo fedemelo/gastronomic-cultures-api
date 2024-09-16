@@ -64,6 +64,8 @@ export class CountryRestaurantController {
   }
 
   @Put(':countryId/restaurants')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.Write)
   async associateRestaurantsCountry(
     @Body() restaurantsDto: RestaurantDto[],
     @Param('countryId') countryId: string,
@@ -76,8 +78,8 @@ export class CountryRestaurantController {
   }
 
   @Delete(':countryId/restaurants/:restaurantId')
-  @UseGuards(JwtAuthGuard, RolesGuard) 
-  @Roles(Role.Admin, Role.Delete) 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.Delete)
   @HttpCode(204)
   async deleteRestaurantCountry(
     @Param('countryId') countryId: string,

@@ -49,6 +49,8 @@ export class RecipeController {
   }
 
   @Put(':recipeId')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.Write)
   async update(
     @Param('recipeId') recipeId: string,
     @Body() recipeDto: RecipeDto,
@@ -58,8 +60,8 @@ export class RecipeController {
   }
 
   @Delete(':recipeId')
-  @UseGuards(JwtAuthGuard, RolesGuard) 
-  @Roles(Role.Admin, Role.Delete) 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.Delete)
   @HttpCode(204)
   async delete(@Param('recipeId') recipeId: string) {
     return await this.recipeService.delete(recipeId);

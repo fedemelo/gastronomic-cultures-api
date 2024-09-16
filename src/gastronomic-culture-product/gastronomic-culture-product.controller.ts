@@ -65,6 +65,8 @@ export class GastronomicCultureProductController {
   }
 
   @Put(':cultureId/products')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.Write)
   async associateProductsGastronomicCulture(
     @Param('cultureId') cultureId: string,
     @Body() productsDto: ProductDto[],
@@ -77,8 +79,8 @@ export class GastronomicCultureProductController {
   }
 
   @Delete(':cultureId/products/:productId')
-  @UseGuards(JwtAuthGuard, RolesGuard) 
-  @Roles(Role.Admin, Role.Delete) 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.Delete)
   @HttpCode(204)
   async deleteProductGastronomicCulture(
     @Param('cultureId') cultureId: string,

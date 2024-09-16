@@ -66,6 +66,8 @@ export class GastronomicCultureRecipeController {
   }
 
   @Put(':cultureId/recipes')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.Write)
   async associateRecipesToGastronomicCulture(
     @Param('cultureId') cultureId: string,
     @Body() recipesDto: RecipeDto[],

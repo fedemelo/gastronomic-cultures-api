@@ -49,6 +49,8 @@ export class CountryController {
   }
 
   @Put(':countryId')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.Write)
   async update(
     @Param('countryId') countryId: string,
     @Body() countryDto: CountryDto,
@@ -58,8 +60,8 @@ export class CountryController {
   }
 
   @Delete(':countryId')
-  @UseGuards(JwtAuthGuard, RolesGuard) 
-  @Roles(Role.Admin, Role.Delete) 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.Delete)
   @HttpCode(204)
   async delete(@Param('countryId') countryId: string) {
     return await this.countryService.delete(countryId);

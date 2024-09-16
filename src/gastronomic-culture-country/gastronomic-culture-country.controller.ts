@@ -65,6 +65,8 @@ export class GastronomicCultureCountryController {
   }
 
   @Put(':cultureId/countries')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.Write)
   async associateCountriesToGastronomicCulture(
     @Param('cultureId') cultureId: string,
     @Body() countriesDto: CountryDto[],
@@ -77,8 +79,8 @@ export class GastronomicCultureCountryController {
   }
 
   @Delete(':cultureId/countries/:countryId')
-  @UseGuards(JwtAuthGuard, RolesGuard) 
-  @Roles(Role.Admin, Role.Delete) 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.Delete)
   @HttpCode(204)
   async deleteCountryFromGastronomicCulture(
     @Param('cultureId') cultureId: string,

@@ -53,6 +53,8 @@ export class GastronomicCultureController {
   }
 
   @Put(':cultureId')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.Write)
   async update(
     @Param('cultureId') cultureId: string,
     @Body() gastronomicCultureDto: GastronomicCultureDto,
@@ -68,8 +70,8 @@ export class GastronomicCultureController {
   }
 
   @Delete(':cultureId')
-  @UseGuards(JwtAuthGuard, RolesGuard) 
-  @Roles(Role.Admin, Role.Delete) 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.Delete)
   @HttpCode(204)
   async delete(@Param('cultureId') cultureId: string) {
     return await this.gastronomicCultureService.delete(cultureId);

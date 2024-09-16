@@ -65,6 +65,8 @@ export class GastronomicCultureRestaurantController {
   }
 
   @Put(':cultureId/restaurants')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.Write)
   async associateRestaurantsToGastronomicCulture(
     @Param('cultureId') cultureId: string,
     @Body() restaurantDto: RestaurantDto[],
@@ -77,8 +79,8 @@ export class GastronomicCultureRestaurantController {
   }
 
   @Delete(':cultureId/restaurants/:restaurantId')
-  @UseGuards(JwtAuthGuard, RolesGuard) 
-  @Roles(Role.Admin, Role.Delete) 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin, Role.Delete)
   @HttpCode(204)
   async deleteRestaurantFromGastronomicCulture(
     @Param('cultureId') cultureId: string,
