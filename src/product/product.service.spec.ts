@@ -19,7 +19,9 @@ describe('ProductService', () => {
     }).compile();
 
     service = module.get<ProductService>(ProductService);
-    repository = module.get<Repository<ProductEntity>>(getRepositoryToken(ProductEntity));
+    repository = module.get<Repository<ProductEntity>>(
+      getRepositoryToken(ProductEntity),
+    );
     await seedDatabase();
   });
 
@@ -39,7 +41,7 @@ describe('ProductService', () => {
   };
 
   it('should be defined', () => {
-    expect(service).toBeDefined(); 
+    expect(service).toBeDefined();
   });
 
   it('findAll should return all products', async () => {
@@ -60,12 +62,15 @@ describe('ProductService', () => {
   });
 
   it('findOne should throw an exception for an invaid product', async () => {
-    await expect(() => service.findOne("0")).rejects.toHaveProperty("message", "The product with the given id was not found")
+    await expect(() => service.findOne('0')).rejects.toHaveProperty(
+      'message',
+      'The product with the given id was not found',
+    );
   });
 
   it('create should return a product', async () => {
     const product: ProductEntity = {
-      id: "",
+      id: '',
       name: faker.company.name(),
       description: faker.lorem.sentence(),
       history: faker.lorem.sentence(),
@@ -90,7 +95,10 @@ describe('ProductService', () => {
     product.name = faker.company.name();
     product.description = faker.lorem.sentence();
 
-    const updatedProduct: ProductEntity = await service.update(product.id, product);
+    const updatedProduct: ProductEntity = await service.update(
+      product.id,
+      product,
+    );
     expect(updatedProduct).not.toBeNull();
 
     const storedProduct: ProductEntity = await service.findOne(product.id);
@@ -108,18 +116,25 @@ describe('ProductService', () => {
       name: faker.company.name(),
       description: faker.lorem.sentence(),
     };
-    await expect(() => service.update("0", product)).rejects.toHaveProperty("message", "The product with the given id was not found");
+    await expect(() => service.update('0', product)).rejects.toHaveProperty(
+      'message',
+      'The product with the given id was not found',
+    );
   });
 
   it('delete should remove a product', async () => {
     const product: ProductEntity = productsList[0];
     await service.delete(product.id);
-    const deletedProduct: ProductEntity = await repository.findOne({ where: { id: product.id } });
+    const deletedProduct: ProductEntity = await repository.findOne({
+      where: { id: product.id },
+    });
     expect(deletedProduct).toBeNull();
   });
 
   it('delete should throw an exception for an invalid product', async () => {
-    await expect(() => service.delete("0")).rejects.toHaveProperty("message", "The product with the given id was not found");
+    await expect(() => service.delete('0')).rejects.toHaveProperty(
+      'message',
+      'The product with the given id was not found',
+    );
   });
-
 });

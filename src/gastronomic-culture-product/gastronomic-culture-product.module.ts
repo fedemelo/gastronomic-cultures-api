@@ -7,11 +7,18 @@ import { GastronomicCultureService } from '../gastronomic-culture/gastronomic-cu
 import { ProductService } from '../product/product.service';
 import { GastronomicCultureProductController } from './gastronomic-culture-product.controller';
 import { CacheModule } from '@nestjs/cache-manager';
+import * as sqliteStore from 'cache-manager-sqlite';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([GastronomicCultureEntity, ProductEntity]),
-    CacheModule.register(),
+    CacheModule.register({
+      store: sqliteStore,
+      options: {
+        ttl: 5,
+      },
+      path: ':memory:',
+    }),
   ],
   providers: [
     GastronomicCultureProductService,

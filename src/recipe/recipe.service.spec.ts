@@ -30,15 +30,14 @@ describe('RecipeService', () => {
     repository.clear();
     recipesList = [];
     for (let i = 0; i < 5; i++) {
-      const recipe: RecipeEntity =
-        await repository.save({
-          name: faker.company.name(),
-          description: faker.lorem.sentence(),
-          photo: faker.image.url(),
-          preparationProcess: faker.lorem.sentence(),
-          video: faker.image.url(),
-          gastronomicCulture: null
-        });
+      const recipe: RecipeEntity = await repository.save({
+        name: faker.company.name(),
+        description: faker.lorem.sentence(),
+        photo: faker.image.url(),
+        preparationProcess: faker.lorem.sentence(),
+        video: faker.image.url(),
+        gastronomicCulture: null,
+      });
       recipesList.push(recipe);
     }
   };
@@ -48,18 +47,14 @@ describe('RecipeService', () => {
   });
 
   it('findAll should return all recipes', async () => {
-    const recipes: RecipeEntity[] =
-      await service.findAll();
+    const recipes: RecipeEntity[] = await service.findAll();
     expect(recipes).not.toBeNull();
     expect(recipes).toHaveLength(recipesList.length);
   });
 
   it('findOne should return a recipe by id', async () => {
-    const storedRecipe: RecipeEntity =
-      recipesList[0];
-    const recipe: RecipeEntity = await service.findOne(
-      storedRecipe.id,
-    );
+    const storedRecipe: RecipeEntity = recipesList[0];
+    const recipe: RecipeEntity = await service.findOne(storedRecipe.id);
     expect(recipe).not.toBeNull();
     expect(recipe.name).toEqual(storedRecipe.name);
     expect(recipe.description).toEqual(storedRecipe.description);
@@ -83,39 +78,32 @@ describe('RecipeService', () => {
       photo: faker.image.url(),
       preparationProcess: faker.lorem.sentence(),
       video: faker.image.url(),
-      gastronomicCulture: null
+      gastronomicCulture: null,
     };
 
-    const newRecipe: RecipeEntity =
-      await service.create(recipe);
+    const newRecipe: RecipeEntity = await service.create(recipe);
     expect(newRecipe).not.toBeNull();
 
-    const storedRecipe: RecipeEntity =
-      await repository.findOne({
-        where: { id: newRecipe.id },
-      });
+    const storedRecipe: RecipeEntity = await repository.findOne({
+      where: { id: newRecipe.id },
+    });
     expect(storedRecipe).not.toBeNull();
     expect(storedRecipe.name).toEqual(newRecipe.name);
-    expect(storedRecipe.description).toEqual(
-      newRecipe.description,
-    );
+    expect(storedRecipe.description).toEqual(newRecipe.description);
   });
 
   it('update should modify a recipe', async () => {
-    const recipe: RecipeEntity =
-      recipesList[0];
+    const recipe: RecipeEntity = recipesList[0];
     recipe.name = 'New name';
     recipe.description = 'New description';
     recipe.photo = 'newphoto.url';
     recipe.preparationProcess = 'New preparation process';
     recipe.video = 'newvideo.url';
-    const updatedRecipe: RecipeEntity =
-      await service.update(recipe.id, recipe);
+    const updatedRecipe: RecipeEntity = await service.update(recipe.id, recipe);
     expect(updatedRecipe).not.toBeNull();
-    const storedRecipe: RecipeEntity =
-      await repository.findOne({
-        where: { id: recipe.id },
-      });
+    const storedRecipe: RecipeEntity = await repository.findOne({
+      where: { id: recipe.id },
+    });
     expect(storedRecipe).not.toBeNull();
     expect(storedRecipe.name).toEqual(recipe.name);
     expect(storedRecipe.description).toEqual(recipe.description);
@@ -125,8 +113,7 @@ describe('RecipeService', () => {
   });
 
   it('update should throw an exception for an invalid recipe', async () => {
-    let recipe: RecipeEntity =
-      recipesList[0];
+    let recipe: RecipeEntity = recipesList[0];
     recipe = {
       ...recipe,
       name: 'New name',
@@ -135,22 +122,18 @@ describe('RecipeService', () => {
       preparationProcess: 'New preparation process',
       video: 'newvideo.url',
     };
-    await expect(() =>
-      service.update('0', recipe),
-    ).rejects.toHaveProperty(
+    await expect(() => service.update('0', recipe)).rejects.toHaveProperty(
       'message',
       'The recipe with the given id was not found',
     );
   });
 
   it('delete should remove a recipe', async () => {
-    const recipe: RecipeEntity =
-      recipesList[0];
+    const recipe: RecipeEntity = recipesList[0];
     await service.delete(recipe.id);
-    const deletedRecipe: RecipeEntity =
-      await repository.findOne({
-        where: { id: recipe.id },
-      });
+    const deletedRecipe: RecipeEntity = await repository.findOne({
+      where: { id: recipe.id },
+    });
     expect(deletedRecipe).toBeNull();
   });
 
