@@ -7,9 +7,13 @@ import { GastronomicCultureEntity } from '../gastronomic-culture/gastronomic-cul
 import { GastronomicCultureService } from '../gastronomic-culture/gastronomic-culture.service';
 import { RecipeService } from '../recipe/recipe.service';
 import { GastronomicCultureRecipeController } from './gastronomic-culture-recipe.controller';
+import { CacheModule } from '@nestjs/cache-manager';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([GastronomicCultureEntity, RecipeEntity])],
+  imports: [
+    TypeOrmModule.forFeature([GastronomicCultureEntity, RecipeEntity]),
+    CacheModule.register(),
+  ],
   providers: [
     GastronomicCultureRecipeService,
     GastronomicCultureService,

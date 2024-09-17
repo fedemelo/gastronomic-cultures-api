@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { GastronomicCultureService } from '../gastronomic-culture/gastronomic-culture.service';
 import { RestaurantService } from 'src/restaurant/restaurant.service';
 import { GastronomicCultureRestaurantController } from './gastronomic-culture-restaurant.controller';
+import { CacheModule } from '@nestjs/cache-manager';
 
 @Module({
   providers: [
@@ -15,6 +16,7 @@ import { GastronomicCultureRestaurantController } from './gastronomic-culture-re
   ],
   imports: [
     TypeOrmModule.forFeature([GastronomicCultureEntity, RestaurantEntity]),
+    CacheModule.register(),
   ],
   controllers: [GastronomicCultureRestaurantController],
 })
