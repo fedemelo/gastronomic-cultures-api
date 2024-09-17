@@ -1,3 +1,4 @@
+import { CacheModule } from '@nestjs/cache-manager';
 import { Module } from '@nestjs/common';
 import { CountryService } from './country.service';
 import { CountryEntity } from './country.entity';
@@ -5,7 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CountryController } from './country.controller';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([CountryEntity])],
+  imports: [TypeOrmModule.forFeature([CountryEntity]), CacheModule.register()],
   providers: [CountryService],
   controllers: [CountryController],
 })

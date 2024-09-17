@@ -5,6 +5,7 @@ import { ProductService } from './product.service';
 import { ProductEntity } from './product.entity';
 import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-config';
 import { faker } from '@faker-js/faker';
+import { CacheModule } from '@nestjs/cache-manager';
 
 describe('ProductService', () => {
   let service: ProductService;
@@ -13,7 +14,7 @@ describe('ProductService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [...TypeOrmTestingConfig()],
+      imports: [...TypeOrmTestingConfig(), CacheModule.register()],
       providers: [ProductService],
     }).compile();
 

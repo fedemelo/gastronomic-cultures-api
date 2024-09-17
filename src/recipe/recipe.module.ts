@@ -1,4 +1,4 @@
-/* eslint-disable prettier/prettier */
+import { CacheModule } from '@nestjs/cache-manager';
 import { Module } from '@nestjs/common';
 import { RecipeService } from './recipe.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -7,7 +7,7 @@ import { RecipeController } from './recipe.controller';
 
 @Module({
   providers: [RecipeService],
-  imports: [TypeOrmModule.forFeature([RecipeEntity])],
+  imports: [TypeOrmModule.forFeature([RecipeEntity]), CacheModule.register()],
   controllers: [RecipeController],
 })
 export class RecipeModule {}

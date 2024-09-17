@@ -6,6 +6,7 @@ import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-co
 import { RecipeEntity } from './recipe.entity';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { faker } from '@faker-js/faker';
+import { CacheModule } from '@nestjs/cache-manager';
 
 describe('RecipeService', () => {
   let service: RecipeService;
@@ -14,7 +15,7 @@ describe('RecipeService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [...TypeOrmTestingConfig()],
+      imports: [...TypeOrmTestingConfig(), CacheModule.register()],
       providers: [RecipeService],
     }).compile();
 

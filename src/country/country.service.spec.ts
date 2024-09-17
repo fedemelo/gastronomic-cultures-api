@@ -6,6 +6,7 @@ import { CountryEntity } from './country.entity';
 import { CountryService } from './country.service';
 
 import { faker } from '@faker-js/faker';
+import { CacheModule } from '@nestjs/cache-manager';
 
 describe('CountryService', () => {
   let service: CountryService;
@@ -14,7 +15,7 @@ describe('CountryService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [...TypeOrmTestingConfig()],
+      imports: [...TypeOrmTestingConfig(), CacheModule.register()],
       providers: [CountryService],
     }).compile();
 

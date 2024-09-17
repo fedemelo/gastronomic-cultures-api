@@ -1,5 +1,6 @@
-/* eslint-disable prettier/prettier */
-import { Injectable } from '@nestjs/common';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
+import { Inject, Injectable } from '@nestjs/common';
+import { Cache } from 'cache-manager';
 import { InjectRepository } from '@nestjs/typeorm';
 import { GastronomicCultureEntity } from './gastronomic-culture.entity';
 import { Repository } from 'typeorm';
@@ -10,15 +11,31 @@ import {
 
 @Injectable()
 export class GastronomicCultureService {
+  cacheKey: string = 'gastronomicCulture';
+
   constructor(
+    @Inject(CACHE_MANAGER)
+    private readonly cacheManager: Cache,
+
     @InjectRepository(GastronomicCultureEntity)
     private readonly gastronomicCultureRepository: Repository<GastronomicCultureEntity>,
   ) {}
 
   async findAll(): Promise<GastronomicCultureEntity[]> {
-    return await this.gastronomicCultureRepository.find({
-      relations: ['countries', 'restaurants', 'recipes', 'products'],
-    });
+    const cached: GastronomicCultureEntity[] = await this.cacheManager.get<
+      GastronomicCultureEntity[]
+    >(this.cacheKey);
+
+    if (!cached) {
+      const gastronomicCulture: GastronomicCultureEntity[] =
+        await this.gastronomicCultureRepository.find({
+          relations: ['countries', 'restaurants', 'recipes', 'products'],
+        });
+      await this.cacheManager.set(this.cacheKey, gastronomicCulture);
+      return gastronomicCulture;
+    }
+
+    return cached;
   }
 
   async findOne(id: string): Promise<GastronomicCultureEntity> {
