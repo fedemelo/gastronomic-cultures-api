@@ -5,9 +5,10 @@ import { CountryEntity } from '../country/country.entity';
 import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-config';
 import { CountryRestaurantService } from './country-restaurant.service';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { faker } from '@faker-js/faker';
 import { CountryService } from '../country/country.service';
 import { RestaurantService } from '../restaurant/restaurant.service';
+import { CacheModule } from '@nestjs/cache-manager';
+import { faker } from '@faker-js/faker';
 
 describe('CountryRestaurantService', () => {
   let service: CountryRestaurantService;
@@ -18,7 +19,7 @@ describe('CountryRestaurantService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [...TypeOrmTestingConfig()],
+      imports: [...TypeOrmTestingConfig(), CacheModule.register()],
       providers: [CountryRestaurantService, CountryService, RestaurantService],
     }).compile();
 

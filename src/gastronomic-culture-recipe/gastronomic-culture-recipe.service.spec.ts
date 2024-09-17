@@ -9,6 +9,7 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { faker } from '@faker-js/faker';
 import { GastronomicCultureService } from '../gastronomic-culture/gastronomic-culture.service';
 import { RecipeService } from '../recipe/recipe.service';
+import { CacheModule } from '@nestjs/cache-manager';
 
 describe('GastronomicCultureRecipesService', () => {
   let service: GastronomicCultureRecipeService;
@@ -19,7 +20,7 @@ describe('GastronomicCultureRecipesService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [...TypeOrmTestingConfig()],
+      imports: [...TypeOrmTestingConfig(), CacheModule.register()],
       providers: [
         GastronomicCultureRecipeService,
         GastronomicCultureService,
@@ -51,7 +52,7 @@ describe('GastronomicCultureRecipesService', () => {
         description: faker.lorem.sentence(),
         photo: faker.image.url(),
         preparationProcess: faker.lorem.sentence(),
-        video: faker.image.url()
+        video: faker.image.url(),
       });
       recipesList.push(recipe);
     }
@@ -73,7 +74,7 @@ describe('GastronomicCultureRecipesService', () => {
       description: faker.lorem.sentence(),
       photo: faker.image.url(),
       preparationProcess: faker.lorem.sentence(),
-      video: faker.image.url()
+      video: faker.image.url(),
     });
 
     const newGastronomicCulture: GastronomicCultureEntity =
@@ -94,7 +95,9 @@ describe('GastronomicCultureRecipesService', () => {
     expect(result.recipes[0].name).toEqual(newRecipe.name);
     expect(result.recipes[0].description).toEqual(newRecipe.description);
     expect(result.recipes[0].photo).toEqual(newRecipe.photo);
-    expect(result.recipes[0].preparationProcess).toEqual(newRecipe.preparationProcess);
+    expect(result.recipes[0].preparationProcess).toEqual(
+      newRecipe.preparationProcess,
+    );
     expect(result.recipes[0].video).toEqual(newRecipe.video);
   });
 
@@ -119,7 +122,7 @@ describe('GastronomicCultureRecipesService', () => {
       description: faker.lorem.sentence(),
       photo: faker.image.url(),
       preparationProcess: faker.lorem.sentence(),
-      video: faker.image.url()
+      video: faker.image.url(),
     });
 
     await expect(() =>
@@ -170,11 +173,11 @@ describe('GastronomicCultureRecipesService', () => {
 
   it('findRecipeByGastronomicCultureIdRecipeId should throw an exception for a recipe not associated to the gastronomic culture', async () => {
     const newRecipe: RecipeEntity = await recipeRepository.save({
-       name: faker.company.name(),
-       description: faker.lorem.sentence(),
-       photo: faker.image.url(),
-       preparationProcess: faker.lorem.sentence(),
-       video: faker.image.url()
+      name: faker.company.name(),
+      description: faker.lorem.sentence(),
+      photo: faker.image.url(),
+      preparationProcess: faker.lorem.sentence(),
+      video: faker.image.url(),
     });
 
     await expect(() =>
@@ -209,7 +212,7 @@ describe('GastronomicCultureRecipesService', () => {
       description: faker.lorem.sentence(),
       photo: faker.image.url(),
       preparationProcess: faker.lorem.sentence(),
-      video: faker.image.url()
+      video: faker.image.url(),
     });
 
     const updatedGastronomicCulture: GastronomicCultureEntity =
@@ -221,9 +224,13 @@ describe('GastronomicCultureRecipesService', () => {
     expect(updatedGastronomicCulture.recipes[0]).not.toBeNull();
     expect(updatedGastronomicCulture.recipes[0].id).toEqual(newRecipe.id);
     expect(updatedGastronomicCulture.recipes[0].name).toEqual(newRecipe.name);
-    expect(updatedGastronomicCulture.recipes[0].description).toEqual(newRecipe.description);
+    expect(updatedGastronomicCulture.recipes[0].description).toEqual(
+      newRecipe.description,
+    );
     expect(updatedGastronomicCulture.recipes[0].photo).toEqual(newRecipe.photo);
-    expect(updatedGastronomicCulture.recipes[0].preparationProcess).toEqual(newRecipe.preparationProcess);
+    expect(updatedGastronomicCulture.recipes[0].preparationProcess).toEqual(
+      newRecipe.preparationProcess,
+    );
     expect(updatedGastronomicCulture.recipes[0].video).toEqual(newRecipe.video);
   });
 
@@ -233,7 +240,7 @@ describe('GastronomicCultureRecipesService', () => {
       description: faker.lorem.sentence(),
       photo: faker.image.url(),
       preparationProcess: faker.lorem.sentence(),
-      video: faker.image.url()
+      video: faker.image.url(),
     });
 
     await expect(() =>
@@ -271,8 +278,9 @@ describe('GastronomicCultureRecipesService', () => {
         where: { id: gastronomicCulture.id },
         relations: ['recipes'],
       });
-    const deletedRecipe: RecipeEntity =
-      storedGastronomicCulture.recipes.find((a) => a.id === recipe.id);
+    const deletedRecipe: RecipeEntity = storedGastronomicCulture.recipes.find(
+      (a) => a.id === recipe.id,
+    );
 
     expect(deletedRecipe).toBeUndefined();
   });
@@ -298,11 +306,11 @@ describe('GastronomicCultureRecipesService', () => {
 
   it('deleteRecipeGastronomicCulture should throw an exception for a non-associated recipe', async () => {
     const newRecipe: RecipeEntity = await recipeRepository.save({
-        name: faker.company.name(),
-        description: faker.lorem.sentence(),
-        photo: faker.image.url(),
-        preparationProcess: faker.lorem.sentence(),
-        video: faker.image.url()
+      name: faker.company.name(),
+      description: faker.lorem.sentence(),
+      photo: faker.image.url(),
+      preparationProcess: faker.lorem.sentence(),
+      video: faker.image.url(),
     });
 
     await expect(() =>
