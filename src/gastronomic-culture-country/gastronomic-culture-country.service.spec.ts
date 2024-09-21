@@ -5,9 +5,10 @@ import { GastronomicCultureCountryService } from './gastronomic-culture-country.
 import { GastronomicCultureEntity } from '../gastronomic-culture/gastronomic-culture.entity';
 import { CountryEntity } from '../country/country.entity';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { faker } from '@faker-js/faker';
 import { GastronomicCultureService } from '../gastronomic-culture/gastronomic-culture.service';
 import { CountryService } from '../country/country.service';
+import { CacheModule } from '@nestjs/cache-manager';
+import { faker } from '@faker-js/faker';
 
 describe('GastronomicCultureCountriesService', () => {
   let service: GastronomicCultureCountryService;
@@ -18,7 +19,7 @@ describe('GastronomicCultureCountriesService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [...TypeOrmTestingConfig()],
+      imports: [...TypeOrmTestingConfig(), CacheModule.register()],
       providers: [
         GastronomicCultureCountryService,
         GastronomicCultureService,
