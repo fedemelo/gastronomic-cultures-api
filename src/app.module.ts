@@ -15,6 +15,9 @@ import { GastronomicCultureProductModule } from './gastronomic-culture-product/g
 import { CountryRestaurantModule } from './country-restaurant/country-restaurant.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { GraphQLModule } from '@nestjs/graphql';
+import { join } from 'path';
+import { ApolloDriver } from '@nestjs/apollo';
 
 @Module({
   imports: [
@@ -29,6 +32,10 @@ import { AuthModule } from './auth/auth.module';
       dropSchema: true,
       synchronize: true,
       keepConnectionAlive: true,
+    }),
+    GraphQLModule.forRoot({
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      driver: ApolloDriver,
     }),
     GastronomicCultureModule,
     CountryModule,

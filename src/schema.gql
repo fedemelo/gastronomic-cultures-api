@@ -1,0 +1,38 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type RestaurantEntity {
+  id: String!
+  name: String!
+  gastronomicCultures: [GastronomicCultureEntity!]!
+}
+
+type CountryEntity {
+  id: String!
+  gastronomicCultures: [GastronomicCultureEntity!]!
+}
+
+type GastronomicCultureEntity {
+  id: String!
+  name: String!
+  description: String!
+  countries: [CountryEntity!]!
+  restaurants: [RestaurantEntity!]!
+}
+
+type Query {
+  cultures: [GastronomicCultureEntity!]!
+  culture(id: String!): GastronomicCultureEntity!
+}
+
+type Mutation {
+  createCulture(culture: GastronomicCultureDto!): GastronomicCultureEntity!
+  updateCulture(id: String!, culture: GastronomicCultureDto!): GastronomicCultureEntity!
+  deleteCulture(id: String!): String!
+}
+
+input GastronomicCultureDto {
+  name: String!
+  description: String!
+}
