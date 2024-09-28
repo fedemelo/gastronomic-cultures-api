@@ -22,7 +22,10 @@ export class RestaurantResolver {
   createRestaurant(
     @Args('restaurant') restaurantDto: RestaurantDto,
   ): Promise<RestaurantEntity> {
-    const restaurant = plainToInstance(RestaurantEntity, restaurantDto);
+    const restaurant = plainToInstance(RestaurantEntity, {
+      ...restaurantDto,
+      awardDate: new Date(restaurantDto.awardDate),
+    });
     return this.restaurantService.create(restaurant);
   }
 
@@ -31,7 +34,10 @@ export class RestaurantResolver {
     @Args('id') id: string,
     @Args('restaurant') restaurantDto: RestaurantDto,
   ): Promise<RestaurantEntity> {
-    const restaurant = plainToInstance(RestaurantEntity, restaurantDto);
+    const restaurant = plainToInstance(RestaurantEntity, {
+      ...restaurantDto,
+      awardDate: new Date(restaurantDto.awardDate),
+    });
     return this.restaurantService.update(id, restaurant);
   }
 

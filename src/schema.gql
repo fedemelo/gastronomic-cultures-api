@@ -8,7 +8,7 @@ type RestaurantEntity {
   city: String!
   michelinStars: Int!
   awardDate: DateTime!
-  country: CountryEntity!
+  country: CountryEntity
   gastronomicCultures: [GastronomicCultureEntity!]!
 }
 
@@ -82,7 +82,7 @@ input RestaurantDto {
   name: String!
   city: String!
   michelinStars: Float!
-  awardDate: DateTime!
+  awardDate: String!
 }
 
 input RecipeDto {

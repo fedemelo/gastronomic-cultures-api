@@ -33,8 +33,10 @@ export class RestaurantEntity {
   @Column()
   awardDate: Date;
 
-  @Field((type) => CountryEntity)
-  @ManyToOne(() => CountryEntity, (country) => country.restaurants)
+  @Field(() => CountryEntity, { nullable: true })
+  @ManyToOne(() => CountryEntity, (country) => country.restaurants, {
+    nullable: true,
+  })
   country: CountryEntity;
 
   @Field(() => [GastronomicCultureEntity])
