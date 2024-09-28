@@ -24,10 +24,21 @@ type CountryEntity {
   gastronomicCultures: [GastronomicCultureEntity!]!
 }
 
+type RecipeEntity {
+  id: String!
+  name: String!
+  description: String!
+  photo: String!
+  preparationProcess: String!
+  video: String!
+  gastronomicCulture: GastronomicCultureEntity!
+}
+
 type GastronomicCultureEntity {
   id: String!
   name: String!
   description: String!
+  recipes: [RecipeEntity!]!
   countries: [CountryEntity!]!
   restaurants: [RestaurantEntity!]!
 }
@@ -39,6 +50,8 @@ type Query {
   country(id: String!): CountryEntity!
   restaurants: [RestaurantEntity!]!
   restaurant(id: String!): RestaurantEntity!
+  recipes: [RecipeEntity!]!
+  recipe(id: String!): RecipeEntity!
 }
 
 type Mutation {
@@ -51,6 +64,9 @@ type Mutation {
   createRestaurant(restaurant: RestaurantDto!): RestaurantEntity!
   updateRestaurant(id: String!, restaurant: RestaurantDto!): RestaurantEntity!
   deleteRestaurant(id: String!): String!
+  createRecipe(recipe: RecipeDto!): RecipeEntity!
+  updateRecipe(id: String!, recipe: RecipeDto!): RecipeEntity!
+  deleteRecipe(id: String!): String!
 }
 
 input GastronomicCultureDto {
@@ -67,4 +83,12 @@ input RestaurantDto {
   city: String!
   michelinStars: Float!
   awardDate: DateTime!
+}
+
+input RecipeDto {
+  name: String!
+  description: String!
+  photo: String!
+  preparationProcess: String!
+  video: String!
 }

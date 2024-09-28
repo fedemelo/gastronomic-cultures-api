@@ -28,7 +28,7 @@ export class GastronomicCultureEntity {
   @Column()
   description: string;
 
-  // TODO: @pdazad - Add the missing relationships
+  @Field(() => [RecipeEntity])
   @OneToMany(() => RecipeEntity, (recipe) => recipe.gastronomicCulture)
   recipes: RecipeEntity[];
 
