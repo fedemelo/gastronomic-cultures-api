@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Field, ObjectType } from '@nestjs/graphql';
 import { GastronomicCultureEntity } from '../gastronomic-culture/gastronomic-culture.entity';
 import { RestaurantEntity } from '../restaurant/restaurant.entity';
@@ -16,11 +17,11 @@ export class CountryEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  // TODO: @fedemelo - Add the missing fields
+  @Field()
   @Column()
   name: string;
 
-  // TODO: @fedemelo - Add the missing fields
+  @Field((type) => [RestaurantEntity])
   @OneToMany(() => RestaurantEntity, (restaurant) => restaurant.country)
   restaurants: RestaurantEntity[];
 

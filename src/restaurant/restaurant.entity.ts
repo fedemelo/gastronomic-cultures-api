@@ -1,4 +1,5 @@
-import { Field, ObjectType } from '@nestjs/graphql';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Field, ObjectType, Int } from '@nestjs/graphql';
 import { CountryEntity } from '../country/country.entity';
 import { GastronomicCultureEntity } from '../gastronomic-culture/gastronomic-culture.entity';
 import {
@@ -20,19 +21,19 @@ export class RestaurantEntity {
   @Column()
   name: string;
 
-  // TODO: @fedemelo - Add the missing fields
+  @Field()
   @Column()
   city: string;
 
-  // TODO: @fedemelo - Add the missing fields
+  @Field(() => Int)
   @Column()
   michelinStars: number;
 
-  // TODO: @fedemelo - Add the missing fields
+  @Field()
   @Column()
   awardDate: Date;
 
-  // TODO: @fedemelo - Add the missing fields
+  @Field((type) => CountryEntity)
   @ManyToOne(() => CountryEntity, (country) => country.restaurants)
   country: CountryEntity;
 
