@@ -4,10 +4,11 @@ import { ProductService } from './product.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductEntity } from './product.entity';
 import { ProductController } from './product.controller';
+import { ProductResolver } from './product.resolver';
 import * as sqliteStore from 'cache-manager-sqlite';
 
 @Module({
-  providers: [ProductService],
+  providers: [ProductService, ProductResolver],
   imports: [
     TypeOrmModule.forFeature([ProductEntity]),
     CacheModule.register({

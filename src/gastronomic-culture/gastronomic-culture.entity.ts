@@ -45,7 +45,7 @@ export class GastronomicCultureEntity {
   @JoinTable()
   restaurants: RestaurantEntity[];
 
-  // TODO: @dburgos26 - Add the missing relationship
+  @Field(() => [ProductEntity])
   @OneToMany(() => ProductEntity, (product) => product.gastronomicCulture)
   products: ProductEntity[];
 }
